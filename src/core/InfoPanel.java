@@ -1,11 +1,15 @@
 package core;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
@@ -13,10 +17,14 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
 class InfoPanel extends JPanel
 {
@@ -28,6 +36,7 @@ class InfoPanel extends JPanel
     private final JTextField textHeight;
     private final JTextField textWeight;
     private final JTextField textRace;
+    private final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
     InfoPanel ()
     {
@@ -120,6 +129,38 @@ class InfoPanel extends JPanel
         gbl.setConstraints(labelRemainingPointsCount, c);
         add(labelRemainingPointsCount);
 //------------------labelRemainingPointsCount-----------------------
+//------------------buttonTotalPoints-----------------------
+        JButton buttonTotalPoints = new JButton("?");
+        buttonTotalPoints.setFont(Resources.font15);
+        buttonTotalPoints.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                    JDialog dialog = new JDialog();
+                    dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                    dialog.setTitle("Обзор потраченых очков");
+                    dialog.setModal(false);
+                    dialog.setFont(Resources.font31);
+                    dialog.setResizable(true);
+                    dialog.setSize(500, 600);
+                    dialog.setLocation(((screenSize.width / 2) - (dialog.getWidth() / 2)),
+                            ((screenSize.height / 2) - (dialog.getHeight() / 2)));
+                    JTextArea textDescription = new JTextArea("Error");
+                    textDescription.setText(Window.mathPoints());
+                    textDescription.setFont(Resources.font15);
+                    textDescription.setLineWrap(true);
+                    textDescription.setEditable(false);
+                    textDescription.setBackground(Color.lightGray);
+                    JScrollPane scrollDescription = new JScrollPane(textDescription);
+                    dialog.add(scrollDescription);
+                    dialog.setVisible(true);
+                }
+            });
+        c.gridx = 7;
+        c.gridy = 4;
+        gbl.setConstraints(buttonTotalPoints, c);
+        add(buttonTotalPoints);
+//------------------buttonTotalPoints-----------------------
 //------------------labelDescription-----------------------
         JLabel labelDescription = new JLabel("Description");
         labelDescription.setFont(Resources.font15B);
@@ -128,7 +169,7 @@ class InfoPanel extends JPanel
         c.gridy = 5;
         gbl.setConstraints(labelDescription, c);
         add(labelDescription);
-//------------------labelRemainingPointsCount-----------------------
+//------------------labelDescription-----------------------
 //===========================Labels===================================
 //===========================TextFields===============================
         KeyListener keyListener = new java.awt.event.KeyAdapter()
@@ -186,15 +227,35 @@ class InfoPanel extends JPanel
         textWeight.addKeyListener(keyListener);
         c.gridx = 6;
         c.gridy = 3;
+        c.gridwidth = 2;
         gbl.setConstraints(textWeight, c);
         add(textWeight);
 //------------------textWeight-----------------------
 //------------------textInitialPoints-----------------------
         textInitialPoints = new JTextField();
         textInitialPoints.setFont(Resources.font15);
-        textInitialPoints.addKeyListener(keyListener);
+        textInitialPoints.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e)
+            {
+                Window.isChanged = true;
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e)
+            {
+                Window.mathPoints();
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e)
+            {
+                Window.mathPoints();
+            }
+        });
         c.gridx = 3;
         c.gridy = 4;
+        c.gridwidth = 1;
         gbl.setConstraints(textInitialPoints, c);
         add(textInitialPoints);
 //------------------textInitialPoints-----------------------

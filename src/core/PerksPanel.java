@@ -320,6 +320,47 @@ public class PerksPanel extends JPanel
 
     }
 
+    String mathPoints()
+    {
+        StringBuilder total = new StringBuilder();
+        int buf = 0;
+        int points = 0;
+        total.append("|| Perks ||\n");
+        total.append("< Advantage >\n");
+        for (int i = 0; i < tableAdvantage.getRowCount(); i++)
+        {
+            total.append("|(").append(tableAdvantage.getValueAt(i, 0).toString()).append(") :").append(tableAdvantage.getValueAt(i, 1).toString()).append("|\n");
+            buf += Integer.parseInt(tableAdvantage.getValueAt(i,1).toString());
+        }
+        total.append("< Total advantage: ").append(buf).append(" >\n\n");
+        points += buf;
+        buf = 0;
+        total.append("< Disadvantage >\n");
+        for (int i = 0; i < tableDisadvantage.getRowCount(); i++)
+        {
+            total.append("|(").append(tableDisadvantage.getValueAt(i, 0).toString()).append(") :").append(tableDisadvantage.getValueAt(i, 1).toString()).append("|\n");
+            buf += Integer.parseInt(tableDisadvantage.getValueAt(i,1).toString());
+        }
+        total.append("< Total disadvantage: ").append(buf).append(" >\n\n");
+        points += buf;
+        buf = 0;
+        total.append("< Quirk >\n");
+        for (int i = 0; i < tableQuirk.getRowCount(); i++)
+        {
+            total.append("|(").append(tableQuirk.getValueAt(i, 0).toString()).append(") :").append(tableQuirk.getValueAt(i, 1).toString()).append("|\n");
+            buf += Integer.parseInt(tableQuirk.getValueAt(i,1).toString());
+        }
+        total.append("< Total quirk: ").append(buf).append(" >\n");
+        points += buf;
+        total.append("|| Total Perks:").append(points).append(" ||");
+        Window.totalPoints[0] -= Window.totalPoints[2];
+        Window.totalPoints[2] = points;
+        Window.totalPoints[0] += points;
+        if (!Window.infoPanel.getTextInitialPoints().getText().isEmpty())
+            Window.infoPanel.getLabelRemainingPointsCount().setText(String.valueOf(Integer.parseInt(Window.infoPanel.getTextInitialPoints().getText()) - Window.totalPoints[0]));
+        return total.toString();
+    }
+
     void clear()
     {
         DefaultTableModel dtm = (DefaultTableModel) tableAdvantage.getModel();
@@ -786,5 +827,6 @@ public class PerksPanel extends JPanel
     public JTable getTableQuirk() {
         return tableQuirk;
     }
+
 }
 

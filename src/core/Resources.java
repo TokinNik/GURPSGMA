@@ -5,7 +5,7 @@ import java.awt.Font;
 class Resources
 {
     static final int width = 1275;
-    static final  int height = 900;
+    static final  int height = 600;
 
 
     static final Font font11 = new Font("Verdana", Font.PLAIN, 11);

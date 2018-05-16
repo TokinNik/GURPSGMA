@@ -502,6 +502,25 @@ public class SkillsPanel extends JPanel
         }
     }
 
+    String mathPoints()
+    {
+        StringBuilder total = new StringBuilder();
+        int points = 0;
+        total.append("|| Skills ||\n");
+        for (int i = 0; i < tableSkills.getRowCount(); i++)
+        {
+            total.append("|(").append(tableSkills.getValueAt(i, 0).toString()).append(") :").append(tableSkills.getValueAt(i, 4).toString()).append("|\n");
+            points += Integer.parseInt(tableSkills.getValueAt(i,4).toString());
+        }
+        total.append("|| Total Skills:").append(points).append(" ||");
+        Window.totalPoints[0] -= Window.totalPoints[3];
+        Window.totalPoints[3] = points;
+        Window.totalPoints[0] += points;
+        if (!Window.infoPanel.getTextInitialPoints().getText().isEmpty())
+            Window.infoPanel.getLabelRemainingPointsCount().setText(String.valueOf(Integer.parseInt(Window.infoPanel.getTextInitialPoints().getText()) - Window.totalPoints[0]));
+        return total.toString();
+    }
+
     void clear()
     {
         DefaultTableModel dtm = (DefaultTableModel) tableSkills.getModel();

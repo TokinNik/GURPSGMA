@@ -37,6 +37,7 @@ class Window extends JFrame
     static int characterId;
     static boolean isChanged;
     private JList<String> characterList;
+    static int[] totalPoints;
 
     Window () throws SQLException, ClassNotFoundException
     {
@@ -48,7 +49,7 @@ class Window extends JFrame
         {
             e.printStackTrace();
         }
-
+        totalPoints = new int[]{0,0,0,0};
         isChanged = false;
         DBConnect.Conn();
         setTitle("GURPS GMA");
@@ -218,7 +219,6 @@ class Window extends JFrame
             @Override
             public void valueChanged(ListSelectionEvent e)
             {
-                System.out.println(e.getValueIsAdjusting());
                 if (!e.getValueIsAdjusting())
                 {
                     if (!basePanel.isVisible())
@@ -326,7 +326,6 @@ class Window extends JFrame
                 {
                     for (int j = 0; j < allCharacterId.get(allCharacterId.size() - 1); j++)
                     {
-                        System.out.println(i + " " + allCharacterId.get(j));
                         if (i != allCharacterId.get(j))
                         {
                             DBConnect.createCharacter(i);
@@ -334,7 +333,7 @@ class Window extends JFrame
                         }
                         if (j+1 == allCharacterId.get(allCharacterId.size() - 1))
                         {
-                            DBConnect.createCharacter(i++);
+                            DBConnect.createCharacter(i+1);
                             break;
                         }
                         i++;
@@ -374,6 +373,11 @@ class Window extends JFrame
         //setResizable(false);
         setVisible(true);
     }
+
+     static String mathPoints()
+     {
+         return basePanel.mathPoints() + "\n\n" + perksPanel.mathPoints() + "\n\n" + skillsPanel.mathPoints() + "\n\n||| Total points: " + totalPoints[0] + " |||";
+     }
 
     private void installStats(float[] characterStats)
     {

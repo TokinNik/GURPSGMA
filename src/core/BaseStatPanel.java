@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -32,7 +33,6 @@ class BaseStatPanel extends JPanel
     private JLabel labelWillCount;
     private JLabel labelPerCount;
     private JLabel labelFPCount;
-    
     
     BaseStatPanel ()
     {
@@ -491,11 +491,13 @@ class BaseStatPanel extends JPanel
                             {
                                 labelBSCount.setText(String.valueOf(Float.parseFloat(labelBSCount.getText()) + 0.25));
                                 labelDXCount.setText(String.valueOf(Integer.parseInt(labelDXCount.getText()) + 1));
+                                labelBMCount.setText(String.valueOf((int)(Float.parseFloat(labelBSCount.getText()))));
                             }
                             else
                             {
                                 labelBSCount.setText(String.valueOf(Float.parseFloat(labelBSCount.getText()) - 0.25));
                                 labelDXCount.setText(String.valueOf(Integer.parseInt(labelDXCount.getText()) - 1));
+                                labelBMCount.setText(String.valueOf((int)(Float.parseFloat(labelBSCount.getText()))));
                             }
                             break;
                         case "IQ":
@@ -517,12 +519,14 @@ class BaseStatPanel extends JPanel
                                 labelBSCount.setText(String.valueOf(Float.parseFloat(labelBSCount.getText()) + 0.25));
                                 labelHTCount.setText(String.valueOf(Integer.parseInt(labelHTCount.getText()) + 1));
                                 labelFPCount.setText(String.valueOf(Integer.parseInt(labelFPCount.getText()) + 1));
+                                labelBMCount.setText(String.valueOf((int)(Float.parseFloat(labelBSCount.getText()))));
                             }
                             else
                             {
                                 labelBSCount.setText(String.valueOf(Float.parseFloat(labelBSCount.getText()) - 0.25));
                                 labelHTCount.setText(String.valueOf(Integer.parseInt(labelHTCount.getText()) - 1));
                                 labelFPCount.setText(String.valueOf(Integer.parseInt(labelFPCount.getText()) - 1));
+                                labelBMCount.setText(String.valueOf((int)(Float.parseFloat(labelBSCount.getText()))));
                             }                            break;
                         case "HP":
                             if (addOrDec)
@@ -571,6 +575,7 @@ class BaseStatPanel extends JPanel
                         default:
                             break;
                     }
+                    Window.mathPoints();
                 }
             });
         }
@@ -612,6 +617,49 @@ class BaseStatPanel extends JPanel
         {
             e1.printStackTrace();
         }
+    }
+
+    String mathPoints()
+    {
+        String total = "|| Stats ||\n";
+        int buf, points;
+        buf = ((Integer.parseInt(labelSTCount.getText()) - 10) * 10);
+        total += "|(ST): " + buf;
+        points = buf;
+        buf = ((Integer.parseInt(labelDXCount.getText()) - 10) * 20);
+        total += " |(DX): " + buf ;
+        points += buf;
+        buf = ((Integer.parseInt(labelIQCount.getText()) - 10) * 20);
+        total += " |(IQ): " + buf;
+        points += buf;
+        buf = ((Integer.parseInt(labelHTCount.getText()) - 10) * 10);
+        total += " |(HT): " + buf;
+        points += buf;
+        buf = ((Integer.parseInt(labelHPCount.getText()) - Integer.parseInt(labelSTCount.getText())) * 2);
+        total += " |(HP): " + buf + " |\n";
+        points += buf;
+        buf = ((Integer.parseInt(labelWillCount.getText()) - Integer.parseInt(labelIQCount.getText())) * 5);
+        total += "|(Will): " + buf;
+        points += buf;
+        buf = ((Integer.parseInt(labelPerCount.getText()) - Integer.parseInt(labelIQCount.getText())) * 5);
+        total += " |(Per): " + buf;
+        points += buf;
+        buf = ((Integer.parseInt(labelFPCount.getText()) - Integer.parseInt(labelHTCount.getText())) * 3);
+        total += " |(FP): " + buf;
+        points += buf;
+        buf = (int)((Float.parseFloat(labelBSCount.getText()) * 4 - Integer.parseInt(labelHTCount.getText()) - Integer.parseInt(labelDXCount.getText())) * 5);
+        total += " |(BS): " + buf;
+        points += buf;
+        buf = ((Integer.parseInt(labelBMCount.getText()) - (int)(Float.parseFloat(labelBSCount.getText()))) * 5);
+        total += " |(BM):" + buf;
+        points += buf;
+        total += " |\n|| Total stats: " + points + " ||";
+        Window.totalPoints[0] -= Window.totalPoints[1];
+        Window.totalPoints[1] = points;
+        Window.totalPoints[0] += points;
+        if (!Window.infoPanel.getTextInitialPoints().getText().isEmpty())
+            Window.infoPanel.getLabelRemainingPointsCount().setText(String.valueOf(Integer.parseInt(Window.infoPanel.getTextInitialPoints().getText()) - Window.totalPoints[0]));
+        return total;
     }
 
     @Override
