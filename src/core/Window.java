@@ -33,11 +33,16 @@ class Window extends JFrame
     static InfoPanel infoPanel;
     static PerksPanel perksPanel;
     static SkillsPanel skillsPanel;
+    static ArmorPanel armorPanel;
+    static InventoryPanel inventoryPanel;
+    static HandWeaponPanel handWeaponPanel;
+    static RangedWeaponPanel rangedWeaponPanel;
     static ArrayList<Integer> allCharacterId;
     static int characterId;
     static boolean isChanged;
     private JList<String> characterList;
     static int[] totalPoints;
+    private boolean cancel;
 
     Window () throws SQLException, ClassNotFoundException
     {
@@ -111,6 +116,7 @@ class Window extends JFrame
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(gbl);
         JScrollPane scrollPane = new JScrollPane(contentPanel);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(30);
         c.gridx = 2;
         c.gridy = 2;
         c.weightx = 1;
@@ -158,7 +164,49 @@ class Window extends JFrame
         c.weighty = 1;
         gbl.setConstraints(skillsPanel, c);
         contentPanel.add(skillsPanel);
-//------------------basePanel-----------------------
+//------------------skillsPanel-----------------------
+//------------------armorPanel-----------------------
+        armorPanel = new ArmorPanel();
+        armorPanel.setVisible(false);
+        c.gridx = 1;
+        c.gridy = 3;
+        c.weightx = 1;
+        c.weighty = 1;
+        gbl.setConstraints(armorPanel, c);
+        contentPanel.add(armorPanel);
+//------------------armorPanel-----------------------
+//------------------inventoryPanel-----------------------
+        inventoryPanel = new InventoryPanel();
+        inventoryPanel.setVisible(false);
+        c.gridx = 2;
+        c.gridy = 3;
+        c.weightx = 1;
+        c.weighty = 1;
+        gbl.setConstraints(inventoryPanel, c);
+        contentPanel.add(inventoryPanel);
+//------------------inventoryPanel-----------------------
+//------------------handWeaponPanel-----------------------
+        handWeaponPanel = new HandWeaponPanel();
+        handWeaponPanel.setVisible(false);
+        c.gridx = 1;
+        c.gridy = 4;
+        c.weightx = 1;
+        c.weighty = 1;
+        c.gridwidth = 2;
+        gbl.setConstraints(handWeaponPanel, c);
+        contentPanel.add(handWeaponPanel);
+//------------------inventoryPanel-----------------------
+//------------------rangedWeaponPanel-----------------------
+        rangedWeaponPanel = new RangedWeaponPanel();
+        rangedWeaponPanel.setVisible(false);
+        c.gridx = 1;
+        c.gridy = 5;
+        c.weightx = 1;
+        c.weighty = 1;
+        c.gridwidth = 2;
+        gbl.setConstraints(rangedWeaponPanel, c);
+        contentPanel.add(rangedWeaponPanel);
+//------------------inventoryPanel-----------------------
 //------------------menuGroup--------------------------
         JPanel menuGroup = new JPanel(new GridLayout(4, 1, 0, 20));
         menuGroup.setBackground(Color.RED);
@@ -227,6 +275,10 @@ class Window extends JFrame
                         infoPanel.setVisible(true);
                         perksPanel.setVisible(true);
                         skillsPanel.setVisible(true);
+                        armorPanel.setVisible(true);
+                        inventoryPanel.setVisible(true);
+                        handWeaponPanel.setVisible(true);
+                        rangedWeaponPanel.setVisible(true);
                     }
                     int result = -1;
                     if (isChanged)
@@ -245,12 +297,14 @@ class Window extends JFrame
                         }
                         if (result == JOptionPane.CANCEL_OPTION)
                         {
+                            cancel = true;
                             isChanged = false;
                             characterList.setSelectedIndex(allCharacterId.indexOf(characterId));
                             isChanged = true;
+                            cancel = false;
                         }
                     }
-                    else
+                    else if (!cancel)
                     {
                         installAll();
                     }
@@ -263,8 +317,10 @@ class Window extends JFrame
         c.gridy = 2;
         c.weightx = 1;
         c.weighty = 1;
-        gbl.setConstraints(characterList, c);
-        leftPanel.add(characterList);
+        JScrollPane scrollPane1 = new JScrollPane(characterList);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
+        gbl.setConstraints(scrollPane1, c);
+        leftPanel.add(scrollPane1);
 //------------------characterList------------------------
 //------------------saveButton------------------------
         Button saveButton = new Button("Save");
@@ -292,6 +348,10 @@ class Window extends JFrame
                     infoPanel.setVisible(false);
                     perksPanel.setVisible(false);
                     skillsPanel.setVisible(false);
+                    armorPanel.setVisible(false);
+                    inventoryPanel.setVisible(false);
+                    handWeaponPanel.setVisible(false);
+                    rangedWeaponPanel.setVisible(false);
                 }
                 else
                 {
@@ -343,10 +403,6 @@ class Window extends JFrame
                 {
                     e1.printStackTrace();
                 }
-                basePanel.clear();
-                infoPanel.clear();
-                perksPanel.clear();
-                skillsPanel.clear();
                 try
                 {
                     characterList.setListData(DBConnect.getAllCharacter());
@@ -354,7 +410,16 @@ class Window extends JFrame
                 {
                     e1.printStackTrace();
                 }
-                characterList.setSelectedIndex(i-1);
+                basePanel.clear();
+                infoPanel.clear();
+                perksPanel.clear();
+                skillsPanel.clear();
+                armorPanel.clear();
+                inventoryPanel.clear();
+                handWeaponPanel.clear();
+                rangedWeaponPanel.clear();
+
+                characterList.setSelectedIndex(i);
                 characterId = i;
                 if (!basePanel.isVisible())
                 {
@@ -362,6 +427,10 @@ class Window extends JFrame
                     infoPanel.setVisible(true);
                     perksPanel.setVisible(true);
                     skillsPanel.setVisible(true);
+                    armorPanel.setVisible(true);
+                    inventoryPanel.setVisible(true);
+                    handWeaponPanel.setVisible(true);
+                    rangedWeaponPanel.setVisible(true);
                 }
             }
         });
@@ -437,8 +506,40 @@ class Window extends JFrame
     {
         DefaultTableModel dtm = (DefaultTableModel) skillsPanel.getTableSkills().getModel();
         dtm.setRowCount(0);
-        for (Object[] aCharacterAdvantage : characterSkills)
-            dtm.addRow(aCharacterAdvantage);
+        for (Object[] aCharacterSkill : characterSkills)
+            dtm.addRow(aCharacterSkill);
+    }
+
+    private void installArmor (Object[][] characterArmor)
+    {
+        DefaultTableModel dtm = (DefaultTableModel) armorPanel.getTableArmor().getModel();
+        dtm.setRowCount(0);
+        for (Object[] aCharacterArmor : characterArmor)
+            dtm.addRow(aCharacterArmor);
+    }
+
+    private void installInventory (Object[][] characterArmor)
+    {
+        DefaultTableModel dtm = (DefaultTableModel) inventoryPanel.getTableInventory().getModel();
+        dtm.setRowCount(0);
+        for (Object[] aCharacterInventory : characterArmor)
+            dtm.addRow(aCharacterInventory);
+    }
+
+    private void installHandWeapon (Object[][] characterArmor)
+    {
+        DefaultTableModel dtm = (DefaultTableModel) handWeaponPanel.getTableHandWeapon().getModel();
+        dtm.setRowCount(0);
+        for (Object[] aCharacterHandWeapon : characterArmor)
+            dtm.addRow(aCharacterHandWeapon);
+    }
+
+    private void installRangedWeaponPanel (Object[][] characterArmor)
+    {
+        DefaultTableModel dtm = (DefaultTableModel) rangedWeaponPanel.getTableRangedWeapon().getModel();
+        dtm.setRowCount(0);
+        for (Object[] aCharacterRangedWeapon : characterArmor)
+            dtm.addRow(aCharacterRangedWeapon);
     }
 
     private void saveAll()
@@ -447,6 +548,10 @@ class Window extends JFrame
         infoPanel.saveStats();
         perksPanel.saveStats();
         skillsPanel.saveStats();
+        armorPanel.saveStats();
+        inventoryPanel.saveStats();
+        handWeaponPanel.saveStats();
+        rangedWeaponPanel.saveStats();
         try
         {
             int id = characterId;
@@ -468,6 +573,10 @@ class Window extends JFrame
             installInfo(DBConnect.getCharacterInfo(characterId));
             installPerks(DBConnect.getCharacterAdvantage(characterId), DBConnect.getCharacterDisadvantage(characterId), DBConnect.getCharacterQuirk(characterId));
             installSkills(DBConnect.getCharacterSkills(characterId));
+            installArmor(DBConnect.getCharacterArmor(characterId));
+            installInventory(DBConnect.getCharacterInventory(characterId));
+            installHandWeapon(DBConnect.getCharacterHandWeapon(characterId));
+            installRangedWeaponPanel(DBConnect.getCharacterRangedWeapon(characterId));
 
         } catch (SQLException e1)
         {

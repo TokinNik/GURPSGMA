@@ -47,7 +47,7 @@ public class SkillsPanel extends JPanel
         c.gridwidth  = 1;
         c.gridx = 1;
         c.gridy = 1;
-        c.insets = new Insets(15, 15, 0, 10);
+        c.insets = new Insets(15, 15, 0, 15);
         c.ipadx = 0;
         c.ipady = 0;
         c.weightx = 0.0;
@@ -87,8 +87,11 @@ public class SkillsPanel extends JPanel
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                Window.isChanged = true;
-                ((DefaultTableModel) tableSkills.getModel()).removeRow(tableSkills.getSelectedRow());
+                if (tableSkills.getSelectedRowCount() != 0)
+                {
+                    Window.isChanged = true;
+                    ((DefaultTableModel) tableSkills.getModel()).removeRow(tableSkills.getSelectedRow());
+                }
             }
         });
         c.gridx = 3;
@@ -103,34 +106,35 @@ public class SkillsPanel extends JPanel
             @Override
             public void actionPerformed(ActionEvent e)
             {
-
-                JDialog dialog = new JDialog();
-                dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-
-                dialog.setTitle(String.valueOf(tableSkills.getValueAt(tableSkills.getSelectedRow(), 0)));
-
-                dialog.setModal(false);
-                dialog.setFont(Resources.font31);
-                dialog.setResizable(true);
-                dialog.setSize(700, 400);
-                dialog.setLocation(((screenSize.width / 2) - (dialog.getWidth() / 2)),
-                        ((screenSize.height / 2) - (dialog.getHeight() / 2)));
-                JTextArea textDescription = new JTextArea("Error");
-                try
+                if (tableSkills.getSelectedRowCount() != 0)
                 {
-                    textDescription.setText(DBConnect.getSkillOnName(dialog.getTitle()));
-                } catch (SQLException e1)
-                {
-                    e1.printStackTrace();
+                    JDialog dialog = new JDialog();
+                    dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
+                    dialog.setTitle(String.valueOf(tableSkills.getValueAt(tableSkills.getSelectedRow(), 0)));
+
+                    dialog.setModal(false);
+                    dialog.setFont(Resources.font31);
+                    dialog.setResizable(true);
+                    dialog.setSize(700, 400);
+                    dialog.setLocation(((screenSize.width / 2) - (dialog.getWidth() / 2)),
+                            ((screenSize.height / 2) - (dialog.getHeight() / 2)));
+                    JTextArea textDescription = new JTextArea("Error");
+                    try
+                    {
+                        textDescription.setText(DBConnect.getSkillOnName(dialog.getTitle()));
+                    } catch (SQLException e1)
+                    {
+                        e1.printStackTrace();
+                    }
+                    textDescription.setFont(Resources.font15);
+                    textDescription.setLineWrap(true);
+                    textDescription.setEditable(false);
+                    textDescription.setBackground(Color.lightGray);
+                    JScrollPane scrollDescription = new JScrollPane(textDescription);
+                    dialog.add(scrollDescription);
+                    dialog.setVisible(true);
                 }
-                textDescription.setFont(Resources.font15);
-                textDescription.setLineWrap(true);
-                textDescription.setEditable(false);
-                textDescription.setBackground(Color.lightGray);
-                JScrollPane scrollDescription = new JScrollPane(textDescription);
-                dialog.add(scrollDescription);
-                dialog.setVisible(true);
-
             }
         });
         c.gridx = 4;
@@ -170,7 +174,7 @@ public class SkillsPanel extends JPanel
         c.weighty = 0.0;
         c.gridx = 1;
         c.gridy = 2;
-        c.insets = new Insets(15, 10, 0, 10);
+        c.insets = new Insets(15, 15, 0, 15);
 
         gbl.setConstraints(tableSkills.getTableHeader(), c);
         add(tableSkills.getTableHeader());
@@ -179,7 +183,7 @@ public class SkillsPanel extends JPanel
         c.gridy = 3;
         c.weightx = 1;
         c.weighty = 1;
-        c.insets = new Insets(0, 10, 15, 10);
+        c.insets = new Insets(0, 15, 15, 15);
         gbl.setConstraints(tableSkills, c);
         add(tableSkills);
 
@@ -323,11 +327,31 @@ public class SkillsPanel extends JPanel
             @Override
             public void actionPerformed(ActionEvent e) {
                 labelCurrentLevel.setText("Current level: " + (Integer.parseInt(labelCurrentLevel.getText().substring(15)) + 1));
-                labelCost.setText("Cost: "+ mathSkillCost(finalSkills[2][skillsList.getSelectedIndex()],
-                        ((finalSkills[1][skillsList.getSelectedIndex()].equals("DX")) ?
-                                Integer.parseInt(Window.basePanel.getLabelDXCount().getText()) :
-                                Integer.parseInt(Window.basePanel.getLabelIQCount().getText())),
-                        Integer.parseInt(labelCurrentLevel.getText().substring(15))));
+
+                switch ((finalSkills[1][skillsList.getSelectedIndex()]))
+                {
+                    case "ST":
+                        labelCost.setText("Cost: "+ mathSkillCost(finalSkills[2][skillsList.getSelectedIndex()],
+                                Integer.parseInt(Window.basePanel.getLabelSTCount().getText()),
+                                Integer.parseInt(labelCurrentLevel.getText().substring(15))));
+                        break;
+                    case "DX":
+                        labelCost.setText("Cost: "+ mathSkillCost(finalSkills[2][skillsList.getSelectedIndex()],
+                                Integer.parseInt(Window.basePanel.getLabelDXCount().getText()),
+                                Integer.parseInt(labelCurrentLevel.getText().substring(15))));
+                        break;
+                    case "IQ":
+                        labelCost.setText("Cost: "+ mathSkillCost(finalSkills[2][skillsList.getSelectedIndex()],
+                                Integer.parseInt(Window.basePanel.getLabelIQCount().getText()),
+                                Integer.parseInt(labelCurrentLevel.getText().substring(15))));
+                        break;
+                    case "HT":
+                        labelCost.setText("Cost: "+ mathSkillCost(finalSkills[2][skillsList.getSelectedIndex()],
+                                Integer.parseInt(Window.basePanel.getLabelHTCount().getText()),
+                                Integer.parseInt(labelCurrentLevel.getText().substring(15))));
+                        break;
+
+                }
             }
         });
 //------------------buttonPlusListener-----------------
@@ -336,11 +360,31 @@ public class SkillsPanel extends JPanel
             @Override
             public void actionPerformed(ActionEvent e) {
                 labelCurrentLevel.setText("Current level: " + (Integer.parseInt(labelCurrentLevel.getText().substring(15)) - 1));
-                labelCost.setText("Cost: "+ mathSkillCost(finalSkills[2][skillsList.getSelectedIndex()],
-                        ((finalSkills[1][skillsList.getSelectedIndex()].equals("DX")) ?
-                                Integer.parseInt(Window.basePanel.getLabelDXCount().getText()) :
-                                Integer.parseInt(Window.basePanel.getLabelIQCount().getText())),
-                        Integer.parseInt(labelCurrentLevel.getText().substring(15))));
+                switch ((finalSkills[1][skillsList.getSelectedIndex()]))
+                {
+                    case "ST":
+                        labelCost.setText("Cost: "+ mathSkillCost(finalSkills[2][skillsList.getSelectedIndex()],
+                                Integer.parseInt(Window.basePanel.getLabelSTCount().getText()),
+                                Integer.parseInt(labelCurrentLevel.getText().substring(15))));
+                        break;
+                    case "DX":
+                        labelCost.setText("Cost: "+ mathSkillCost(finalSkills[2][skillsList.getSelectedIndex()],
+                                Integer.parseInt(Window.basePanel.getLabelDXCount().getText()),
+                                Integer.parseInt(labelCurrentLevel.getText().substring(15))));
+                        break;
+                    case "IQ":
+                        labelCost.setText("Cost: "+ mathSkillCost(finalSkills[2][skillsList.getSelectedIndex()],
+                                Integer.parseInt(Window.basePanel.getLabelIQCount().getText()),
+                                Integer.parseInt(labelCurrentLevel.getText().substring(15))));
+                        break;
+                    case "HT":
+                        labelCost.setText("Cost: "+ mathSkillCost(finalSkills[2][skillsList.getSelectedIndex()],
+                                Integer.parseInt(Window.basePanel.getLabelHTCount().getText()),
+                                Integer.parseInt(labelCurrentLevel.getText().substring(15))));
+                        break;
+
+                }
+                Window.mathPoints();
             }
         });
 //------------------buttonMinusListener-----------------
@@ -431,7 +475,7 @@ public class SkillsPanel extends JPanel
                     Window.isChanged = true;
                     dialogChoice.dispose();
                 }
-
+                Window.mathPoints();
             }
         });
         c.gridx = 1;
@@ -444,6 +488,36 @@ public class SkillsPanel extends JPanel
         infoPanel.add(buttonAdd);
 //------------------buttonAdd-----------------------
         dialogChoice.setVisible(true);
+    }
+
+    void remathSkillsCost()
+    {
+        for (int i = 0; i < tableSkills.getModel().getRowCount(); i++)
+        {
+            switch (tableSkills.getValueAt(i, 1).toString())
+            {
+                case "ST":
+                    tableSkills.setValueAt(mathSkillCost(tableSkills.getValueAt(i,2).toString() ,
+                            Integer.parseInt(Window.basePanel.getLabelSTCount().getText()),
+                            Integer.parseInt(tableSkills.getValueAt(i,4).toString())), i, 5);
+                    break;
+                case "DX":
+                    tableSkills.setValueAt( mathSkillCost(tableSkills.getValueAt(i,2).toString() ,
+                            Integer.parseInt(Window.basePanel.getLabelDXCount().getText()),
+                            Integer.parseInt(tableSkills.getValueAt(i,4).toString())), i, 5);
+                    break;
+                case "IQ":
+                    tableSkills.setValueAt(mathSkillCost(tableSkills.getValueAt(i,2).toString() ,
+                            Integer.parseInt(Window.basePanel.getLabelIQCount().getText()),
+                            Integer.parseInt(tableSkills.getValueAt(i,4).toString())), i, 5);
+                    break;
+                case "HT":
+                    tableSkills.setValueAt(mathSkillCost(tableSkills.getValueAt(i,2).toString() ,
+                            Integer.parseInt(Window.basePanel.getLabelHTCount().getText()),
+                            Integer.parseInt(tableSkills.getValueAt(i,4).toString())), i, 5);
+                    break;
+            }
+        }
     }
 
     private String mathSkillCost(String dif, int prew, int next)
@@ -566,7 +640,7 @@ public class SkillsPanel extends JPanel
         super.paintComponent(g);
         Image im = null;
         try {
-            im = ImageIO.read(new File("bg_yellow.png"));
+            im = ImageIO.read(Resources.BACKGROUND);
         } catch (IOException ignored) {}
         g.drawImage(im, 0, 0, getWidth(), getHeight(), null);
     }

@@ -115,13 +115,24 @@ public class PerksPanel extends JPanel
         buttonMius.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (tabbedPane.getSelectedIndex() == 0 && tableAdvantage.getRowCount() > 0)
+                if (tabbedPane.getSelectedIndex() == 0 && tableAdvantage.getRowCount() > 0 && tableAdvantage.getSelectedRowCount() != 0)
+                {
                     ((DefaultTableModel) tableAdvantage.getModel()).removeRow(tableAdvantage.getSelectedRow());
-                if (tabbedPane.getSelectedIndex() == 1 && tableDisadvantage.getRowCount() > 0)
+                    Window.isChanged = true;
+                    Window.mathPoints();
+                }
+                if (tabbedPane.getSelectedIndex() == 1 && tableDisadvantage.getRowCount() > 0 && tableDisadvantage.getSelectedRowCount() != 0)
+                {
                     ((DefaultTableModel) tableDisadvantage.getModel()).removeRow(tableDisadvantage.getSelectedRow());
-                if (tabbedPane.getSelectedIndex() == 2 && tableQuirk.getRowCount() > 0)
+                    Window.isChanged = true;
+                    Window.mathPoints();
+                }
+                if (tabbedPane.getSelectedIndex() == 2 && tableQuirk.getRowCount() > 0 && tableQuirk.getSelectedRowCount() != 0)
+                {
                     ((DefaultTableModel) tableQuirk.getModel()).removeRow(tableQuirk.getSelectedRow());
-                Window.isChanged = true;
+                    Window.isChanged = true;
+                    Window.mathPoints();
+                }
             }
         });
         c.gridx = 3;
@@ -136,9 +147,10 @@ public class PerksPanel extends JPanel
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                if ((tabbedPane.getSelectedIndex() == 0 && tableAdvantage.getRowCount() > 0) ||
-                        (tabbedPane.getSelectedIndex() == 1 && tableDisadvantage.getRowCount() > 0) ||
-                        (tabbedPane.getSelectedIndex() == 2 && tableQuirk.getRowCount() > 0))
+
+                if ((tabbedPane.getSelectedIndex() == 0 && tableAdvantage.getRowCount() > 0 && tableAdvantage.getSelectedRowCount() != 0) ||
+                        (tabbedPane.getSelectedIndex() == 1 && tableDisadvantage.getRowCount() > 0 && tableDisadvantage.getSelectedRowCount() != 0) ||
+                        (tabbedPane.getSelectedIndex() == 2 && tableQuirk.getRowCount() > 0 && tableQuirk.getSelectedRowCount() != 0))
                 {
                     JDialog dialog = new JDialog();
                     dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -782,7 +794,7 @@ public class PerksPanel extends JPanel
                     Window.isChanged = true;
                     dialogChoice.dispose();
                 }
-
+                Window.mathPoints();
             }
         });
         c.gridx = 1;
@@ -811,7 +823,7 @@ public class PerksPanel extends JPanel
         super.paintComponent(g);
         Image im = null;
         try {
-            im = ImageIO.read(new File("bg_gray.png"));
+            im = ImageIO.read(Resources.BACKGROUND);
         } catch (IOException ignored) {}
         g.drawImage(im, 0, 0, getWidth(), getHeight(), null);
     }

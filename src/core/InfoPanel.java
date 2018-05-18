@@ -62,6 +62,7 @@ class InfoPanel extends JPanel
         labelName.setToolTipText("Имя персонажа");
         c.gridx = 1;
         c.gridy = 1;
+        c.insets = new Insets(10, 15, 0, 10);
         gbl.setConstraints(labelName, c);
         add(labelName);
 //------------------labelName-----------------------
@@ -89,6 +90,7 @@ class InfoPanel extends JPanel
         labelHeight.setToolTipText("Рост персонажа");
         c.gridx = 3;
         c.gridy = 3;
+        c.insets = new Insets(10, 10, 0, 10);
         gbl.setConstraints(labelHeight, c);
         add(labelHeight);
 //------------------labelHeight------------------------
@@ -108,6 +110,7 @@ class InfoPanel extends JPanel
         c.gridwidth  = 2;
         c.gridx = 1;
         c.gridy = 4;
+        c.insets = new Insets(10, 15, 0, 10);
         gbl.setConstraints(labelInitialPoints, c);
         add(labelInitialPoints);
 //------------------labelInitialPoints-----------------------
@@ -117,6 +120,7 @@ class InfoPanel extends JPanel
         labelRemainingPoints.setToolTipText("Очков персонажа осталось");
         c.gridx = 4;
         c.gridy = 4;
+        c.insets = new Insets(10, 10, 0, 10);
         gbl.setConstraints(labelRemainingPoints, c);
         add(labelRemainingPoints);
 //------------------labelRemainingPoints-----------------------
@@ -167,6 +171,7 @@ class InfoPanel extends JPanel
         labelDescription.setToolTipText("Описание персонажа");
         c.gridx = 1;
         c.gridy = 5;
+        c.insets = new Insets(10, 15, 0, 10);
         gbl.setConstraints(labelDescription, c);
         add(labelDescription);
 //------------------labelDescription-----------------------
@@ -188,6 +193,7 @@ class InfoPanel extends JPanel
         c.gridwidth  = GridBagConstraints.RELATIVE;
         c.gridx = 2;
         c.gridy = 1;
+        c.insets = new Insets(10, 10, 0, 10);
         c.weightx = 1;
         gbl.setConstraints(textName, c);
         add(textName);
@@ -226,7 +232,7 @@ class InfoPanel extends JPanel
         textWeight.setFont(Resources.font15);
         textWeight.addKeyListener(keyListener);
         c.gridx = 6;
-        c.gridy = 3;
+        c.gridy = 3;c.insets = new Insets(10, 10, 0, 15);
         c.gridwidth = 2;
         gbl.setConstraints(textWeight, c);
         add(textWeight);
@@ -255,6 +261,7 @@ class InfoPanel extends JPanel
         });
         c.gridx = 3;
         c.gridy = 4;
+        c.insets = new Insets(10, 10, 0, 10);
         c.gridwidth = 1;
         gbl.setConstraints(textInitialPoints, c);
         add(textInitialPoints);
@@ -264,7 +271,7 @@ class InfoPanel extends JPanel
         textDescription.setFont(Resources.font15);
         textDescription.addKeyListener(keyListener);
         textDescription.setLineWrap(true);
-        c.insets = new Insets(10, 10, 20, 10);
+        c.insets = new Insets(10, 15, 20, 15);
         c.gridx = 1;
         c.gridy = 6;
         c.gridwidth = GridBagConstraints.REMAINDER;
@@ -335,7 +342,7 @@ class InfoPanel extends JPanel
         super.paintComponent(g);
         Image im = null;
         try {
-            im = ImageIO.read(new File("bg_blue.png"));
+            im = ImageIO.read(Resources.BACKGROUND);
         } catch (IOException ignored) {}
         g.drawImage(im, 0, 0, getWidth(), getHeight(), null);
     }

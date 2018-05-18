@@ -2,15 +2,48 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7ed9583-58bb-4e67-9be3-f3b8471310ea" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_21_0__2_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GURPS GMA.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/gmadb.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/gmadb.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/BaseStatPanel$ButtonCount$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/BaseStatPanel$ButtonCount$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/BaseStatPanel$ButtonCount.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/BaseStatPanel$ButtonCount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/BaseStatPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/BaseStatPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/DBConnect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/DBConnect.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/InfoPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/InfoPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/InfoPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/InfoPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/InfoPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/InfoPanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/InfoPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/InfoPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$10$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$10$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$10$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$10$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$12$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$12$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/Resources.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/Resources.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$8$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$8$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/Window$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/Window$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/Window$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/Window$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/Window$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/Window.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/BaseStatPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/BaseStatPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/DBConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/DBConnect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/InfoPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/InfoPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/PerksPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/PerksPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/Resources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Resources.java" afterDir="false" />
@@ -25,13 +58,19 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/GURPSGMA$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1526648758065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="DBConnect.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/DBConnect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="415" selection-start-line="415" selection-end-line="415" />
+            <state relative-caret-position="214">
+              <caret line="210" column="136" selection-start-line="210" selection-start-column="136" selection-end-line="210" selection-end-column="136" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -39,8 +78,8 @@
       <file leaf-file-name="Window.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Window.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="378" selection-start-line="378" selection-end-line="378" />
+            <state relative-caret-position="443">
+              <caret line="421" column="48" selection-start-line="421" selection-start-column="48" selection-end-line="421" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -48,17 +87,20 @@
       <file leaf-file-name="Resources.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Resources.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
+            <state relative-caret-position="272">
+              <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseStatPanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/BaseStatPanel.java">
+      <file leaf-file-name="InfoPanel.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/core/InfoPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="659" column="73" lean-forward="true" selection-start-line="659" selection-start-column="8" selection-end-line="659" selection-end-column="73" />
+            <state relative-caret-position="338">
+              <caret line="344" column="50" selection-start-line="344" selection-start-column="50" selection-end-line="344" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -66,54 +108,38 @@
       <file leaf-file-name="PerksPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/PerksPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="359" column="12" selection-start-line="359" selection-start-column="12" selection-end-line="359" selection-end-column="12" />
-              <folding>
-                <element signature="method#clear#0;class#PerksPanel#0" />
-                <element signature="method#createDialog#0;class#PerksPanel#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SkillsPanel.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/core/SkillsPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="519" column="12" selection-start-line="519" selection-start-column="12" selection-end-line="519" selection-end-column="12" />
-              <folding>
-                <element signature="e#2389#2390#0" expanded="true" />
-                <element signature="e#2435#2436#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InfoPanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/InfoPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="246" selection-start-line="246" selection-end-line="246" />
-              <folding>
-                <element signature="e#8621#8780#0" expanded="true" />
-                <element signature="e#8779#8780#0" expanded="true" />
-                <element signature="e#9567#9568#0" expanded="true" />
-                <element signature="e#9622#9623#0" expanded="true" />
-                <element signature="e#9761#9762#0" expanded="true" />
-                <element signature="e#9844#9845#0" expanded="true" />
-                <element signature="e#9895#9896#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="321">
+              <caret line="825" column="50" selection-start-line="825" selection-start-column="50" selection-end-line="825" selection-end-column="50" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>out</find>
       <find>out.</find>
+      <find>Skills</find>
+      <find>Armor</find>
+      <find>F</find>
+      <find>Hand</find>
+      <find>hand</find>
     </findStrings>
+    <replaceStrings>
+      <replace>Armor</replace>
+      <replace>Inventory</replace>
+      <replace>HandWeapon</replace>
+      <replace>Ranged</replace>
+      <replace>ranged</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -121,14 +147,25 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/core/Resources.java" />
-        <option value="$PROJECT_DIR$/src/core/Window.java" />
-        <option value="$PROJECT_DIR$/src/core/InfoPanel.java" />
         <option value="$PROJECT_DIR$/src/core/BaseStatPanel.java" />
-        <option value="$PROJECT_DIR$/src/core/PerksPanel.java" />
+        <option value="$PROJECT_DIR$/src/core/DBConnect.java" />
+        <option value="$PROJECT_DIR$/src/core/Window.java" />
+        <option value="$PROJECT_DIR$/src/core/Resources.java" />
+        <option value="$PROJECT_DIR$/src/core/ArmorPanel.java" />
+        <option value="$PROJECT_DIR$/src/core/RangedWeaponPanel.java" />
+        <option value="$PROJECT_DIR$/src/core/HandWeaponPanel.java" />
         <option value="$PROJECT_DIR$/src/core/SkillsPanel.java" />
+        <option value="$PROJECT_DIR$/src/core/InventoryPanel.java" />
+        <option value="$PROJECT_DIR$/src/core/PerksPanel.java" />
+        <option value="$PROJECT_DIR$/src/core/InfoPanel.java" />
       </list>
     </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="28" />
@@ -140,8 +177,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -249,42 +286,144 @@
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info id="Image Layers" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.15" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info id="Capture Tool" />
-      <window_info id="Designer" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.1553398" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.3297619" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="3" sideWeight="0.49855492" weight="0.32928804" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.17619048" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="right" id="Coverage" sideWeight="0.5014451" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18122977" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="right" id="Ant Build" order="1" sideWeight="0.49855492" weight="0.25" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17619048" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.1553398" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3297619" />
+      <window_info anchor="right" id="Maven Projects" order="7" weight="0.32928804" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/core/DBConnect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
+        <state relative-caret-position="7769">
+          <caret line="457" column="68" selection-start-line="457" selection-start-column="68" selection-end-line="457" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Resources.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="15" lean-forward="true" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/BaseStatPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="47" column="26" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/ArmorPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7412">
+          <caret line="436" column="47" selection-start-line="436" selection-start-column="47" selection-end-line="436" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/PerksPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13277">
+          <caret line="781" selection-start-line="781" selection-end-line="781" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/SkillsPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3145">
+          <caret line="185" column="43" selection-start-line="185" selection-start-column="43" selection-end-line="185" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/InfoPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4471">
+          <caret line="263" column="45" selection-start-line="263" selection-start-column="45" selection-end-line="263" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/DBConnect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6953">
           <caret line="415" selection-start-line="415" selection-end-line="415" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6426">
+          <caret line="378" selection-start-line="378" selection-end-line="378" />
         </state>
       </provider>
     </entry>
@@ -295,55 +434,190 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/BaseStatPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11203">
+          <caret line="659" column="73" selection-start-line="659" selection-start-column="8" selection-end-line="659" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/PerksPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6103">
+          <caret line="359" column="12" selection-start-line="359" selection-start-column="12" selection-end-line="359" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/SkillsPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8823">
+          <caret line="519" column="12" selection-start-line="519" selection-start-column="12" selection-end-line="519" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/InfoPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="246" selection-start-line="246" selection-end-line="246" />
-          <folding>
-            <element signature="e#8621#8780#0" expanded="true" />
-            <element signature="e#8779#8780#0" expanded="true" />
-            <element signature="e#9567#9568#0" expanded="true" />
-            <element signature="e#9622#9623#0" expanded="true" />
-            <element signature="e#9761#9762#0" expanded="true" />
-            <element signature="e#9844#9845#0" expanded="true" />
-            <element signature="e#9895#9896#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1836">
+          <caret line="132" column="50" selection-start-line="132" selection-start-column="50" selection-end-line="132" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/DBConnect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7055">
+          <caret line="415" selection-start-line="415" selection-end-line="415" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/Window.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
+        <state relative-caret-position="6426">
           <caret line="378" selection-start-line="378" selection-end-line="378" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Resources.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/BaseStatPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
+        <state relative-caret-position="11203">
           <caret line="659" column="73" lean-forward="true" selection-start-line="659" selection-start-column="8" selection-end-line="659" selection-end-column="73" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/PerksPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
+        <state relative-caret-position="6103">
           <caret line="359" column="12" selection-start-line="359" selection-start-column="12" selection-end-line="359" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/SkillsPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8823">
+          <caret line="519" column="12" selection-start-line="519" selection-start-column="12" selection-end-line="519" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/InfoPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2244">
+          <caret line="132" column="50" selection-start-line="132" selection-start-column="50" selection-end-line="132" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/BaseStatPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="47" column="26" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/javax/swing/JTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="3538" column="19" selection-start-line="3538" selection-start-column="19" selection-end-line="3538" selection-end-column="19" />
           <folding>
-            <element signature="method#clear#0;class#PerksPanel#0" />
-            <element signature="method#createDialog#0;class#PerksPanel#0" />
+            <element signature="e#138883#138884#0" expanded="true" />
+            <element signature="e#138924#138925#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="421" column="48" selection-start-line="421" selection-start-column="48" selection-end-line="421" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/RangedWeaponPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="561" column="50" selection-start-line="561" selection-start-column="50" selection-end-line="561" selection-end-column="50" />
+          <folding>
+            <element signature="e#2426#2427#0" expanded="true" />
+            <element signature="e#2472#2473#0" expanded="true" />
+            <element signature="e#6220#6221#0" expanded="true" />
+            <element signature="e#6264#6265#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/HandWeaponPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="469" column="50" selection-start-line="469" selection-start-column="50" selection-end-line="469" selection-end-column="50" />
+          <folding>
+            <element signature="e#2404#2405#0" expanded="true" />
+            <element signature="e#2450#2451#0" expanded="true" />
+            <element signature="e#6042#6043#0" expanded="true" />
+            <element signature="e#6086#6087#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/SkillsPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="519" column="12" selection-start-line="519" selection-start-column="12" selection-end-line="519" selection-end-column="12" />
+        <state relative-caret-position="391">
+          <caret line="642" column="50" selection-start-line="642" selection-start-column="50" selection-end-line="642" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/DBConnect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="210" column="136" selection-start-line="210" selection-start-column="136" selection-end-line="210" selection-end-column="136" />
           <folding>
-            <element signature="e#2389#2390#0" expanded="true" />
-            <element signature="e#2435#2436#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/ArmorPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="436" column="30" lean-forward="true" selection-start-line="436" selection-start-column="30" selection-end-line="436" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/InventoryPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="239" column="50" selection-start-line="239" selection-start-column="50" selection-end-line="239" selection-end-column="50" />
+          <folding>
+            <element signature="e#6026#6027#0" expanded="true" />
+            <element signature="e#6070#6071#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Resources.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/PerksPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="825" column="50" selection-start-line="825" selection-start-column="50" selection-end-line="825" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/InfoPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="344" column="50" selection-start-line="344" selection-start-column="50" selection-end-line="344" selection-end-column="50" />
         </state>
       </provider>
     </entry>

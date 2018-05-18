@@ -472,7 +472,7 @@ class BaseStatPanel extends JPanel
                                     e1.printStackTrace();
                                 }
                             }
-                            else
+                            else if (!labelSTCount.getText().equals("1"))
                             {
                                 labelHPCount.setText(String.valueOf(Integer.parseInt(labelHPCount.getText()) - 1));
                                 labelSTCount.setText(String.valueOf(Integer.parseInt(labelSTCount.getText()) - 1));
@@ -493,7 +493,7 @@ class BaseStatPanel extends JPanel
                                 labelDXCount.setText(String.valueOf(Integer.parseInt(labelDXCount.getText()) + 1));
                                 labelBMCount.setText(String.valueOf((int)(Float.parseFloat(labelBSCount.getText()))));
                             }
-                            else
+                            else if (!labelDXCount.getText().equals("1"))
                             {
                                 labelBSCount.setText(String.valueOf(Float.parseFloat(labelBSCount.getText()) - 0.25));
                                 labelDXCount.setText(String.valueOf(Integer.parseInt(labelDXCount.getText()) - 1));
@@ -507,7 +507,7 @@ class BaseStatPanel extends JPanel
                                 labelWillCount.setText(String.valueOf(Integer.parseInt(labelWillCount.getText()) + 1));
                                 labelPerCount.setText(String.valueOf(Integer.parseInt(labelPerCount.getText()) + 1));
                             }
-                            else
+                            else if (!labelIQCount.getText().equals("1"))
                             {
                                 labelIQCount.setText(String.valueOf(Integer.parseInt(labelIQCount.getText()) - 1));
                                 labelWillCount.setText(String.valueOf(Integer.parseInt(labelWillCount.getText()) - 1));
@@ -521,7 +521,7 @@ class BaseStatPanel extends JPanel
                                 labelFPCount.setText(String.valueOf(Integer.parseInt(labelFPCount.getText()) + 1));
                                 labelBMCount.setText(String.valueOf((int)(Float.parseFloat(labelBSCount.getText()))));
                             }
-                            else
+                            else if (!labelHTCount.getText().equals("1"))
                             {
                                 labelBSCount.setText(String.valueOf(Float.parseFloat(labelBSCount.getText()) - 0.25));
                                 labelHTCount.setText(String.valueOf(Integer.parseInt(labelHTCount.getText()) - 1));
@@ -531,25 +531,25 @@ class BaseStatPanel extends JPanel
                         case "HP":
                             if (addOrDec)
                                 labelHPCount.setText(String.valueOf(Integer.parseInt(labelHPCount.getText()) + 1));
-                            else
+                            else  if (!labelHPCount.getText().equals("1"))
                                 labelHPCount.setText(String.valueOf(Integer.parseInt(labelHPCount.getText()) - 1));
                             break;
                         case "Will":
                             if (addOrDec)
                                 labelWillCount.setText(String.valueOf(Integer.parseInt(labelWillCount.getText()) + 1));
-                            else
+                            else if (!labelWillCount.getText().equals("1"))
                                 labelWillCount.setText(String.valueOf(Integer.parseInt(labelWillCount.getText()) - 1));
                             break;
                         case "Per":
                             if (addOrDec)
                                 labelPerCount.setText(String.valueOf(Integer.parseInt(labelPerCount.getText()) + 1));
-                            else
+                            else if (!labelPerCount.getText().equals("1"))
                                 labelPerCount.setText(String.valueOf(Integer.parseInt(labelPerCount.getText()) - 1));
                             break;
                         case "FP":
                             if (addOrDec)
                                 labelFPCount.setText(String.valueOf(Integer.parseInt(labelFPCount.getText()) + 1));
-                            else
+                            else if (!labelFPCount.getText().equals("1"))
                                 labelFPCount.setText(String.valueOf(Integer.parseInt(labelFPCount.getText()) - 1));
                             break;
                         case "BS":
@@ -559,7 +559,7 @@ class BaseStatPanel extends JPanel
                                         - (int)Float.parseFloat(labelBSCount.getText()) + (int)(Float.parseFloat(labelBSCount.getText()) + 0.25) ));
                                 labelBSCount.setText(String.valueOf(Float.parseFloat(labelBSCount.getText()) + 0.25));
                             }
-                            else
+                            else if (!labelBSCount.getText().equals("1"))
                             {
                                 labelBMCount.setText(String.valueOf(Integer.parseInt(labelBMCount.getText())
                                         - (int)Float.parseFloat(labelBSCount.getText()) + (int)(Float.parseFloat(labelBSCount.getText()) - 0.25) ));
@@ -569,13 +569,14 @@ class BaseStatPanel extends JPanel
                         case "BM":
                             if (addOrDec)
                                 labelBMCount.setText(String.valueOf(Integer.parseInt(labelBMCount.getText()) + 1));
-                            else
+                            else if (!labelBMCount.getText().equals("1"))
                                 labelBMCount.setText(String.valueOf(Integer.parseInt(labelBMCount.getText()) - 1));
                             break;
                         default:
                             break;
                     }
                     Window.mathPoints();
+                    Window.skillsPanel.remathSkillsCost();
                 }
             });
         }
@@ -685,7 +686,7 @@ class BaseStatPanel extends JPanel
         super.paintComponent(g);
         Image im = null;
         try {
-            im = ImageIO.read(new File("bg_green.png"));
+            im = ImageIO.read(Resources.BACKGROUND);
         } catch (IOException ignored) {}
         g.drawImage(im, 0, 0, getWidth(), getHeight(), null);
     }
