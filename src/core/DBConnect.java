@@ -357,7 +357,11 @@ public class DBConnect
         resSet = statmt.executeQuery("SELECT description FROM Advantage WHERE advantage_name='"
                 + String.valueOf(valueAt) + "'");
         resSet.next();
-        String data = resSet.getString(1);
+        String data;
+        if (resSet.next())
+            data = resSet.getString(1);
+        else
+            data = "null";
 
         resSet.close();
         return data;
@@ -368,7 +372,11 @@ public class DBConnect
         resSet = statmt.executeQuery("SELECT description FROM Disadvantage WHERE disadvantage_name='"
                 + String.valueOf(valueAt) + "'");
         resSet.next();
-        String data = resSet.getString(1);
+        String data;
+        if (resSet.next())
+            data = resSet.getString(1);
+        else
+            data = "null";
 
         resSet.close();
         return data;
@@ -382,7 +390,7 @@ public class DBConnect
         if (resSet.next())
             data = resSet.getString(1);
         else
-            data = "Эта причуда ещё не сохранена в словаре";
+            data = "null";
 
         resSet.close();
         return data;
@@ -392,7 +400,11 @@ public class DBConnect
     {
         resSet = statmt.executeQuery("SELECT description FROM Skill WHERE skill_name='"
                 + String.valueOf(valueAt) + "'");
-        String data = resSet.getString(1);
+        String data;
+        if (resSet.next())
+            data = resSet.getString(1);
+        else
+            data = "null";
 
         resSet.close();
         return data;
@@ -402,7 +414,11 @@ public class DBConnect
     {
         resSet = statmt.executeQuery("SELECT description FROM Armor WHERE armor_name='"
                 + String.valueOf(valueAt) + "'");
-        String data = resSet.getString(1);
+        String data;
+        if (resSet.next())
+            data = resSet.getString(1);
+        else
+            data = "null";
 
         resSet.close();
         return data;
@@ -412,7 +428,11 @@ public class DBConnect
     {
         resSet = statmt.executeQuery("SELECT description FROM Inventory WHERE item_name='"
                 + String.valueOf(valueAt) + "' AND character_id=" + characterId);
-        String data = resSet.getString(1);
+        String data;
+        if (resSet.next())
+            data = resSet.getString(1);
+        else
+            data = "null";
 
         resSet.close();
         return data;
@@ -422,7 +442,11 @@ public class DBConnect
     {
         resSet = statmt.executeQuery("SELECT description FROM Hand_weapon WHERE hand_weapon_name='"
                 + String.valueOf(valueAt) + "'");
-        String data = resSet.getString(1);
+        String data;
+        if (resSet.next())
+            data = resSet.getString(1);
+        else
+            data = "null";
 
         resSet.close();
         return data;
@@ -432,7 +456,11 @@ public class DBConnect
     {
         resSet = statmt.executeQuery("SELECT description FROM Ranged_weapon WHERE ranged_weapon_name='"
                 + String.valueOf(valueAt) + "'");
-        String data = resSet.getString(1);
+        String data;
+        if (resSet.next())
+            data = resSet.getString(1);
+        else
+            data = "null";
 
         resSet.close();
         return data;
@@ -528,20 +556,16 @@ public class DBConnect
         System.out.println("Недостатки  " + characterId + " обновлены");
     }
 
-    static void saveQuirk(String[] name, String[] description, int characterId) throws SQLException
+    static void saveQuirk(String[] name, int characterId) throws SQLException
     {
         statmt.executeUpdate("DELETE FROM Character_quirks WHERE character_id=" + characterId);
         for (int i = 0; i < name.length; i++)
         {
             resSet = statmt.executeQuery("SELECT quirk_id FROM Quirk WHERE quirk_name='" + name[i] + "'");
-            if (resSet.next())
                 statmt.executeUpdate("INSERT INTO Character_quirks(quirk_id, character_id) VALUES ("
                     + resSet.getInt(1) + ","
                     + characterId + ")");
-            else
-                statmt.executeUpdate("INSERT INTO Quirk(quirk_name, description) VALUES ('"
-                        + name[i] + "','"
-                        + description[i] + "')");
+
         }
 
         resSet.close();
@@ -629,6 +653,43 @@ public class DBConnect
     }
 
 //==============================SAVE=======================================
+//==============================ADD========================================
+    static void addNewAdvantage(String name, int cost, int maxLevel, String description) throws SQLException
+    {
+        statmt.executeUpdate("INSERT INTO Advantage(advantage_name, cost, max_level, description) VALUES ('"
+                + name + "',"
+                + cost + ","
+                + maxLevel + ",'"
+                + description + "')");
+    }
+
+    static void addNewDisadvantage(String name, int cost, int maxLevel, String description) throws SQLException
+    {
+        statmt.executeUpdate("INSERT INTO Disadvantage(disadvantage_name, cost, max_level, description) VALUES ('"
+                + name + "',"
+                + cost + ","
+                + maxLevel + ",'"
+                + description + "')");
+    }
+
+    static void addNewQuirk(String name, String description) throws SQLException
+    {
+        statmt.executeUpdate("INSERT INTO Quirk(quirk_name, description) VALUES ('"
+                + name + "','"
+                + description + "')");
+    }
+
+    static void addNewSkill (String name, String type, String difficulty, String relativeLevel, String description) throws SQLException
+    {
+        statmt.executeUpdate("INSERT INTO Skill(skill_name, type, difficulty, relative_level, description) VALUES ('"
+                + name + "','"
+                + type + "','"
+                + difficulty + "','"
+                + relativeLevel + "','"
+                + description + "')");
+    }
+
+//==============================ADD========================================
 //==============================CREATE=====================================
     static void createCharacter(int characterId) throws SQLException
     {

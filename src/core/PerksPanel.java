@@ -20,6 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -411,7 +412,7 @@ public class PerksPanel extends JPanel
         {
             DBConnect.saveAdvantage(nameAdv, levelAdv, Window.characterId);
             DBConnect.saveDisadvantage(nameDisAdv, levelDisAdv, Window.characterId);
-            DBConnect.saveQuirk(nameQuirk, descriptionQuirk, Window.characterId);
+            DBConnect.saveQuirk(nameQuirk, Window.characterId);
         } catch (SQLException e)
         {
             e.printStackTrace();
@@ -452,11 +453,15 @@ public class PerksPanel extends JPanel
         String[][] adv = new String[0][];
         try {
             if (mode == 0)
-                adv = DBConnect.getAllAdvantage();
-            else if (mode == 1)
+            {
+                 adv = DBConnect.getAllAdvantage();
+            } else if (mode == 1)
+            {
                 adv = DBConnect.getAllDisadvantage();
-            else
+            } else
+            {
                 adv = DBConnect.getAllQuirk();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -500,8 +505,10 @@ public class PerksPanel extends JPanel
         JLabel labelCurrentLevel = new JLabel();
         JButton buttonPlus = new JButton("+");
         JButton buttonMinus = new JButton("-");
+        JButton buttonAddNew = new JButton("Add new ...");
         JTextArea textDescription = new JTextArea();
         JButton buttonAdd = new JButton("Add");
+        JScrollPane scrollDescription = new JScrollPane(textDescription);
 //------------------labelMaxLevel-------------------------
         if (mode != 2)
         {
@@ -510,7 +517,10 @@ public class PerksPanel extends JPanel
             else
                 labelMaxLevel.setText("");
             labelMaxLevel.setFont(Resources.font15);
-            labelMaxLevel.setToolTipText("Максимальный уровень преимущества");
+            if (mode == 0)
+                labelMaxLevel.setToolTipText("Максимальный уровень преимущества");
+            else
+                labelMaxLevel.setToolTipText("Максимальный уровень недостатка");
             c.gridwidth = 1;
             c.gridx = 2;
             c.gridy = 1;
@@ -589,32 +599,112 @@ public class PerksPanel extends JPanel
             });
         }
 //------------------buttonMinusListener-----------------
-        else
+        buttonAddNew.setFont(Resources.font15);
+        switch (mode)
         {
-            buttonPlus.setFont(Resources.font15);
-            buttonPlus.setText("Add New Quirk...");
-            buttonPlus.addActionListener(new ActionListener() {
+            case 0:
+                buttonAddNew.setText("Add new advantage...");
+                break;
+            case 1:
+                buttonAddNew.setText("Add new disadvantage...");
+                break;
+            case 2:
+                buttonAddNew.setText("Add new quirk...");
+                break;
+        }
+        buttonAddNew.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
+                    String cost = labelCost.getText();
                     buttonPlus.setVisible(false);
+                    buttonMinus.setVisible(false);
                     textDescription.setEditable(true);
                     textDescription.setBackground(Color.WHITE);
                     buttonAdd.setVisible(false);
+                    buttonAddNew.setVisible(false);
+                    JTextField textCost = new JTextField();
+                    JLabel labelMLvl = new JLabel("Max level");
+                    JTextField textMLvl = new JTextField();
+                    if (mode != 2)
+                    {
+                        labelMaxLevel.setVisible(false);
+                        labelCurrentLevel.setVisible(false);
+                        c.gridwidth  = 1;
+                        c.gridheight = 1;
+                        c.gridx = 1;
+                        c.gridy = 2;
+                        c.weightx = 0.0;
+                        c.weighty = 0.0;
+                        gbl.setConstraints(labelCost, c);
+                        c.gridx = 2;
+                        labelCost.setText("Cost: ");
+                        gbl.setConstraints(textCost, c);
+                        infoPanel.add(textCost);
+                        labelMLvl.setFont(Resources.font15);
+                        if (mode == 0)
+                            labelMLvl.setToolTipText("Максимальный уровень преимущества");
+                        else
+                            labelMLvl.setToolTipText("Максимальный уровень недостатка");
+                        c.gridx = 3;
+                        gbl.setConstraints(labelMLvl, c);
+                        infoPanel.add(labelMLvl);
+                        c.gridx = 4;
+                        gbl.setConstraints(textMLvl, c);
+                        infoPanel.add(textMLvl);
+                        c.gridx = 1;
+                        c.gridy = 3;
+                        c.weightx = 1;
+                        c.weighty = 1;
+                        c.gridwidth = GridBagConstraints.REMAINDER;
+                        c.gridheight = GridBagConstraints.RELATIVE;
+                        gbl.setConstraints(scrollDescription, c);
+                    }
+
                     JLabel label = new JLabel("Name");
                     label.setFont(Resources.font15);
-                    label.setToolTipText("Название причуды");
-                    c.gridx = 2;
+                    switch (mode)
+                    {
+                        case 0:
+                            label.setToolTipText("Название преимущества");
+                            break;
+                        case 1:
+                            label.setToolTipText("Название недостатка");
+                            break;
+                        case 2:
+                            label.setToolTipText("Название причуды");
+                            break;
+                    }
+                    c.gridx = 1;
                     c.gridy = 1;
+                    c.weightx = 0;
+                    c.weighty = 0;
+                    c.gridwidth = 1;
+                    c.gridheight = 1;
                     gbl.setConstraints(label, c);
                     infoPanel.add(label);
+
                     JTextField name = new JTextField();
                     name.setFont(Resources.font15);
-                    c.gridx = 3;
-                    c.gridy = 1;
+                    c.gridx = 2;
+                    c.gridwidth = 2;
                     gbl.setConstraints(name, c);
                     infoPanel.add(name);
-                    JButton add = new JButton("Add new quirk");
+
+                    JButton add = new JButton();
+                    switch (mode)
+                    {
+                        case 0:
+                            add.setText("Add new advantage");
+                            break;
+                        case 1:
+                            add.setText("Add new disadvantage");
+                            break;
+                        case 2:
+                            add.setText("Add new quirk");
+                            break;
+                    }
+
                     JButton cancel = new JButton("Cancel");
                     cancel.setFont(Resources.font15);
                     cancel.addActionListener(new ActionListener() {
@@ -624,50 +714,103 @@ public class PerksPanel extends JPanel
                             infoPanel.remove(label);
                             infoPanel.remove(cancel);
                             infoPanel.remove(add);
+                            buttonPlus.setVisible(true);
+                            buttonMinus.setVisible(true);
                             textDescription.setEditable(false);
                             textDescription.setBackground(Color.LIGHT_GRAY);
-                            buttonPlus.setVisible(true);
+                            buttonAdd.setVisible(true);
+                            buttonAddNew.setVisible(true);
+                            if (mode != 2)
+                            {
+                                infoPanel.remove(textCost);
+                                infoPanel.remove(labelMLvl);
+                                infoPanel.remove(textMLvl);
+                                labelMaxLevel.setVisible(true);
+                                labelCurrentLevel.setVisible(true);
+                                c.gridwidth  = 1;
+                                c.gridheight = 1;
+                                c.gridx = 1;
+                                c.gridy = 1;
+                                c.weightx = 0.0;
+                                c.weighty = 0.0;
+                                labelCost.setText(cost);
+                                gbl.setConstraints(labelCost, c);
+                                c.gridy = 2;
+                                c.weightx = 1;
+                                c.weighty = 1;
+                                c.gridwidth = GridBagConstraints.REMAINDER;
+                                c.gridheight = GridBagConstraints.RELATIVE;
+                                gbl.setConstraints(scrollDescription, c);
+                            }
                         }
                     });
-                    c.gridx = 2;
-                    c.gridy = 3;
+                    c.gridwidth = 1;
+                    c.gridx = 3;
+                    c.gridy = 4;
                     gbl.setConstraints(cancel, c);
                     infoPanel.add(cancel);
+
                     add.setFont(Resources.font15);
                     add.addActionListener(new ActionListener() {
                         @Override
-                        public void actionPerformed(ActionEvent e) {
+                        public void actionPerformed(ActionEvent e)
+                        {
+                            boolean can = true;
                             try
                             {
-                                DBConnect.saveQuirk(new String[]{name.getText()}, new String[]{textDescription.getText()}, 1);
+                                switch (mode)
+                                {
+                                    case 0:
+                                        if (DBConnect.getAdvantageOnName(name.getText()).equals("null"))
+                                            DBConnect.addNewAdvantage(name.getText(), Integer.parseInt(textCost.getText()), Integer.parseInt(textMLvl.getText()), textDescription.getText());
+                                        else
+                                        {
+                                            JOptionPane.showConfirmDialog(infoPanel, "Преимущество с таким именем уже существует!", "Error", JOptionPane.DEFAULT_OPTION);
+                                            can = false;
+                                        }
+                                        break;
+                                    case 1:
+                                        if (DBConnect.getDisadvantageOnName(name.getText()).equals("null"))
+                                            DBConnect.addNewDisadvantage(name.getText(), Integer.parseInt(textCost.getText()), Integer.parseInt(textMLvl.getText()), textDescription.getText());
+                                        else
+                                        {
+                                            JOptionPane.showConfirmDialog(infoPanel, "Недостаток с таким именем уже существует!", "Error", JOptionPane.DEFAULT_OPTION);
+                                            can = false;
+                                        }
+                                        break;
+                                    case 2:
+                                        if (DBConnect.getQuirkOnName(name.getText()).equals("null"))
+                                            DBConnect.addNewQuirk(name.getText(), textDescription.getText());
+                                        else
+                                        {
+                                            JOptionPane.showConfirmDialog(infoPanel, "Причуда с таким именем уже существует!", "Error", JOptionPane.DEFAULT_OPTION);
+                                            can = false;
+                                        }
+                                        break;
+                                }
                             } catch (SQLException e1)
                             {
                                 e1.printStackTrace();
                             }
-                            listModel.addElement(name.getText());
-                            int index = listModel.size() - 1;
-                            advList.setSelectedIndex(index);
-                            advList.ensureIndexIsVisible(index);
-                            infoPanel.remove(name);
-                            infoPanel.remove(label);
-                            infoPanel.remove(add);
-                            infoPanel.remove(cancel);
-                            textDescription.setEditable(false);
-                            textDescription.setBackground(Color.LIGHT_GRAY);
-                            buttonPlus.setVisible(true);
+                            if (can)
+                            {
+                                dialogChoice.dispose();
+                                createDialog(mode);
+                            }
+
                         }
                     });
+                    c.gridwidth = 2;
                     c.gridx = 1;
-                    c.gridy = 3;
+                    c.gridy = 4;
                     gbl.setConstraints(add, c);
                     infoPanel.add(add);
                 }
             });
             c.gridx = 2;
-            c.gridy = 1;
-            gbl.setConstraints(buttonPlus, c);
-            infoPanel.add(buttonPlus);
-        }
+            c.gridy = 3;
+            gbl.setConstraints(buttonAddNew, c);
+            infoPanel.add(buttonAddNew);
 //------------------textDescription-----------------------
         if (mode < 2)
             textDescription.setText(adv[3][0]);
@@ -683,7 +826,6 @@ public class PerksPanel extends JPanel
         c.weighty = 1;
         c.gridwidth = GridBagConstraints.REMAINDER;
         c.gridheight = GridBagConstraints.RELATIVE;
-        JScrollPane scrollDescription = new JScrollPane(textDescription);
         scrollDescription.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         gbl.setConstraints(scrollDescription, c);
         infoPanel.add(scrollDescription);
@@ -694,14 +836,15 @@ public class PerksPanel extends JPanel
             @Override
             public void valueChanged(ListSelectionEvent e)
             {
+                int index = advList.isSelectionEmpty() ? 0 : advList.getSelectedIndex();
                 if (!e.getValueIsAdjusting())
                 {
                     if (mode != 2)
                     {
-                        labelCost.setText("Cost: " + finalAdv[1][advList.getSelectedIndex()]);
-                        if (!finalAdv[2][advList.getSelectedIndex()].equals("100"))
+                        labelCost.setText("Cost: " + finalAdv[1][index]);
+                        if (!finalAdv[2][index].equals("100"))
                         {
-                            labelMaxLevel.setText("Max level: " + finalAdv[2][advList.getSelectedIndex()]);
+                            labelMaxLevel.setText("Max level: " + finalAdv[2][index]);
                             buttonPlus.setVisible(false);
                             buttonMinus.setVisible(false);
                         } else
@@ -711,17 +854,17 @@ public class PerksPanel extends JPanel
                             buttonMinus.setVisible(true);
                         }
                         labelCurrentLevel.setText("Current level: 1");
-                        textDescription.setText(finalAdv[3][advList.getSelectedIndex()]);
+                        textDescription.setText(finalAdv[3][index]);
                     }
                     else
                         try
                         {
-                            textDescription.setText(finalAdv[1][advList.getSelectedIndex()]);
+                            textDescription.setText(finalAdv[1][index]);
                         }catch (ArrayIndexOutOfBoundsException e2)
                         {
                             try
                             {
-                                textDescription.setText(DBConnect.getQuirkOnName(advList.getSelectedValue()));
+                                textDescription.setText(DBConnect.getQuirkOnName(advList.isSelectionEmpty() ? advList.getModel().getElementAt(0) : advList.getSelectedValue()));
                             } catch (SQLException e1)
                             {
                                 e1.printStackTrace();

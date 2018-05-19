@@ -20,11 +20,15 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.SpinnerListModel;
 import javax.swing.WindowConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -305,7 +309,7 @@ public class SkillsPanel extends JPanel
                 (Window.basePanel.getLabelDXCount().getText()) : (Window.basePanel.getLabelIQCount().getText())));
         labelCurrentLevel.setFont(Resources.font15);
         labelCurrentLevel.setToolTipText("Относительный уровень навыка");
-        c.gridx = 2;
+        c.gridx = 3;
         c.gridy = 4;
         gbl.setConstraints(labelCurrentLevel, c);
         infoPanel.add(labelCurrentLevel);
@@ -315,9 +319,9 @@ public class SkillsPanel extends JPanel
         labelCost.setText("Cost: "+ mathSkillCost(skills[2][skillsList.getSelectedIndex()], 0, 0));
         labelCost.setFont(Resources.font15);
         labelCost.setToolTipText("Стоимость приобретения навыка");
-        c.gridx = 3;
+        c.gridx = 4;
         c.gridy = 4;
-        c.gridwidth = 2;
+        c.gridwidth = 1;
         gbl.setConstraints(labelCost, c);
         infoPanel.add(labelCost);
 //------------------labelCurrentLevel-------------------------
@@ -487,6 +491,189 @@ public class SkillsPanel extends JPanel
         gbl.setConstraints(buttonAdd, c);
         infoPanel.add(buttonAdd);
 //------------------buttonAdd-----------------------
+//------------------buttonAddNew-----------------------
+        JButton buttonAddNew = new JButton("Add new skill...");
+        buttonAddNew.setFont(Resources.font15);
+        buttonAddNew.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                String diff = labelDifficulty.getText();
+                String type = labelType.getText();
+                String relLvl = labelRelativeLevel.getText();
+                buttonPlus.setVisible(false);
+                buttonMinus.setVisible(false);
+                textDescription.setEditable(true);
+                textDescription.setBackground(Color.WHITE);
+                buttonAdd.setVisible(false);
+                buttonAddNew.setVisible(false);
+                JSpinner spinnerDifficulty = new JSpinner(new SpinnerListModel(new Object[]{"Easy", "Middle", "Hard", "Very Hard"}));
+                JSpinner spinnerType = new JSpinner(new SpinnerListModel(new Object[]{"ST", "DX", "IQ", "HT"}));
+                JTextField textRelativeLevel = new JTextField();
+                labelCurrentLevel.setVisible(false);
+                labelCost.setVisible(false);
+
+                c.gridwidth  = 1;
+                c.gridheight = 1;
+                c.gridx = 1;
+                c.gridy = 2;
+                c.weightx = 1;
+                c.weighty = 0;
+                labelDifficulty.setText("Difficulty:");
+                gbl.setConstraints(labelDifficulty, c);
+
+                c.weightx = 0;
+                c.gridx = 2;
+                spinnerDifficulty.setFont(Resources.font15);
+                gbl.setConstraints(spinnerDifficulty, c);
+                infoPanel.add(spinnerDifficulty);
+
+                c.weightx = 1;
+                c.gridx = 3;
+                labelType.setText("Type:");
+                gbl.setConstraints(labelType, c);
+
+                c.weightx = 0;
+                c.gridx = 4;
+                spinnerType.setFont(Resources.font15);
+                gbl.setConstraints(spinnerType, c);
+                infoPanel.add(spinnerType);
+
+                c.gridx = 1;
+                c.gridy = 3;
+                labelRelativeLevel.setText("Relative level:");
+                gbl.setConstraints(labelRelativeLevel, c);
+
+                c.weightx = 1;
+                c.gridx = 2;
+                textRelativeLevel.setFont(Resources.font15);
+                gbl.setConstraints(textRelativeLevel, c);
+                infoPanel.add(textRelativeLevel);
+
+                c.gridx = 1;
+                c.gridy = 4;
+                c.weighty = 1;
+                c.gridwidth = GridBagConstraints.REMAINDER;
+                c.gridheight = GridBagConstraints.RELATIVE;
+                gbl.setConstraints(scrollDescription, c);
+
+                JLabel labelName = new JLabel("Name");
+                labelName.setFont(Resources.font15);
+                labelName.setToolTipText("Название навыка");
+                c.gridx = 1;
+                c.gridy = 1;
+                c.weighty = 0;
+                c.gridwidth = 1;
+                c.gridheight = 1;
+                gbl.setConstraints(labelName, c);
+                infoPanel.add(labelName);
+
+                JTextField textName = new JTextField();
+                textName.setFont(Resources.font15);
+                c.gridx = 2;
+                c.gridwidth = 2;
+                gbl.setConstraints(textName, c);
+                infoPanel.add(textName);
+
+                JButton add = new JButton();
+                add.setText("Add new skill");
+
+                JButton cancel = new JButton("Cancel");
+                cancel.setFont(Resources.font15);
+                cancel.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        listModel.addElement(textName.getText());
+                        infoPanel.remove(textName);
+                        infoPanel.remove(labelName);
+                        infoPanel.remove(cancel);
+                        infoPanel.remove(add);
+                        buttonPlus.setVisible(true);
+                        buttonMinus.setVisible(true);
+                        textDescription.setEditable(false);
+                        textDescription.setBackground(Color.LIGHT_GRAY);
+                        buttonAdd.setVisible(true);
+                        buttonAddNew.setVisible(true);
+                        infoPanel.remove(spinnerDifficulty);
+                        infoPanel.remove(textRelativeLevel);
+                        infoPanel.remove(spinnerType);
+                        labelCurrentLevel.setVisible(true);
+                        labelCost.setVisible(true);
+                        c.gridwidth = 1;
+                        c.gridheight = 1;
+                        c.gridx = 1;
+                        c.gridy = 1;
+                        c.weightx = 0.0;
+                        c.weighty = 0.0;
+                        labelDifficulty.setText(diff);
+                        gbl.setConstraints(labelDifficulty, c);
+                        c.gridx = 2;
+                        labelType.setText(type);
+                        gbl.setConstraints(labelType, c);
+                        c.gridx = 1;
+                        c.gridy = 2;
+                        labelRelativeLevel.setText(relLvl);
+                        gbl.setConstraints(labelRelativeLevel, c);
+                        c.gridy = 3;
+                        c.weightx = 1;
+                        c.weighty = 1;
+                        c.gridwidth = GridBagConstraints.REMAINDER;
+                        c.gridheight = GridBagConstraints.RELATIVE;
+                        try
+                        {
+                            textDescription.setText(DBConnect.getSkillOnName(skillsList.getSelectedValue()));
+                        } catch (SQLException e1)
+                        {
+                            e1.printStackTrace();
+                        }
+                        gbl.setConstraints(scrollDescription, c);
+                    }
+                });
+                c.gridwidth = 1;
+                c.gridx = 3;
+                c.gridy = 5;
+                gbl.setConstraints(cancel, c);
+                infoPanel.add(cancel);
+
+                add.setFont(Resources.font15);
+                add.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        boolean can = true;
+                        try
+                        {
+                            if (DBConnect.getSkillOnName(textName.getText()).equals("null"))
+                                DBConnect.addNewSkill(textName.getText(), spinnerType.getValue().toString(), spinnerDifficulty.getValue().toString(), textRelativeLevel.getText(), textDescription.getText());
+                            else
+                                {
+                                    JOptionPane.showConfirmDialog(infoPanel, "Навык с таким именем уже существует!", "Error", JOptionPane.DEFAULT_OPTION);
+                                    can = false;
+                                }
+                        } catch (SQLException e1)
+                        {
+                            e1.printStackTrace();
+                        }
+                        if (can)
+                        {
+                            dialogChoice.dispose();
+                            createDialog();
+                        }
+
+                    }
+                });
+                c.gridwidth = 2;
+                c.gridx = 1;
+                c.gridy = 5;
+                gbl.setConstraints(add, c);
+                infoPanel.add(add);
+            }
+        });
+        c.gridx = 2;
+        c.gridy = 4;
+        gbl.setConstraints(buttonAddNew, c);
+        infoPanel.add(buttonAddNew);
+//------------------buttonAddNew-----------------------
         dialogChoice.setVisible(true);
     }
 
