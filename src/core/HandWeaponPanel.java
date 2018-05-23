@@ -10,7 +10,6 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -20,10 +19,14 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.WindowConstants;
 import javax.swing.event.ListSelectionEvent;
@@ -31,6 +34,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import javax.swing.text.AbstractDocument;
 
 public class HandWeaponPanel extends JPanel
 {
@@ -146,10 +150,10 @@ public class HandWeaponPanel extends JPanel
         tableHandWeapon = new JTable();
         tableHandWeapon.setFont(Resources.font15);
         TableModel model = new DefaultTableModel(DBConnect.getCharacterHandWeapon(Window.characterId),
-                new Object[]{"Hand Weapon", "Damage", "Damage type", "Min ST", "KD", "Weight", "Cost"}){
+                new Object[]{"Hand Weapon", "Damage", "Damage type", "Min ST", "KD", "Cost", "Weight"}){
             @Override
             public Class<?> getColumnClass(int columnIndex) {
-                if (columnIndex > 4) return Float.class;
+                if (columnIndex > 5) return Float.class;
                 if (columnIndex > 2) return Integer.class;
                 return super.getColumnClass(columnIndex);
             }
@@ -197,7 +201,7 @@ public class HandWeaponPanel extends JPanel
     private void createDialog()
     {
         JDialog dialogChoice = new JDialog();
-        dialogChoice.setTitle("Choice Skill");
+        dialogChoice.setTitle("Choice hand weapon");
         dialogChoice.setSize(900, 500);
         dialogChoice.setLocation(((screenSize.width/2) - (dialogChoice.getWidth()/2)),
                 ((screenSize.height/2) - (dialogChoice.getHeight()/2)));
@@ -302,7 +306,7 @@ public class HandWeaponPanel extends JPanel
 //------------------labelType-------------------------
 //------------------labelWeight-------------------------
         JLabel labelWeight = new JLabel();
-        labelWeight.setText("Weight: " + handWeapon[5][skillsList.getSelectedIndex()]);
+        labelWeight.setText("Weight: " + handWeapon[6][skillsList.getSelectedIndex()]);
         labelWeight.setFont(Resources.font15);
         labelWeight.setToolTipText("Вес борни");
         c.gridx = 1;
@@ -313,7 +317,7 @@ public class HandWeaponPanel extends JPanel
 //------------------labelWeight-------------------------
 //------------------labelCost-------------------------
         JLabel labelCost = new JLabel();
-        labelCost.setText("Cost: " + ((handWeapon[6][skillsList.getSelectedIndex()])));
+        labelCost.setText("Cost: " + ((handWeapon[5][skillsList.getSelectedIndex()])));
         labelCost.setFont(Resources.font15);
         labelCost.setToolTipText("Средняя стоимость брони");
         c.gridx = 2;
@@ -349,8 +353,8 @@ public class HandWeaponPanel extends JPanel
                 labelType.setText("Damage type: " + finalArmor[2][skillsList.getSelectedIndex()]);
                 labelMinST.setText("Min ST: " + finalArmor[3][skillsList.getSelectedIndex()]);
                 labelKD.setText("KD: " + finalArmor[4][skillsList.getSelectedIndex()]);
-                labelWeight.setText("Weight: " + finalArmor[5][skillsList.getSelectedIndex()]);
-                labelCost.setText("Cost: " + (finalArmor[6][skillsList.getSelectedIndex()]));
+                labelWeight.setText("Weight: " + finalArmor[6][skillsList.getSelectedIndex()]);
+                labelCost.setText("Cost: " + (finalArmor[5][skillsList.getSelectedIndex()]));
                 textDescription.setText(finalArmor[7][skillsList.getSelectedIndex()]);
             }
         });
@@ -405,9 +409,10 @@ public class HandWeaponPanel extends JPanel
                             labelType.getText().substring(13),
                             Integer.parseInt(labelMinST.getText().substring(8)),
                             Integer.parseInt(labelKD.getText().substring(4)),
-                            Float.parseFloat(labelWeight.getText().substring(8)),
-                            Float.parseFloat(labelCost.getText().substring(6))});
-                    Window.isChanged = true;
+                            Integer.parseInt(labelCost.getText().substring(6)),
+                            Float.parseFloat(labelWeight.getText().substring(8))
+                    });
+                            Window.isChanged = true;
                     dialogChoice.dispose();
                 }
                 Window.mathPoints();
@@ -422,6 +427,253 @@ public class HandWeaponPanel extends JPanel
         gbl.setConstraints(buttonAdd, c);
         infoPanel.add(buttonAdd);
 //------------------buttonAdd-----------------------
+//------------------buttonAddNew-----------------------
+        JButton buttonAddNew = new JButton("Add new hand weapon...");
+        buttonAddNew.setFont(Resources.font15);
+        buttonAddNew.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                String cost = labelCost.getText();
+                String dmg = labelDamage.getText();
+                String wt = labelWeight.getText();
+                String kd = labelKD.getText();
+                String minst = labelMinST.getText();
+                String type = labelType.getText();
+                textDescription.setEditable(true);
+                textDescription.setBackground(Color.WHITE);
+                buttonAdd.setVisible(false);
+                buttonAddNew.setVisible(false);
+                JTextField textCost = new JTextField();
+                ((AbstractDocument) textCost.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
+                JTextField textKD = new JTextField();
+                ((AbstractDocument) textKD.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
+                JTextField textMinST = new JTextField();
+                ((AbstractDocument) textMinST.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
+                JTextField textWeight = new JTextField();
+                JTextField textDamage = new JTextField();
+                JMenu menuDamageType = new JMenu("Damage type");
+                menuDamageType.setSelected(true);
+                JRadioButtonMenuItem rb1 = new JRadioButtonMenuItem("Рубящий",false);
+                menuDamageType.add(rb1);
+                JRadioButtonMenuItem rb2 = new JRadioButtonMenuItem("Проникающий",false);
+                menuDamageType.add(rb2);
+                JRadioButtonMenuItem rb3 = new JRadioButtonMenuItem("Дробящий",false);
+                menuDamageType.add(rb3);
+
+                c.gridwidth  = 1;
+                c.gridheight = 1;
+                c.gridx = 1;
+                c.gridy = 2;
+                c.weightx = 1;
+                c.weighty = 0;
+                labelDamage.setText("Damage:");
+                gbl.setConstraints(labelDamage, c);
+
+                c.weightx = 1;
+                c.gridx = 2;
+                textDamage.setFont(Resources.font15);
+                gbl.setConstraints(textDamage, c);
+                infoPanel.add(textDamage);
+
+                c.weightx = 1;
+                c.gridx = 3;
+                labelType.setText("Damage type:");
+                gbl.setConstraints(labelType, c);
+
+                c.weightx = 0;
+                c.gridx = 4;
+                menuDamageType.setFont(Resources.font15);
+                gbl.setConstraints(menuDamageType, c);
+                infoPanel.add(menuDamageType);
+
+                c.gridx = 1;
+                c.gridy = 3;
+                labelMinST.setText("Min ST:");
+                gbl.setConstraints(labelMinST, c);
+
+                c.weightx = 0;
+                c.gridx = 2;
+                textMinST.setFont(Resources.font15);
+                gbl.setConstraints(textMinST, c);
+                infoPanel.add(textMinST);
+
+                c.gridx = 3;
+                labelKD.setText("KD:");
+                gbl.setConstraints(labelKD, c);
+
+                c.weightx = 1;
+                c.gridx = 4;
+                textKD.setFont(Resources.font15);
+                gbl.setConstraints(textKD, c);
+                infoPanel.add(textKD);
+
+                c.gridx = 1;
+                c.gridy = 4;
+                labelWeight.setText("Weight:");
+                gbl.setConstraints(labelWeight, c);
+
+                c.weightx = 0;
+                c.gridx = 2;
+                textWeight.setFont(Resources.font15);
+                gbl.setConstraints(textWeight, c);
+                infoPanel.add(textWeight);
+
+                c.gridx = 3;
+                labelCost.setText("Cost:");
+                gbl.setConstraints(labelCost, c);
+
+                c.weightx = 1;
+                c.gridx = 4;
+                textCost.setFont(Resources.font15);
+                gbl.setConstraints(textCost, c);
+                infoPanel.add(textCost);
+
+                c.gridx = 1;
+                c.gridy = 5;
+                c.weighty = 1;
+                c.gridwidth = GridBagConstraints.REMAINDER;
+                c.gridheight = GridBagConstraints.RELATIVE;
+                gbl.setConstraints(scrollDescription, c);
+
+                JLabel labelName = new JLabel("Name");
+                labelName.setFont(Resources.font15);
+                labelName.setToolTipText("Название брони");
+                c.gridx = 1;
+                c.gridy = 1;
+                c.weighty = 0;
+                c.gridwidth = 1;
+                c.gridheight = 1;
+                gbl.setConstraints(labelName, c);
+                infoPanel.add(labelName);
+
+                JTextField textName = new JTextField();
+                textName.setFont(Resources.font15);
+                c.gridx = 2;
+                c.gridwidth = 2;
+                gbl.setConstraints(textName, c);
+                infoPanel.add(textName);
+
+                JButton add = new JButton();
+                add.setText("Add new hand weapon");
+
+                JButton cancel = new JButton("Cancel");
+                cancel.setFont(Resources.font15);
+                cancel.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        listModel.addElement(textName.getText());
+                        infoPanel.remove(textName);
+                        infoPanel.remove(labelName);
+                        infoPanel.remove(textCost);
+                        infoPanel.remove(textDamage);
+                        infoPanel.remove(textKD);
+                        infoPanel.remove(textMinST);
+                        infoPanel.remove(textWeight);
+                        infoPanel.remove(menuDamageType);
+                        infoPanel.remove(cancel);
+                        infoPanel.remove(add);
+                        textDescription.setEditable(false);
+                        textDescription.setBackground(Color.LIGHT_GRAY);
+                        buttonAdd.setVisible(true);
+                        buttonAddNew.setVisible(true);
+                        labelCost.setVisible(true);
+                        c.gridwidth = 1;
+                        c.gridheight = 1;
+                        c.gridx = 1;
+                        c.gridy = 1;
+                        c.weightx = 0.0;
+                        c.weighty = 0.0;
+                        labelDamage.setText(dmg);
+                        gbl.setConstraints(labelDamage, c);
+                        c.gridx = 2;
+                        labelType.setText(type);
+                        gbl.setConstraints(labelType, c);
+                        c.gridx = 1;
+                        c.gridy = 2;
+                        labelMinST.setText(minst);
+                        gbl.setConstraints(labelMinST, c);
+                        c.gridx = 2;
+                        labelKD.setText(kd);
+                        gbl.setConstraints(labelKD, c);
+                        c.gridx = 1;
+                        c.gridy = 3;
+                        labelWeight.setText(wt);
+                        gbl.setConstraints(labelWeight, c);
+                        c.gridx = 2;
+                        labelCost.setText(cost);
+                        gbl.setConstraints(labelCost, c);
+                        c.gridx = 1;
+                        c.gridy = 4;
+                        c.weightx = 1;
+                        c.weighty = 1;
+                        c.gridwidth = GridBagConstraints.REMAINDER;
+                        c.gridheight = GridBagConstraints.RELATIVE;
+                        try
+                        {
+                            textDescription.setText(DBConnect.getHandWeaponOnName(skillsList.getSelectedValue()));
+                        } catch (SQLException e1)
+                        {
+                            e1.printStackTrace();
+                        }
+                        gbl.setConstraints(scrollDescription, c);
+                    }
+                });
+                c.gridwidth = 1;
+                c.gridx = 3;
+                c.gridy = 6;
+                gbl.setConstraints(cancel, c);
+                infoPanel.add(cancel);
+
+                add.setFont(Resources.font15);
+                add.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        boolean can = true;
+                        try
+                        {
+                            if (DBConnect.getHandWeaponOnName(textName.getText()).equals("null"))
+                                DBConnect.addNewHandWeapon(textName.getText(),
+                                        textDamage.getText(),
+                                        ((menuDamageType.getItem(0).isArmed()) ? "руб," : "") +
+                                                ((menuDamageType.getItem(1).isArmed()) ? "прон," : "") +
+                                                ((menuDamageType.getItem(2).isArmed()) ? "дроб," : ""),
+                                        textMinST.getText(),
+                                        textKD.getText(),
+                                        textWeight.getText(),
+                                        textCost.getText(),
+                                        textDescription.getText());
+                            else
+                            {
+                                JOptionPane.showConfirmDialog(infoPanel, "Оружие с таким именем уже существует!", "Error", JOptionPane.DEFAULT_OPTION);
+                                can = false;
+                            }
+                        } catch (SQLException e1)
+                        {
+                            e1.printStackTrace();
+                        }
+                        if (can)
+                        {
+                            dialogChoice.dispose();
+                            createDialog();
+                        }
+
+                    }
+                });
+                c.gridwidth = 2;
+                c.gridx = 1;
+                c.gridy = 6;
+                gbl.setConstraints(add, c);
+                infoPanel.add(add);
+            }
+        });
+        c.gridx = 2;
+        c.gridy = 5;
+        gbl.setConstraints(buttonAddNew, c);
+        infoPanel.add(buttonAddNew);
+//------------------buttonAddNew-----------------------
         dialogChoice.setVisible(true);
     }
 

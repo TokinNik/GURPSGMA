@@ -11,6 +11,8 @@ import java.awt.Insets;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -280,10 +282,9 @@ class Window extends JFrame
                         handWeaponPanel.setVisible(true);
                         rangedWeaponPanel.setVisible(true);
                     }
-                    int result = -1;
                     if (isChanged)
                     {
-                        result = JOptionPane.showConfirmDialog(Window.this,
+                        int result = JOptionPane.showConfirmDialog(Window.this,
                                 "Есть несохранённые данные, сохранить сейчас?", "Внимание!", JOptionPane.YES_NO_CANCEL_OPTION);
                         if (result == JOptionPane.YES_OPTION)
                         {
@@ -436,6 +437,58 @@ class Window extends JFrame
         });
         menuPanel.add(addButton);
 //------------------addButton------------------------
+
+        addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                if (isChanged)
+                {
+                    int result = JOptionPane.showConfirmDialog(Window.this,
+                            "Есть несохранённые данные, сохранить перед закрытием?", "Внимание!", JOptionPane.YES_NO_OPTION);
+                    if (result == JOptionPane.YES_OPTION)
+                    {
+                        isChanged = false;
+                        saveAll();
+                    }
+                    if (result == JOptionPane.NO_OPTION)
+                    {
+                        isChanged = false;
+                        installAll();
+                    }
+                }
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+
+            }
+        });
 
         installAll();
         setContentPane(mainPanel);

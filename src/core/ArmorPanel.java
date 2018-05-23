@@ -10,7 +10,6 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -20,10 +19,14 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.WindowConstants;
 import javax.swing.event.ListSelectionEvent;
@@ -31,6 +34,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import javax.swing.text.AbstractDocument;
 
 public class ArmorPanel extends JPanel
 {
@@ -194,7 +198,7 @@ public class ArmorPanel extends JPanel
     private void createDialog()
     {
         JDialog dialogChoice = new JDialog();
-        dialogChoice.setTitle("Choice Skill");
+        dialogChoice.setTitle("Choice armor");
         dialogChoice.setSize(900, 500);
         dialogChoice.setLocation(((screenSize.width/2) - (dialogChoice.getWidth()/2)),
                 ((screenSize.height/2) - (dialogChoice.getHeight()/2)));
@@ -389,6 +393,243 @@ public class ArmorPanel extends JPanel
         gbl.setConstraints(buttonAdd, c);
         infoPanel.add(buttonAdd);
 //------------------buttonAdd-----------------------
+//------------------buttonAddNew-----------------------
+        JButton buttonAddNew = new JButton("Add new armor...");
+        buttonAddNew.setFont(Resources.font15);
+        buttonAddNew.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                String cost = labelCost.getText();
+                String dr = labelDR.getText();
+                String wt = labelWeight.getText();
+                String zone = labelZones.getText();
+                textDescription.setEditable(true);
+                textDescription.setBackground(Color.WHITE);
+                buttonAdd.setVisible(false);
+                buttonAddNew.setVisible(false);
+                JTextField textCost = new JTextField();
+                ((AbstractDocument) textCost.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
+                JTextField textDR = new JTextField();
+                ((AbstractDocument) textDR.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
+                JMenu menuZones = new JMenu("Zones");
+                menuZones.setSelected(true);
+                JRadioButtonMenuItem rb3 = new JRadioButtonMenuItem("3 (Глаза)",false);
+                menuZones.add(rb3);
+                JRadioButtonMenuItem rb4 = new JRadioButtonMenuItem("4 (Лицо)",false);
+                menuZones.add(rb4);
+                JRadioButtonMenuItem rb5 = new JRadioButtonMenuItem("5 (Череп)",false);
+                menuZones.add(rb5);
+                JRadioButtonMenuItem rb6 = new JRadioButtonMenuItem("6 (Левая (или ближняя) рука)",false);
+                menuZones.add(rb6);
+                JRadioButtonMenuItem rb7 = new JRadioButtonMenuItem("7 (Кисти рук)",false);
+                menuZones.add(rb7);
+                JRadioButtonMenuItem rb8 = new JRadioButtonMenuItem("8 (Правая (или дальняя) рука)",false);
+                menuZones.add(rb8);
+                JRadioButtonMenuItem rb9 = new JRadioButtonMenuItem("9 (Грудь)",false);
+                menuZones.add(rb9);
+                JRadioButtonMenuItem rb10 = new JRadioButtonMenuItem("10 (Торс)",false);
+                menuZones.add(rb10);
+                JRadioButtonMenuItem rb11 = new JRadioButtonMenuItem("11 (Пах)",false);
+                menuZones.add(rb11);
+                JRadioButtonMenuItem rb12 = new JRadioButtonMenuItem("12 (Правая (или дальняя) нога)",false);
+                menuZones.add(rb12);
+                JRadioButtonMenuItem rb1314 = new JRadioButtonMenuItem("13,14 (Левая (или ближняя) нога)",false);
+                menuZones.add(rb1314);
+                JRadioButtonMenuItem rb1718 = new JRadioButtonMenuItem("17,18 (Сердце или жизненно важные органы)",false);
+                menuZones.add(rb1718);
+                JTextField textWeight = new JTextField();
+
+                c.gridwidth  = 1;
+                c.gridheight = 1;
+                c.gridx = 1;
+                c.gridy = 2;
+                c.weightx = 1;
+                c.weighty = 0;
+                labelZones.setText("Zones:");
+                gbl.setConstraints(labelZones, c);
+
+                c.weightx = 1;
+                c.gridx = 2;
+                menuZones.setFont(Resources.font15);
+                gbl.setConstraints(menuZones, c);
+                infoPanel.add(menuZones);
+
+                c.weightx = 1;
+                c.gridx = 3;
+                labelDR.setText("DR:");
+                gbl.setConstraints(labelDR, c);
+
+                c.weightx = 0;
+                c.gridx = 4;
+                textDR.setFont(Resources.font15);
+                gbl.setConstraints(textDR, c);
+                infoPanel.add(textDR);
+
+                c.gridx = 1;
+                c.gridy = 3;
+                labelCost.setText("Cost:");
+                gbl.setConstraints(labelCost, c);
+
+                c.weightx = 0;
+                c.gridx = 2;
+                textCost.setFont(Resources.font15);
+                gbl.setConstraints(textCost, c);
+                infoPanel.add(textCost);
+
+                c.gridx = 3;
+                labelWeight.setText("Weight:");
+                gbl.setConstraints(labelWeight, c);
+
+                c.weightx = 1;
+                c.gridx = 4;
+                textWeight.setFont(Resources.font15);
+                gbl.setConstraints(textWeight, c);
+                infoPanel.add(textWeight);
+
+                c.gridx = 1;
+                c.gridy = 4;
+                c.weighty = 1;
+                c.gridwidth = GridBagConstraints.REMAINDER;
+                c.gridheight = GridBagConstraints.RELATIVE;
+                gbl.setConstraints(scrollDescription, c);
+
+                JLabel labelName = new JLabel("Name");
+                labelName.setFont(Resources.font15);
+                labelName.setToolTipText("Название брони");
+                c.gridx = 1;
+                c.gridy = 1;
+                c.weighty = 0;
+                c.gridwidth = 1;
+                c.gridheight = 1;
+                gbl.setConstraints(labelName, c);
+                infoPanel.add(labelName);
+
+                JTextField textName = new JTextField();
+                textName.setFont(Resources.font15);
+                c.gridx = 2;
+                c.gridwidth = 2;
+                gbl.setConstraints(textName, c);
+                infoPanel.add(textName);
+
+                JButton add = new JButton();
+                add.setText("Add new armor");
+
+                JButton cancel = new JButton("Cancel");
+                cancel.setFont(Resources.font15);
+                cancel.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        listModel.addElement(textName.getText());
+                        infoPanel.remove(textName);
+                        infoPanel.remove(labelName);
+                        infoPanel.remove(cancel);
+                        infoPanel.remove(add);
+                        textDescription.setEditable(false);
+                        textDescription.setBackground(Color.LIGHT_GRAY);
+                        buttonAdd.setVisible(true);
+                        buttonAddNew.setVisible(true);
+                        infoPanel.remove(textCost);
+                        infoPanel.remove(menuZones);
+                        infoPanel.remove(textDR);
+                        infoPanel.remove(textWeight);
+                        labelCost.setVisible(true);
+                        c.gridwidth = 1;
+                        c.gridheight = 1;
+                        c.gridx = 1;
+                        c.gridy = 1;
+                        c.weightx = 0.0;
+                        c.weighty = 0.0;
+                        labelZones.setText(zone);
+                        gbl.setConstraints(labelZones, c);
+                        c.gridx = 2;
+                        labelDR.setText(dr);
+                        gbl.setConstraints(labelDR, c);
+                        c.gridx = 1;
+                        c.gridy = 2;
+                        labelCost.setText(cost);
+                        gbl.setConstraints(labelCost, c);
+                        c.gridx = 2;
+                        labelWeight.setText(wt);
+                        gbl.setConstraints(labelWeight, c);
+                        c.gridx = 1;
+                        c.gridy = 3;
+                        c.weightx = 1;
+                        c.weighty = 1;
+                        c.gridwidth = GridBagConstraints.REMAINDER;
+                        c.gridheight = GridBagConstraints.RELATIVE;
+                        try
+                        {
+                            textDescription.setText(DBConnect.getArmorOnName(skillsList.getSelectedValue()));
+                        } catch (SQLException e1)
+                        {
+                            e1.printStackTrace();
+                        }
+                        gbl.setConstraints(scrollDescription, c);
+                    }
+                });
+                c.gridwidth = 1;
+                c.gridx = 3;
+                c.gridy = 5;
+                gbl.setConstraints(cancel, c);
+                infoPanel.add(cancel);
+
+                add.setFont(Resources.font15);
+                add.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        boolean can = true;
+                        try
+                        {
+                            if (DBConnect.getArmorOnName(textName.getText()).equals("null"))
+                                DBConnect.addNewArmor(textName.getText(),
+                                        textDR.getText(),
+                                        ((menuZones.getItem(0).isArmed()) ? "3," : "") +
+                                        ((menuZones.getItem(0).isArmed()) ? "4," : "") +
+                                        ((menuZones.getItem(1).isArmed()) ? "5," : "") +
+                                        ((menuZones.getItem(2).isArmed()) ? "6," : "") +
+                                        ((menuZones.getItem(3).isArmed()) ? "7," : "") +
+                                        ((menuZones.getItem(4).isArmed()) ? "8," : "") +
+                                        ((menuZones.getItem(5).isArmed()) ? "9," : "") +
+                                        ((menuZones.getItem(6).isArmed()) ? "10," : "") +
+                                        ((menuZones.getItem(7).isArmed()) ? "11," : "") +
+                                        ((menuZones.getItem(8).isArmed()) ? "12," : "") +
+                                        ((menuZones.getItem(9).isArmed()) ? "13,14," : "") +
+                                        ((menuZones.getItem(10).isArmed()) ? "17,18" : ""),
+                                        textCost.getText(),
+                                        textWeight.getText(),
+                                        textDescription.getText());
+                            else
+                            {
+                                JOptionPane.showConfirmDialog(infoPanel, "Броня с таким именем уже существует!", "Error", JOptionPane.DEFAULT_OPTION);
+                                can = false;
+                            }
+                        } catch (SQLException e1)
+                        {
+                            e1.printStackTrace();
+                        }
+                        if (can)
+                        {
+                            dialogChoice.dispose();
+                            createDialog();
+                        }
+
+                    }
+                });
+                c.gridwidth = 2;
+                c.gridx = 1;
+                c.gridy = 5;
+                gbl.setConstraints(add, c);
+                infoPanel.add(add);
+            }
+        });
+        c.gridx = 2;
+        c.gridy = 4;
+        gbl.setConstraints(buttonAddNew, c);
+        infoPanel.add(buttonAddNew);
+//------------------buttonAddNew-----------------------
         dialogChoice.setVisible(true);
     }
 

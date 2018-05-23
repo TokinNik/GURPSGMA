@@ -10,7 +10,6 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -20,10 +19,14 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.WindowConstants;
 import javax.swing.event.ListSelectionEvent;
@@ -31,6 +34,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import javax.swing.text.AbstractDocument;
 
 public class RangedWeaponPanel extends JPanel
 {
@@ -146,10 +150,10 @@ public class RangedWeaponPanel extends JPanel
         tableRangedWeapon = new JTable();
         tableRangedWeapon.setFont(Resources.font15);
         TableModel model = new DefaultTableModel(DBConnect.getCharacterRangedWeapon(Window.characterId),
-                new Object[]{"Ranged Weapon", "Damage", "Damage type", "SS", "Acc", "Range", "Max Range", "RoF", "Shots", "Min ST", "Rcl", "Weight", "Cost"}){
+                new Object[]{"Ranged Weapon", "Damage", "Damage type", "SS", "Acc", "Range", "Max Range", "RoF", "Shots", "Min ST", "Rcl",  "Cost", "Weight"}){
             @Override
             public Class<?> getColumnClass(int columnIndex) {
-                if (columnIndex > 10) return Float.class;
+                if (columnIndex > 11) return Float.class;
                 if (columnIndex > 2) return Integer.class;
                 return super.getColumnClass(columnIndex);
             }
@@ -203,7 +207,7 @@ public class RangedWeaponPanel extends JPanel
     private void createDialog()
     {
         JDialog dialogChoice = new JDialog();
-        dialogChoice.setTitle("Choice Skill");
+        dialogChoice.setTitle("Choice ranged weapon");
         dialogChoice.setSize(900, 500);
         dialogChoice.setLocation(((screenSize.width/2) - (dialogChoice.getWidth()/2)),
                 ((screenSize.height/2) - (dialogChoice.getHeight()/2)));
@@ -275,7 +279,7 @@ public class RangedWeaponPanel extends JPanel
         labelType.setToolTipText("Тип урона");
         c.gridx = 2;
         c.gridy = 1;
-        c.weightx = 1;
+        c.weightx = 0.0;
         c.weighty = 0.0;
         gbl.setConstraints(labelType, c);
         infoPanel.add(labelType);
@@ -301,7 +305,7 @@ public class RangedWeaponPanel extends JPanel
         labelAcc.setToolTipText("Бонус за прицеливание");
         c.gridx = 2;
         c.gridy = 2;
-        c.weightx = 1;
+        c.weightx = 0.0;
         c.weighty = 0.0;
         gbl.setConstraints(labelAcc, c);
         infoPanel.add(labelAcc);
@@ -349,7 +353,7 @@ public class RangedWeaponPanel extends JPanel
         labelShots.setToolTipText("Количество патронов в одном магазине/обойме/ленте...");
         c.gridx = 2;
         c.gridy = 3;
-        c.weightx = 1;
+        c.weightx = 0.0;
         c.weighty = 0.0;
         gbl.setConstraints(labelShots, c);
         infoPanel.add(labelShots);
@@ -382,7 +386,7 @@ public class RangedWeaponPanel extends JPanel
 //------------------labelType-------------------------
 //------------------labelWeight-------------------------
         JLabel labelWeight = new JLabel();
-        labelWeight.setText("Weight: " + rangedWeapon[11][skillsList.getSelectedIndex()]);
+        labelWeight.setText("Weight: " + rangedWeapon[12][skillsList.getSelectedIndex()]);
         labelWeight.setFont(Resources.font15);
         labelWeight.setToolTipText("Вес оружия");
         c.gridx = 1;
@@ -393,7 +397,7 @@ public class RangedWeaponPanel extends JPanel
 //------------------labelWeight-------------------------
 //------------------labelCost-------------------------
         JLabel labelCost = new JLabel();
-        labelCost.setText("Cost: " + ((rangedWeapon[12][skillsList.getSelectedIndex()])));
+        labelCost.setText("Cost: " + ((rangedWeapon[11][skillsList.getSelectedIndex()])));
         labelCost.setFont(Resources.font15);
         labelCost.setToolTipText("Средняя стоимость оружия");
         c.gridx = 2;
@@ -435,8 +439,8 @@ public class RangedWeaponPanel extends JPanel
                 labelShots.setText("Shots: " + finalArmor[8][skillsList.getSelectedIndex()]);
                 labelMinST.setText("Min ST: " + finalArmor[9][skillsList.getSelectedIndex()]);
                 labelRcl.setText("Rcl: " + finalArmor[10][skillsList.getSelectedIndex()]);
-                labelWeight.setText("Weight: " + finalArmor[11][skillsList.getSelectedIndex()]);
-                labelCost.setText("Cost: " + (finalArmor[12][skillsList.getSelectedIndex()]));
+                labelWeight.setText("Weight: " + finalArmor[12][skillsList.getSelectedIndex()]);
+                labelCost.setText("Cost: " + (finalArmor[11][skillsList.getSelectedIndex()]));
                 textDescription.setText(finalArmor[13][skillsList.getSelectedIndex()]);
             }
         });
@@ -497,8 +501,8 @@ public class RangedWeaponPanel extends JPanel
                             Integer.parseInt(labelShots.getText().substring(7)),
                             Integer.parseInt(labelMinST.getText().substring(8)),
                             Integer.parseInt(labelRcl.getText().substring(5)),
-                            Float.parseFloat(labelWeight.getText().substring(8)),
-                            Float.parseFloat(labelCost.getText().substring(6))});
+                            Integer.parseInt(labelCost.getText().substring(6)),
+                            Float.parseFloat(labelWeight.getText().substring(8))});
                     Window.isChanged = true;
                     dialogChoice.dispose();
                 }
@@ -514,6 +518,375 @@ public class RangedWeaponPanel extends JPanel
         gbl.setConstraints(buttonAdd, c);
         infoPanel.add(buttonAdd);
 //------------------buttonAdd-----------------------
+//------------------buttonAddNew-----------------------
+        JButton buttonAddNew = new JButton("Add new ranged weapon...");
+        buttonAddNew.setFont(Resources.font15);
+        buttonAddNew.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                String dmg = labelDamage.getText();
+                String type = labelType.getText();
+                String ss = labelSS.getText();
+                String acc = labelAcc.getText();
+                String range = labelRange.getText();
+                String maxrange = labelMaxRange.getText();
+                String rof = labelRoF.getText();
+                String shots = labelShots.getText();
+                String minst = labelMinST.getText();
+                String rcl = labelRcl.getText();
+                String cost = labelCost.getText();
+                String wt = labelWeight.getText();
+                textDescription.setEditable(true);
+                textDescription.setBackground(Color.WHITE);
+                buttonAdd.setVisible(false);
+                buttonAddNew.setVisible(false);
+                JTextField textCost = new JTextField();
+                ((AbstractDocument) textCost.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
+                JTextField textMinST = new JTextField();
+                ((AbstractDocument) textMinST.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
+                JTextField textSS = new JTextField();
+                ((AbstractDocument) textSS.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
+                JTextField textAcc = new JTextField();
+                ((AbstractDocument) textAcc.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
+                JTextField textRoF = new JTextField();
+                ((AbstractDocument) textRoF.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
+                JTextField textShots = new JTextField();
+                ((AbstractDocument) textShots.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
+                JTextField textRange = new JTextField();
+                ((AbstractDocument) textRange.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
+                JTextField textMaxRange = new JTextField();
+                ((AbstractDocument) textMaxRange.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
+                JTextField textRcl = new JTextField();
+                ((AbstractDocument) textRcl.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
+                JTextField textWeight = new JTextField();
+                JTextField textDamage = new JTextField();
+                JMenu menuDamageType = new JMenu("Damage type");
+                menuDamageType.setSelected(true);
+                JRadioButtonMenuItem rb1 = new JRadioButtonMenuItem("Рубящий",false);
+                menuDamageType.add(rb1);
+                JRadioButtonMenuItem rb2 = new JRadioButtonMenuItem("Проникающий",false);
+                menuDamageType.add(rb2);
+                JRadioButtonMenuItem rb3 = new JRadioButtonMenuItem("Дробящий",false);
+                menuDamageType.add(rb3);
+
+                c.gridwidth  = 1;
+                c.gridheight = 1;
+                c.gridx = 1;
+                c.gridy = 2;
+                c.weightx = 0;
+                c.weighty = 0;
+                labelDamage.setText("Damage:");
+                gbl.setConstraints(labelDamage, c);
+
+                c.weightx = 1;
+                c.gridx = 2;
+                textDamage.setFont(Resources.font15);
+                gbl.setConstraints(textDamage, c);
+                infoPanel.add(textDamage);
+
+                c.weightx = 0;
+                c.gridx = 3;
+                labelType.setText("Damage type:");
+                gbl.setConstraints(labelType, c);
+
+                c.weightx = 1;
+                c.gridx = 4;
+                menuDamageType.setFont(Resources.font15);
+                gbl.setConstraints(menuDamageType, c);
+                infoPanel.add(menuDamageType);
+
+                c.weightx = 0;
+                c.gridx = 1;
+                c.gridy = 3;
+                labelSS.setText("SS:");
+                gbl.setConstraints(labelSS, c);
+
+                c.weightx = 1;
+                c.gridx = 2;
+                textSS.setFont(Resources.font15);
+                gbl.setConstraints(textSS, c);
+                infoPanel.add(textSS);
+
+                c.weightx = 0;
+                c.gridx = 3;
+                labelAcc.setText("Acc:");
+                gbl.setConstraints(labelAcc, c);
+
+                c.weightx = 1;
+                c.gridx = 4;
+                textAcc.setFont(Resources.font15);
+                gbl.setConstraints(textAcc, c);
+                infoPanel.add(textAcc);
+
+                c.weightx = 0;
+                c.gridx = 1;
+                c.gridy = 4;
+                labelRoF.setText("RoF:");
+                gbl.setConstraints(labelRoF, c);
+
+                c.weightx = 1;
+                c.gridx = 2;
+                textRoF.setFont(Resources.font15);
+                gbl.setConstraints(textRoF, c);
+                infoPanel.add(textRoF);
+
+                c.weightx = 0;
+                c.gridx = 3;
+                labelShots.setText("Shots:");
+                gbl.setConstraints(labelShots, c);
+
+                c.weightx = 1;
+                c.gridx = 4;
+                textShots.setFont(Resources.font15);
+                gbl.setConstraints(textShots, c);
+                infoPanel.add(textShots);
+
+                c.weightx = 0;
+                c.gridy = 5;
+                c.gridx = 1;
+                labelRange.setText("Range:");
+                gbl.setConstraints(labelRange, c);
+
+                c.weightx = 1;
+                c.gridx = 2;
+                textRange.setFont(Resources.font15);
+                gbl.setConstraints(textRange, c);
+                infoPanel.add(textRange);
+
+                c.weightx = 0;
+                c.gridx = 3;
+                labelMaxRange.setText("Max range:");
+                gbl.setConstraints(labelMaxRange, c);
+
+                c.weightx = 1;
+                c.gridx = 4;
+                textMaxRange.setFont(Resources.font15);
+                gbl.setConstraints(textMaxRange, c);
+                infoPanel.add(textMaxRange);
+
+                c.weightx = 0;
+                c.gridy = 6;
+                c.gridx = 1;
+                labelMinST.setText("Min ST:");
+                gbl.setConstraints(labelMinST, c);
+
+                c.weightx = 1;
+                c.gridx = 2;
+                textMinST.setFont(Resources.font15);
+                gbl.setConstraints(textMinST, c);
+                infoPanel.add(textMinST);
+
+                c.weightx = 0;
+                c.gridx = 3;
+                labelRcl.setText("Rcl:");
+                gbl.setConstraints(labelRcl, c);
+
+                c.weightx = 1;
+                c.gridx = 4;
+                textRcl.setFont(Resources.font15);
+                gbl.setConstraints(textRcl, c);
+                infoPanel.add(textRcl);
+
+                c.weightx = 0;
+                c.gridx = 1;
+                c.gridy = 7;
+                labelWeight.setText("Weight:");
+                gbl.setConstraints(labelWeight, c);
+
+                c.weightx = 1;
+                c.gridx = 2;
+                textWeight.setFont(Resources.font15);
+                gbl.setConstraints(textWeight, c);
+                infoPanel.add(textWeight);
+
+                c.weightx = 0;
+                c.gridx = 3;
+                labelCost.setText("Cost:");
+                gbl.setConstraints(labelCost, c);
+
+                c.weightx = 1;
+                c.gridx = 4;
+                textCost.setFont(Resources.font15);
+                gbl.setConstraints(textCost, c);
+                infoPanel.add(textCost);
+
+                c.gridx = 1;
+                c.gridy = 8;
+                c.weighty = 1;
+                c.gridwidth = GridBagConstraints.REMAINDER;
+                c.gridheight = GridBagConstraints.RELATIVE;
+                gbl.setConstraints(scrollDescription, c);
+
+                JLabel labelName = new JLabel("Name");
+                labelName.setFont(Resources.font15);
+                labelName.setToolTipText("Название брони");
+                c.gridx = 1;
+                c.gridy = 1;
+                c.weighty = 0;
+                c.gridwidth = 1;
+                c.gridheight = 1;
+                gbl.setConstraints(labelName, c);
+                infoPanel.add(labelName);
+
+                JTextField textName = new JTextField();
+                textName.setFont(Resources.font15);
+                c.gridx = 2;
+                c.gridwidth = 2;
+                gbl.setConstraints(textName, c);
+                infoPanel.add(textName);
+
+                JButton add = new JButton();
+                add.setText("Add new ranged weapon");
+
+                JButton cancel = new JButton("Cancel");
+                cancel.setFont(Resources.font15);
+                cancel.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        listModel.addElement(textName.getText());
+                        infoPanel.remove(textName);
+                        infoPanel.remove(labelName);
+                        infoPanel.remove(textCost);
+                        infoPanel.remove(textDamage);
+                        infoPanel.remove(textAcc);
+                        infoPanel.remove(textSS);
+                        infoPanel.remove(textRoF);
+                        infoPanel.remove(textShots);
+                        infoPanel.remove(textRange);
+                        infoPanel.remove(textMaxRange);
+                        infoPanel.remove(textRcl);
+                        infoPanel.remove(textMinST);
+                        infoPanel.remove(textWeight);
+                        infoPanel.remove(menuDamageType);
+                        infoPanel.remove(cancel);
+                        infoPanel.remove(add);
+                        textDescription.setEditable(false);
+                        textDescription.setBackground(Color.LIGHT_GRAY);
+                        buttonAdd.setVisible(true);
+                        buttonAddNew.setVisible(true);
+                        labelCost.setVisible(true);
+                        c.gridwidth = 1;
+                        c.gridheight = 1;
+                        c.gridx = 1;
+                        c.gridy = 1;
+                        c.weightx = 0.0;
+                        c.weighty = 0.0;
+                        labelDamage.setText(dmg);
+                        gbl.setConstraints(labelDamage, c);
+                        c.gridx = 2;
+                        labelType.setText(type);
+                        gbl.setConstraints(labelType, c);
+                        c.gridx = 1;
+                        c.gridy = 2;
+                        labelSS.setText(ss);
+                        gbl.setConstraints(labelSS, c);
+                        c.gridx = 2;
+                        labelAcc.setText(acc);
+                        gbl.setConstraints(labelAcc, c);
+                        c.gridx = 3;
+                        labelRange.setText(range);
+                        gbl.setConstraints(labelRange, c);
+                        c.gridx = 4;
+                        labelMaxRange.setText(maxrange);
+                        gbl.setConstraints(labelMaxRange, c);
+                        c.gridx = 1;
+                        c.gridy = 3;
+                        labelRoF.setText(rof);
+                        gbl.setConstraints(labelRoF, c);
+                        c.gridx = 2;
+                        labelShots.setText(shots);
+                        gbl.setConstraints(labelShots, c);
+                        c.gridx = 3;
+                        labelMinST.setText(minst);
+                        gbl.setConstraints(labelMinST, c);
+                        c.gridx = 4;
+                        labelRcl.setText(rcl);
+                        gbl.setConstraints(labelRcl, c);
+                        c.gridx = 1;
+                        c.gridy = 4;
+                        labelWeight.setText(wt);
+                        gbl.setConstraints(labelWeight, c);
+                        c.gridx = 2;
+                        labelCost.setText(cost);
+                        gbl.setConstraints(labelCost, c);
+                        c.gridx = 1;
+                        c.gridy = 5;
+                        c.weightx = 1;
+                        c.weighty = 1;
+                        c.gridwidth = GridBagConstraints.REMAINDER;
+                        c.gridheight = GridBagConstraints.RELATIVE;
+                        try
+                        {
+                            textDescription.setText(DBConnect.getRangedWeaponOnName(skillsList.getSelectedValue()));
+                        } catch (SQLException e1)
+                        {
+                            e1.printStackTrace();
+                        }
+                        gbl.setConstraints(scrollDescription, c);
+                    }
+                });
+                c.gridwidth = 2;
+                c.gridx = 3;
+                c.gridy = 9;
+                gbl.setConstraints(cancel, c);
+                infoPanel.add(cancel);
+
+                add.setFont(Resources.font15);
+                add.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        boolean can = true;
+                        try
+                        {
+                            if (DBConnect.getRangedWeaponOnName(textName.getText()).equals("null"))
+                                DBConnect.addNewRangedWeapon(textName.getText(),
+                                        textDamage.getText(),
+                                        ((menuDamageType.getItem(0).isArmed()) ? "руб," : "") +
+                                                ((menuDamageType.getItem(1).isArmed()) ? "прон," : "") +
+                                                ((menuDamageType.getItem(2).isArmed()) ? "дроб," : ""),
+                                        textSS.getText(),
+                                        textAcc.getText(),
+                                        textRange.getText(),
+                                        textMaxRange.getText(),
+                                        textRoF.getText(),
+                                        textShots.getText(),
+                                        textMinST.getText(),
+                                        textRcl.getText(),
+                                        textCost.getText(),
+                                        textWeight.getText(),
+                                        textDescription.getText());
+                            else
+                            {
+                                JOptionPane.showConfirmDialog(infoPanel, "Оружие с таким именем уже существует!", "Error", JOptionPane.DEFAULT_OPTION);
+                                can = false;
+                            }
+                        } catch (SQLException e1)
+                        {
+                            e1.printStackTrace();
+                        }
+                        if (can)
+                        {
+                            dialogChoice.dispose();
+                            createDialog();
+                        }
+
+                    }
+                });
+                c.gridwidth = 2;
+                c.gridx = 1;
+                c.gridy = 9;
+                gbl.setConstraints(add, c);
+                infoPanel.add(add);
+            }
+        });
+        c.gridx = 2;
+        c.gridy = 6;
+        gbl.setConstraints(buttonAddNew, c);
+        infoPanel.add(buttonAddNew);
+//------------------buttonAddNew-----------------------
         dialogChoice.setVisible(true);
     }
 

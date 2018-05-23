@@ -12,7 +12,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -25,6 +24,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+import javax.swing.text.AbstractDocument;
 
 class InfoPanel extends JPanel
 {
@@ -210,6 +210,7 @@ class InfoPanel extends JPanel
 //------------------textRace-----------------------
 //------------------textAge-----------------------
         textAge = new JTextField();
+        ((AbstractDocument) textAge.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
         textAge.setFont(Resources.font15);
         textAge.addKeyListener(keyListener);
         c.gridx = 2;
@@ -229,6 +230,7 @@ class InfoPanel extends JPanel
 //------------------textHeight-----------------------
 //------------------textWeight-----------------------
         textWeight = new JTextField();
+        ((AbstractDocument) textWeight.getDocument()).setDocumentFilter(new FloatDocumentFilter(textWeight, false));
         textWeight.setFont(Resources.font15);
         textWeight.addKeyListener(keyListener);
         c.gridx = 6;
@@ -239,6 +241,7 @@ class InfoPanel extends JPanel
 //------------------textWeight-----------------------
 //------------------textInitialPoints-----------------------
         textInitialPoints = new JTextField();
+        ((AbstractDocument) textInitialPoints.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
         textInitialPoints.setFont(Resources.font15);
         textInitialPoints.addKeyListener(new KeyListener() {
             @Override
@@ -256,6 +259,8 @@ class InfoPanel extends JPanel
             @Override
             public void keyReleased(KeyEvent e)
             {
+                if (!textInitialPoints.getText().isEmpty() && Integer.parseInt(textInitialPoints.getText()) > 1000)
+                    textInitialPoints.setText("1000");
                 Window.mathPoints();
             }
         });

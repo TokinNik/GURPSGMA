@@ -11,7 +11,6 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.imageio.ImageIO;
@@ -36,6 +35,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import javax.swing.text.AbstractDocument;
 
 public class PerksPanel extends JPanel
 {
@@ -599,6 +599,7 @@ public class PerksPanel extends JPanel
             });
         }
 //------------------buttonMinusListener-----------------
+//------------------buttonAddNew-----------------
         buttonAddNew.setFont(Resources.font15);
         switch (mode)
         {
@@ -624,8 +625,10 @@ public class PerksPanel extends JPanel
                     buttonAdd.setVisible(false);
                     buttonAddNew.setVisible(false);
                     JTextField textCost = new JTextField();
+                    ((AbstractDocument) textCost.getDocument()).setDocumentFilter(new IntDocumentFilter(mode == 1));
                     JLabel labelMLvl = new JLabel("Max level");
                     JTextField textMLvl = new JTextField();
+                    ((AbstractDocument) textMLvl.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
                     if (mode != 2)
                     {
                         labelMaxLevel.setVisible(false);
@@ -660,6 +663,8 @@ public class PerksPanel extends JPanel
                         c.gridheight = GridBagConstraints.RELATIVE;
                         gbl.setConstraints(scrollDescription, c);
                     }
+                    else
+                        labelCost.setVisible(false);
 
                     JLabel label = new JLabel("Name");
                     label.setFont(Resources.font15);
@@ -742,6 +747,8 @@ public class PerksPanel extends JPanel
                                 c.gridheight = GridBagConstraints.RELATIVE;
                                 gbl.setConstraints(scrollDescription, c);
                             }
+                            else
+                                labelCost.setVisible(true);
                         }
                     });
                     c.gridwidth = 1;

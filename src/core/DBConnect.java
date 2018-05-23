@@ -187,7 +187,7 @@ public class DBConnect
         resSet = statmt.executeQuery("SELECT COUNT(*) FROM Hand_weapon");
         resSet.next();
         String[][] data = new String[8][resSet.getInt(1)];
-        resSet = statmt.executeQuery("SELECT hand_weapon_name, damage, damage_type, min_ST, KD, weight, cost, description FROM Hand_weapon");
+        resSet = statmt.executeQuery("SELECT hand_weapon_name, damage, damage_type, min_ST, KD, cost, weight, description FROM Hand_weapon");
         for (int i = 0; resSet.next(); i++)
         {
             data[0][i] = resSet.getString(1);
@@ -208,7 +208,7 @@ public class DBConnect
         resSet = statmt.executeQuery("SELECT COUNT(*) FROM Ranged_weapon");
         resSet.next();
         String[][] data = new String[14][resSet.getInt(1)];
-        resSet = statmt.executeQuery("SELECT ranged_weapon_name, damage, damage_type, SS, Acc, range, max_range, RoF, shots, min_ST, Rcl, weight, cost, description FROM Ranged_weapon");
+        resSet = statmt.executeQuery("SELECT ranged_weapon_name, damage, damage_type, SS, Acc, range, max_range, RoF, shots, min_ST, Rcl, cost, weight, description FROM Ranged_weapon");
         for (int i = 0; resSet.next(); i++)
         {
             data[0][i] = resSet.getString(1);
@@ -689,6 +689,48 @@ public class DBConnect
                 + description + "')");
     }
 
+    static void addNewArmor (String name, String DR, String zones, String cost, String weight, String description) throws SQLException
+    {
+        statmt.executeUpdate("INSERT INTO Armor(armor_name, DR, zones, cost, weight, description) VALUES ('"
+                + name + "',"
+                + DR + ",'"
+                + zones + "',"
+                + cost + ","
+                + weight + ",'"
+                + description + "')");
+    }
+
+    static void addNewHandWeapon(String name, String damage, String damageType, String minST, String KD, String weight, String cost, String description) throws SQLException {
+        statmt.executeUpdate("INSERT INTO Hand_weapon(hand_weapon_name, damage, damage_type, min_ST, KD, weight, cost, description) VALUES ('"
+                + name + "','"
+                + damage + "','"
+                + damageType + "',"
+                + minST + ","
+                + KD + ","
+                + cost + ","
+                + weight + ",'"
+                + description + "')");
+    }
+
+    static void addNewRangedWeapon(String name, String damage, String damageType, String SS, String Acc, String range, String maxRange, String RoF, String shots, String minST, String Rcl, String weight, String cost, String description) throws SQLException
+    {
+        statmt.executeUpdate("INSERT INTO Ranged_weapon(ranged_weapon_name, damage, damage_type, SS, Acc, range, max_range, RoF, shots, min_ST, Rcl, cost, weight, description) VALUES ('"
+                + name + "','"
+                + damage + "','"
+                + damageType + "',"
+                + SS + ","
+                + Acc + ","
+                + range + ","
+                + maxRange + ","
+                + RoF + ","
+                + shots + ","
+                + minST + ","
+                + Rcl + ","
+                + cost + ",'"
+                + weight + ","
+                + description + "')");
+    }
+
 //==============================ADD========================================
 //==============================CREATE=====================================
     static void createCharacter(int characterId) throws SQLException
@@ -714,9 +756,6 @@ public class DBConnect
         statmt.executeUpdate("DELETE FROM Inventory WHERE character_id=" + characterId);
         System.out.println("Персонаж " + characterId + " удалён");
     }
-
-
-
 //==============================DELETE=====================================
 
 }
