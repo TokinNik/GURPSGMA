@@ -221,6 +221,7 @@ class InfoPanel extends JPanel
 //------------------textAge-----------------------
 //------------------textHeight-----------------------
         textHeight = new JTextField();
+        ((AbstractDocument) textHeight.getDocument()).setDocumentFilter(new FloatDocumentFilter(textHeight, false));
         textHeight.setFont(Resources.font15);
         textHeight.addKeyListener(keyListener);
         c.gridx = 4;
