@@ -20,6 +20,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
@@ -412,32 +413,117 @@ public class ArmorPanel extends JPanel
                 ((AbstractDocument) textCost.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
                 JTextField textDR = new JTextField();
                 ((AbstractDocument) textDR.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
+                JMenuBar menuBarZones = new JMenuBar();
+                menuBarZones.setFont(Resources.font15);
                 JMenu menuZones = new JMenu("Zones");
                 menuZones.setSelected(true);
+                Boolean [] zones = new Boolean[]{false,false,false,false,false,false,false,false,false,false,false,false};
                 JRadioButtonMenuItem rb3 = new JRadioButtonMenuItem("3 (Глаза)",false);
+                rb3.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        zones[0] = rb3.isArmed();
+                    }
+                });
                 menuZones.add(rb3);
                 JRadioButtonMenuItem rb4 = new JRadioButtonMenuItem("4 (Лицо)",false);
+                rb4.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        zones[1] = rb4.isArmed();
+                    }
+                });
                 menuZones.add(rb4);
                 JRadioButtonMenuItem rb5 = new JRadioButtonMenuItem("5 (Череп)",false);
+                rb5.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        zones[2] = rb5.isArmed();
+                    }
+                });
                 menuZones.add(rb5);
                 JRadioButtonMenuItem rb6 = new JRadioButtonMenuItem("6 (Левая (или ближняя) рука)",false);
+                rb6.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        zones[3] = rb6.isArmed();
+                    }
+                });
                 menuZones.add(rb6);
                 JRadioButtonMenuItem rb7 = new JRadioButtonMenuItem("7 (Кисти рук)",false);
+                rb7.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        zones[4] = rb7.isArmed();
+                    }
+                });
                 menuZones.add(rb7);
                 JRadioButtonMenuItem rb8 = new JRadioButtonMenuItem("8 (Правая (или дальняя) рука)",false);
+                rb8.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        zones[5] = rb8.isArmed();
+                    }
+                });
                 menuZones.add(rb8);
                 JRadioButtonMenuItem rb9 = new JRadioButtonMenuItem("9 (Грудь)",false);
+                rb9.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        zones[6] = rb9.isArmed();
+                    }
+                });
                 menuZones.add(rb9);
                 JRadioButtonMenuItem rb10 = new JRadioButtonMenuItem("10 (Торс)",false);
+                rb10.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        zones[7] = rb10.isArmed();
+                    }
+                });
                 menuZones.add(rb10);
                 JRadioButtonMenuItem rb11 = new JRadioButtonMenuItem("11 (Пах)",false);
+                rb11.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        zones[8] = rb11.isArmed();
+                    }
+                });
                 menuZones.add(rb11);
                 JRadioButtonMenuItem rb12 = new JRadioButtonMenuItem("12 (Правая (или дальняя) нога)",false);
+                rb12.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        zones[9] = rb12.isArmed();
+                    }
+                });
                 menuZones.add(rb12);
                 JRadioButtonMenuItem rb1314 = new JRadioButtonMenuItem("13,14 (Левая (или ближняя) нога)",false);
+                rb1314.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        zones[10] = rb1314.isArmed();
+                    }
+                });
                 menuZones.add(rb1314);
                 JRadioButtonMenuItem rb1718 = new JRadioButtonMenuItem("17,18 (Сердце или жизненно важные органы)",false);
+                rb1718.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        zones[11] = rb1718.isArmed();
+                    }
+                });
                 menuZones.add(rb1718);
+                menuBarZones.add(menuZones);
                 JTextField textWeight = new JTextField();
 
                 c.gridwidth  = 1;
@@ -449,11 +535,11 @@ public class ArmorPanel extends JPanel
                 labelZones.setText("Zones:");
                 gbl.setConstraints(labelZones, c);
 
-                c.weightx = 1;
+                c.weightx = 0;
                 c.gridx = 2;
-                menuZones.setFont(Resources.font15);
-                gbl.setConstraints(menuZones, c);
-                infoPanel.add(menuZones);
+                menuBarZones.setFont(Resources.font15);
+                gbl.setConstraints(menuBarZones, c);
+                infoPanel.add(menuBarZones);
 
                 c.weightx = 1;
                 c.gridx = 3;
@@ -531,7 +617,7 @@ public class ArmorPanel extends JPanel
                         buttonAdd.setVisible(true);
                         buttonAddNew.setVisible(true);
                         infoPanel.remove(textCost);
-                        infoPanel.remove(menuZones);
+                        infoPanel.remove(menuBarZones);
                         infoPanel.remove(textDR);
                         infoPanel.remove(textWeight);
                         labelCost.setVisible(true);
@@ -583,21 +669,24 @@ public class ArmorPanel extends JPanel
                         boolean can = true;
                         try
                         {
+                            String zonesOut = ((((zones[0]) ? "3," : "") +
+                                    ((zones[1]) ? "4," : "") +
+                                    ((zones[2]) ? "5," : "") +
+                                    ((zones[3]) ? "6," : "") +
+                                    ((zones[4]) ? "7," : "") +
+                                    ((zones[5]) ? "8," : "") +
+                                    ((zones[6]) ? "9," : "") +
+                                    ((zones[7]) ? "10," : "") +
+                                    ((zones[8]) ? "11," : "") +
+                                    ((zones[9]) ? "12," : "") +
+                                    ((zones[10]) ? "13,14," : "") +
+                                    ((zones[11]) ? "17,18," : "")));
+                            zonesOut = zonesOut.substring(0,zonesOut.length()-1);
+
                             if (DBConnect.getArmorOnName(textName.getText()).equals("null"))
                                 DBConnect.addNewArmor(textName.getText(),
                                         textDR.getText(),
-                                        ((menuZones.getItem(0).isArmed()) ? "3," : "") +
-                                        ((menuZones.getItem(0).isArmed()) ? "4," : "") +
-                                        ((menuZones.getItem(1).isArmed()) ? "5," : "") +
-                                        ((menuZones.getItem(2).isArmed()) ? "6," : "") +
-                                        ((menuZones.getItem(3).isArmed()) ? "7," : "") +
-                                        ((menuZones.getItem(4).isArmed()) ? "8," : "") +
-                                        ((menuZones.getItem(5).isArmed()) ? "9," : "") +
-                                        ((menuZones.getItem(6).isArmed()) ? "10," : "") +
-                                        ((menuZones.getItem(7).isArmed()) ? "11," : "") +
-                                        ((menuZones.getItem(8).isArmed()) ? "12," : "") +
-                                        ((menuZones.getItem(9).isArmed()) ? "13,14," : "") +
-                                        ((menuZones.getItem(10).isArmed()) ? "17,18" : ""),
+                                        zonesOut,
                                         textCost.getText(),
                                         textWeight.getText(),
                                         textDescription.getText());

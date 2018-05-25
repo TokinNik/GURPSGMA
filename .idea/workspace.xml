@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/core/HandWeaponPanel.java" line="732" />
+    <bookmark url="file://$PROJECT_DIR$/src/core/HandWeaponPanel.java" line="480" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7ed9583-58bb-4e67-9be3-f3b8471310ea" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gmadb.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/gmadb.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/ArmorPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/ArmorPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/FloatDocumentFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/FloatDocumentFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/InfoPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/InfoPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Window.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -26,23 +27,17 @@
       <file leaf-file-name="DBConnect.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/DBConnect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="12070">
-              <caret line="758" selection-start-line="758" selection-end-line="758" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="12172">
+              <caret line="716" column="149" selection-start-line="716" selection-start-column="149" selection-end-line="716" selection-end-column="149" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Window.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/Window.java">
+      <file leaf-file-name="IntDocumentFilter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/IntDocumentFilter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="523" column="9" selection-start-line="523" selection-start-column="9" selection-end-line="523" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-81">
+              <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -50,8 +45,17 @@
       <file leaf-file-name="FloatDocumentFilter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/FloatDocumentFilter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="39" column="16" lean-forward="true" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
+            <state relative-caret-position="157">
+              <caret line="35" column="47" lean-forward="true" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Window.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/Window.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="457" column="21" lean-forward="true" selection-start-line="457" selection-start-column="21" selection-end-line="457" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -59,26 +63,34 @@
       <file leaf-file-name="PerksPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/PerksPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10523">
-              <caret line="629" column="59" selection-start-line="629" selection-start-column="59" selection-end-line="629" selection-end-column="59" />
+            <state relative-caret-position="-2788">
+              <caret line="627" column="116" selection-start-line="627" selection-start-column="116" selection-end-line="627" selection-end-column="116" />
+              <folding>
+                <marker date="1527113625059" expanded="true" signature="21938:25889" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InfoPanel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="InfoPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/InfoPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="220" column="50" lean-forward="true" selection-start-line="220" selection-start-column="50" selection-end-line="220" selection-end-column="50" />
+            <state relative-caret-position="3536">
+              <caret line="243" column="106" selection-start-line="243" selection-start-column="106" selection-end-line="243" selection-end-column="106" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArmorPanel.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ArmorPanel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/core/ArmorPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6409">
-              <caret line="654" column="9" selection-start-line="654" selection-start-column="9" selection-end-line="654" selection-end-column="9" />
+            <state relative-caret-position="303">
+              <caret line="419" column="122" selection-start-line="419" selection-start-column="122" selection-end-line="419" selection-end-column="122" />
+              <folding>
+                <element signature="e#2564#2565#0" expanded="true" />
+                <element signature="e#2610#2611#0" expanded="true" />
+                <marker date="1527171712556" expanded="false" signature="22597:25176" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -86,8 +98,8 @@
       <file leaf-file-name="RangedWeaponPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/RangedWeaponPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8908">
-              <caret line="933" column="13" selection-start-line="933" selection-start-column="13" selection-end-line="933" selection-end-column="13" />
+            <state relative-caret-position="8415">
+              <caret line="560" column="104" selection-start-line="560" selection-start-column="104" selection-end-line="560" selection-end-column="104" />
             </state>
           </provider>
         </entry>
@@ -95,8 +107,8 @@
       <file leaf-file-name="HandWeaponPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/HandWeaponPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7055">
-              <caret line="703" selection-start-line="703" selection-end-line="703" />
+            <state relative-caret-position="6562">
+              <caret line="451" column="106" selection-start-line="451" selection-start-column="106" selection-end-line="451" selection-end-column="106" />
             </state>
           </provider>
         </entry>
@@ -143,13 +155,13 @@
         <option value="$PROJECT_DIR$/src/core/DBConnect.java" />
         <option value="$PROJECT_DIR$/src/core/NumDocumentFilter.java" />
         <option value="$PROJECT_DIR$/src/core/IntDocumentFilter.java" />
-        <option value="$PROJECT_DIR$/src/core/ArmorPanel.java" />
         <option value="$PROJECT_DIR$/src/core/HandWeaponPanel.java" />
+        <option value="$PROJECT_DIR$/src/core/InfoPanel.java" />
         <option value="$PROJECT_DIR$/src/core/RangedWeaponPanel.java" />
         <option value="$PROJECT_DIR$/src/core/PerksPanel.java" />
         <option value="$PROJECT_DIR$/src/core/Window.java" />
         <option value="$PROJECT_DIR$/src/core/FloatDocumentFilter.java" />
-        <option value="$PROJECT_DIR$/src/core/InfoPanel.java" />
+        <option value="$PROJECT_DIR$/src/core/ArmorPanel.java" />
       </list>
     </option>
   </component>
@@ -169,6 +181,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -192,7 +205,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -275,43 +287,71 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="776" extended-state="6" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="7" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3297619" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.3297619" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="6" sideWeight="0.49855492" weight="0.32928804" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.25113463" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="3" sideWeight="0.49855492" weight="0.32928804" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4059524" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info id="Capture Tool" order="6" />
-      <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13046876" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13268608" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" sideWeight="0.49855492" weight="0.25" />
-      <window_info id="UI Designer" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.18690476" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Coverage" order="7" sideWeight="0.5014451" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="4" sideWeight="0.5014451" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17619048" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.1553398" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3297619" />
+      <window_info anchor="right" id="Maven Projects" order="7" weight="0.32928804" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -337,6 +377,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15062">
           <caret line="886" column="31" selection-start-line="886" selection-start-column="31" selection-end-line="886" selection-end-column="31" />
+          <folding>
+            <marker date="1527113625059" expanded="true" signature="21938:25889" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -344,9 +387,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11203">
           <caret line="659" column="28" selection-start-line="659" selection-start-column="28" selection-end-line="659" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -368,6 +408,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15062">
           <caret line="886" column="31" selection-start-line="886" selection-start-column="31" selection-end-line="886" selection-end-column="31" />
+          <folding>
+            <marker date="1527113625059" expanded="true" signature="21938:25889" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -375,9 +418,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3570">
           <caret line="210" column="136" selection-start-line="210" selection-start-column="136" selection-end-line="210" selection-end-column="136" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -413,9 +453,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7769">
           <caret line="457" column="68" selection-start-line="457" selection-start-column="68" selection-end-line="457" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -570,6 +607,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
           <caret line="3538" column="19" selection-start-line="3538" selection-start-column="19" selection-end-line="3538" selection-end-column="19" />
+          <folding>
+            <element signature="e#138883#138884#0" expanded="true" />
+            <element signature="e#138924#138925#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -603,11 +644,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/DBConnect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12070">
-          <caret line="758" selection-start-line="758" selection-end-line="758" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="12172">
+          <caret line="716" column="149" selection-start-line="716" selection-start-column="149" selection-end-line="716" selection-end-column="149" />
         </state>
       </provider>
     </entry>
@@ -629,32 +667,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/ArmorPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/core/HandWeaponPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6409">
-          <caret line="654" column="9" selection-start-line="654" selection-start-column="9" selection-end-line="654" selection-end-column="9" />
+        <state relative-caret-position="6562">
+          <caret line="451" column="106" selection-start-line="451" selection-start-column="106" selection-end-line="451" selection-end-column="106" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/HandWeaponPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/core/InfoPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7055">
-          <caret line="703" selection-start-line="703" selection-end-line="703" />
+        <state relative-caret-position="3536">
+          <caret line="243" column="106" selection-start-line="243" selection-start-column="106" selection-end-line="243" selection-end-column="106" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/RangedWeaponPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8908">
-          <caret line="933" column="13" selection-start-line="933" selection-start-column="13" selection-end-line="933" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/IntDocumentFilter.java" />
-    <entry file="file://$PROJECT_DIR$/src/core/PerksPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10523">
-          <caret line="629" column="59" selection-start-line="629" selection-start-column="59" selection-end-line="629" selection-end-column="59" />
+        <state relative-caret-position="8415">
+          <caret line="560" column="104" selection-start-line="560" selection-start-column="104" selection-end-line="560" selection-end-column="104" />
         </state>
       </provider>
     </entry>
@@ -665,27 +695,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/FloatDocumentFilter.java">
+    <entry file="file://$PROJECT_DIR$/src/core/Window.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="39" column="16" lean-forward="true" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
+        <state relative-caret-position="408">
+          <caret line="457" column="21" lean-forward="true" selection-start-line="457" selection-start-column="21" selection-end-line="457" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Window.java">
+    <entry file="file://$PROJECT_DIR$/src/core/PerksPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="523" column="9" selection-start-line="523" selection-start-column="9" selection-end-line="523" selection-end-column="9" />
+        <state relative-caret-position="-2788">
+          <caret line="627" column="116" selection-start-line="627" selection-start-column="116" selection-end-line="627" selection-end-column="116" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1527113625059" expanded="true" signature="21938:25889" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/InfoPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/core/IntDocumentFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="220" column="50" lean-forward="true" selection-start-line="220" selection-start-column="50" selection-end-line="220" selection-end-column="50" />
+        <state relative-caret-position="-81">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/FloatDocumentFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="35" column="47" lean-forward="true" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/ArmorPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="419" column="122" selection-start-line="419" selection-start-column="122" selection-end-line="419" selection-end-column="122" />
+          <folding>
+            <element signature="e#2564#2565#0" expanded="true" />
+            <element signature="e#2610#2611#0" expanded="true" />
+            <marker date="1527171712556" expanded="false" signature="22597:25176" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

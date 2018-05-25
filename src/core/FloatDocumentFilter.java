@@ -33,7 +33,6 @@ public class FloatDocumentFilter extends DocumentFilter
             return;
         String added;
         Boolean hasDot = field.getText().indexOf('.') != -1;
-        System.out.println(string + " offset: " + offset + " len: " + length + " str len: " + string.length() + " hasDot: " + hasDot);
         if (string.length() == 1 && offset > 0)
             if (string.equals(".") && !hasDot)
                 added = string;

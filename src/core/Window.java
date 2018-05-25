@@ -456,11 +456,6 @@ class Window extends JFrame
                         isChanged = false;
                         saveAll();
                     }
-                    if (result == JOptionPane.NO_OPTION)
-                    {
-                        isChanged = false;
-                        installAll();
-                    }
                 }
             }
 
