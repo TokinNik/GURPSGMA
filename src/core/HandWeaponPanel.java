@@ -20,6 +20,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
@@ -149,6 +150,8 @@ public class HandWeaponPanel extends JPanel
 //------------------tableHandWeapon-----------------------
         tableHandWeapon = new JTable();
         tableHandWeapon.setFont(Resources.font15);
+        tableHandWeapon.setSelectionBackground(Resources.GLASS_GREEN);
+        tableHandWeapon.setSelectionForeground(Color.BLACK);
         TableModel model = new DefaultTableModel(DBConnect.getCharacterHandWeapon(Window.characterId),
                 new Object[]{"Hand Weapon", "Damage", "Damage type", "Min ST", "KD", "Cost", "Weight"}){
             @Override
@@ -444,6 +447,7 @@ public class HandWeaponPanel extends JPanel
                 textDescription.setBackground(Color.WHITE);
                 buttonAdd.setVisible(false);
                 buttonAddNew.setVisible(false);
+                scrollPane.setVisible(false);
                 JTextField textCost = new JTextField();
                 ((AbstractDocument) textCost.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
                 JTextField textKD = new JTextField();
@@ -451,15 +455,38 @@ public class HandWeaponPanel extends JPanel
                 JTextField textMinST = new JTextField();
                 ((AbstractDocument) textMinST.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
                 JTextField textWeight = new JTextField();
+                ((AbstractDocument) textWeight.getDocument()).setDocumentFilter(new FloatDocumentFilter(textWeight, false));
                 JTextField textDamage = new JTextField();
+                JMenuBar menuBarDamageType = new JMenuBar();
+                menuBarDamageType.setFont(Resources.font15);
+                Boolean [] damageType = new Boolean[]{false,false,false};
                 JMenu menuDamageType = new JMenu("Damage type");
                 menuDamageType.setSelected(true);
                 JRadioButtonMenuItem rb1 = new JRadioButtonMenuItem("Рубящий",false);
+                rb1.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        damageType[0] = rb1.isArmed();
+                    }
+                });
                 menuDamageType.add(rb1);
                 JRadioButtonMenuItem rb2 = new JRadioButtonMenuItem("Проникающий",false);
+                rb2.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        damageType[1] = rb2.isArmed();
+                    }
+                });
                 menuDamageType.add(rb2);
                 JRadioButtonMenuItem rb3 = new JRadioButtonMenuItem("Дробящий",false);
+                rb3.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        damageType[2] = rb3.isArmed();
+                    }
+                });
                 menuDamageType.add(rb3);
+                menuBarDamageType.add(menuDamageType);
 
                 c.gridwidth  = 1;
                 c.gridheight = 1;
@@ -483,9 +510,9 @@ public class HandWeaponPanel extends JPanel
 
                 c.weightx = 0;
                 c.gridx = 4;
-                menuDamageType.setFont(Resources.font15);
-                gbl.setConstraints(menuDamageType, c);
-                infoPanel.add(menuDamageType);
+                menuBarDamageType.setFont(Resources.font15);
+                gbl.setConstraints(menuBarDamageType, c);
+                infoPanel.add(menuBarDamageType);
 
                 c.gridx = 1;
                 c.gridy = 3;
@@ -571,13 +598,14 @@ public class HandWeaponPanel extends JPanel
                         infoPanel.remove(textKD);
                         infoPanel.remove(textMinST);
                         infoPanel.remove(textWeight);
-                        infoPanel.remove(menuDamageType);
+                        infoPanel.remove(menuBarDamageType);
                         infoPanel.remove(cancel);
                         infoPanel.remove(add);
                         textDescription.setEditable(false);
                         textDescription.setBackground(Color.LIGHT_GRAY);
                         buttonAdd.setVisible(true);
                         buttonAddNew.setVisible(true);
+                        scrollPane.setVisible(true);
                         labelCost.setVisible(true);
                         c.gridwidth = 1;
                         c.gridheight = 1;
@@ -634,12 +662,15 @@ public class HandWeaponPanel extends JPanel
                         boolean can = true;
                         try
                         {
+                            String dmgTypeOut = (((damageType[0]) ? "реж," : "") +
+                                    ((damageType[1]) ? "прон," : "") +
+                                    ((damageType[2]) ? "дроб," : ""));
+                            dmgTypeOut = dmgTypeOut.substring(0,dmgTypeOut.length()-1);
+
                             if (DBConnect.getHandWeaponOnName(textName.getText()).equals("null"))
                                 DBConnect.addNewHandWeapon(textName.getText(),
                                         textDamage.getText(),
-                                        ((menuDamageType.getItem(0).isArmed()) ? "руб," : "") +
-                                                ((menuDamageType.getItem(1).isArmed()) ? "прон," : "") +
-                                                ((menuDamageType.getItem(2).isArmed()) ? "дроб," : ""),
+                                        dmgTypeOut,
                                         textMinST.getText(),
                                         textKD.getText(),
                                         textWeight.getText(),

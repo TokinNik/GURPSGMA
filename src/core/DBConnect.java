@@ -356,7 +356,6 @@ public class DBConnect
     {
         resSet = statmt.executeQuery("SELECT description FROM Advantage WHERE advantage_name='"
                 + String.valueOf(valueAt) + "'");
-        resSet.next();
         String data;
         if (resSet.next())
             data = resSet.getString(1);
@@ -371,7 +370,6 @@ public class DBConnect
     {
         resSet = statmt.executeQuery("SELECT description FROM Disadvantage WHERE disadvantage_name='"
                 + String.valueOf(valueAt) + "'");
-        resSet.next();
         String data;
         if (resSet.next())
             data = resSet.getString(1);

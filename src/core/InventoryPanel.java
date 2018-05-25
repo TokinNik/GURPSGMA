@@ -146,6 +146,8 @@ public class InventoryPanel extends JPanel
 //------------------tableInventory-----------------------
         tableInventory = new JTable();
         tableInventory.setFont(Resources.font15);
+        tableInventory.setSelectionBackground(Resources.GLASS_GREEN);
+        tableInventory.setSelectionForeground(Color.BLACK);
         TableModel model = new DefaultTableModel(DBConnect.getCharacterInventory(Window.characterId),
                 new Object[]{"Item", "Amount", "Weight", "Cost"}){
             @Override

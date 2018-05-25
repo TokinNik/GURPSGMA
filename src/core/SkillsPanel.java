@@ -149,6 +149,8 @@ public class SkillsPanel extends JPanel
 //------------------tableSkills-----------------------
         tableSkills = new JTable();
         tableSkills.setFont(Resources.font15);
+        tableSkills.setSelectionBackground(Resources.GLASS_GREEN);
+        tableSkills.setSelectionForeground(Color.BLACK);
         TableModel model = new DefaultTableModel(DBConnect.getCharacterSkills(Window.characterId),
                 new Object[]{"Skill", "Type", "Difficulty", "Relative level", "Level", "Cost"}){
             @Override
@@ -507,6 +509,7 @@ public class SkillsPanel extends JPanel
                 textDescription.setBackground(Color.WHITE);
                 buttonAdd.setVisible(false);
                 buttonAddNew.setVisible(false);
+                scrollPane.setVisible(false);
                 JSpinner spinnerDifficulty = new JSpinner(new SpinnerListModel(new Object[]{"Easy", "Middle", "Hard", "Very Hard"}));
                 JSpinner spinnerType = new JSpinner(new SpinnerListModel(new Object[]{"ST", "DX", "IQ", "HT"}));
                 JTextField textRelativeLevel = new JTextField();
@@ -594,6 +597,7 @@ public class SkillsPanel extends JPanel
                         textDescription.setBackground(Color.LIGHT_GRAY);
                         buttonAdd.setVisible(true);
                         buttonAddNew.setVisible(true);
+                        scrollPane.setVisible(true);
                         infoPanel.remove(spinnerDifficulty);
                         infoPanel.remove(textRelativeLevel);
                         infoPanel.remove(spinnerType);

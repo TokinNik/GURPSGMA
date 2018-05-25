@@ -150,6 +150,8 @@ public class ArmorPanel extends JPanel
 //------------------tableArmor-----------------------
         tableArmor = new JTable();
         tableArmor.setFont(Resources.font15);
+        tableArmor.setSelectionBackground(Resources.GLASS_GREEN);
+        tableArmor.setSelectionForeground(Color.BLACK);
         TableModel model = new DefaultTableModel(DBConnect.getCharacterArmor(Window.characterId),
                 new Object[]{"Armor", "Zones", "DR", "Weight", "Cost"}){
             @Override
@@ -409,10 +411,13 @@ public class ArmorPanel extends JPanel
                 textDescription.setBackground(Color.WHITE);
                 buttonAdd.setVisible(false);
                 buttonAddNew.setVisible(false);
+                scrollPane.setVisible(false);
                 JTextField textCost = new JTextField();
                 ((AbstractDocument) textCost.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
                 JTextField textDR = new JTextField();
                 ((AbstractDocument) textDR.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
+                JTextField textWeight = new JTextField();
+                ((AbstractDocument) textWeight.getDocument()).setDocumentFilter(new FloatDocumentFilter(textWeight, false));
                 JMenuBar menuBarZones = new JMenuBar();
                 menuBarZones.setFont(Resources.font15);
                 JMenu menuZones = new JMenu("Zones");
@@ -524,7 +529,6 @@ public class ArmorPanel extends JPanel
                 });
                 menuZones.add(rb1718);
                 menuBarZones.add(menuZones);
-                JTextField textWeight = new JTextField();
 
                 c.gridwidth  = 1;
                 c.gridheight = 1;
@@ -616,6 +620,7 @@ public class ArmorPanel extends JPanel
                         textDescription.setBackground(Color.LIGHT_GRAY);
                         buttonAdd.setVisible(true);
                         buttonAddNew.setVisible(true);
+                        scrollPane.setVisible(true);
                         infoPanel.remove(textCost);
                         infoPanel.remove(menuBarZones);
                         infoPanel.remove(textDR);

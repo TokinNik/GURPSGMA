@@ -156,14 +156,11 @@ public class PerksPanel extends JPanel
                     JDialog dialog = new JDialog();
                     dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                     if (tabbedPane.getSelectedIndex() == 0)
-                        dialog.setTitle(String.valueOf(tableAdvantage.getValueAt(tableAdvantage.getSelectedRow(),
-                            tableAdvantage.getSelectedColumn())));
+                        dialog.setTitle(String.valueOf(tableAdvantage.getValueAt(tableAdvantage.getSelectedRow(), 0)));
                     else if (tabbedPane.getSelectedIndex() == 1)
-                        dialog.setTitle(String.valueOf(tableDisadvantage.getValueAt(tableDisadvantage.getSelectedRow(),
-                            tableDisadvantage.getSelectedColumn())));
+                        dialog.setTitle(String.valueOf(tableDisadvantage.getValueAt(tableDisadvantage.getSelectedRow(), 0)));
                     else
-                        dialog.setTitle(String.valueOf(tableQuirk.getValueAt(tableQuirk.getSelectedRow(),
-                                tableQuirk.getSelectedColumn())));
+                        dialog.setTitle(String.valueOf(tableQuirk.getValueAt(tableQuirk.getSelectedRow(), 0)));
                     dialog.setModal(false);
                     dialog.setFont(Resources.font31);
                     dialog.setResizable(true);
@@ -201,6 +198,8 @@ public class PerksPanel extends JPanel
 //------------------tableAdvantage-----------------------
         tableAdvantage = new JTable();
         tableAdvantage.setFont(Resources.font15);
+        tableAdvantage.setSelectionBackground(Resources.GLASS_GREEN);
+        tableAdvantage.setSelectionForeground(Color.BLACK);
         TableModel model = new DefaultTableModel(DBConnect.getCharacterAdvantage(Window.characterId),
                 new Object[]{"Advantage", "Cost", "Level"}){
             @Override
@@ -247,6 +246,8 @@ public class PerksPanel extends JPanel
 //------------------tableDisadvantage-----------------------
         tableDisadvantage = new JTable();
         tableDisadvantage.setFont(Resources.font15);
+        tableDisadvantage.setSelectionBackground(Resources.GLASS_GREEN);
+        tableDisadvantage.setSelectionForeground(Color.BLACK);
         model = new DefaultTableModel(DBConnect.getCharacterDisadvantage(Window.characterId),
                 new Object[]{"Disadvantage", "Cost", "Level"}){
             @Override
@@ -290,6 +291,8 @@ public class PerksPanel extends JPanel
 //------------------tableQuirk-----------------------
         tableQuirk = new JTable();
         tableQuirk.setFont(Resources.font15);
+        tableQuirk.setSelectionBackground(Resources.GLASS_GREEN);
+        tableQuirk.setSelectionForeground(Color.BLACK);
         model = new DefaultTableModel(DBConnect.getCharacterQuirk(Window.characterId),
                 new Object[]{"Quirk", "Cost", "Description"}){
             @Override
@@ -622,12 +625,16 @@ public class PerksPanel extends JPanel
                     buttonMinus.setVisible(false);
                     textDescription.setEditable(true);
                     textDescription.setBackground(Color.WHITE);
+                    textDescription.setText("");
                     buttonAdd.setVisible(false);
                     buttonAddNew.setVisible(false);
+                    scrollPane.setVisible(false);
                     JTextField textCost = new JTextField();
+                    textCost.setFont(Resources.font15);
                     ((AbstractDocument) textCost.getDocument()).setDocumentFilter(new IntDocumentFilter(mode == 1));
                     JLabel labelMLvl = new JLabel("Max level");
                     JTextField textMLvl = new JTextField();
+                    textMLvl.setFont(Resources.font15);
                     ((AbstractDocument) textMLvl.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
                     if (mode != 2)
                     {
@@ -635,6 +642,7 @@ public class PerksPanel extends JPanel
                         labelCurrentLevel.setVisible(false);
                         c.gridwidth  = 1;
                         c.gridheight = 1;
+                        c.ipadx = 0;
                         c.gridx = 1;
                         c.gridy = 2;
                         c.weightx = 0.0;
@@ -724,6 +732,7 @@ public class PerksPanel extends JPanel
                             textDescription.setEditable(false);
                             textDescription.setBackground(Color.LIGHT_GRAY);
                             buttonAdd.setVisible(true);
+                            scrollPane.setVisible(true);
                             buttonAddNew.setVisible(true);
                             if (mode != 2)
                             {

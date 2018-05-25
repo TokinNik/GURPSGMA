@@ -7,15 +7,19 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -82,9 +86,20 @@ class Window extends JFrame
         mainPanel.setLocation(0, 0);
 //------------------mainPanel--------------------
 //------------------menuPanel--------------------
-        JPanel menuPanel = new JPanel();
+        JPanel menuPanel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g)
+            {
+                super.paintComponent(g);
+                Image im = null;
+                try {
+                    im = ImageIO.read(Resources.BG_GREEN);
+                } catch (IOException ignored) {}
+                g.drawImage(im, 0, 0, getWidth(), getHeight(), null);
+            }
+        };
         menuPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        menuPanel.setBackground(Color.BLUE);
+        menuPanel.setBackground(Color.GRAY);
         c.gridx = 1;
         c.gridy = 1;
         gbl.setConstraints(menuPanel, c);
@@ -93,7 +108,7 @@ class Window extends JFrame
 //------------------leftPanel--------------------
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(gbl);
-        leftPanel.setBackground(Color.RED);
+        leftPanel.setBackground(Resources.LIGHT_GREEN);
         c.gridx = 1;
         c.gridy = 2;
         c.weightx = 0;
@@ -105,7 +120,7 @@ class Window extends JFrame
 //------------------rightPanel-------------------
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(gbl);
-        rightPanel.setBackground(Color.RED);
+        rightPanel.setBackground(Color.LIGHT_GRAY);
         c.gridx = 3;
         c.gridy = 2;
         c.weightx = 0;
@@ -211,7 +226,7 @@ class Window extends JFrame
 //------------------inventoryPanel-----------------------
 //------------------menuGroup--------------------------
         JPanel menuGroup = new JPanel(new GridLayout(4, 1, 0, 20));
-        menuGroup.setBackground(Color.RED);
+        menuGroup.setBackground(Color.LIGHT_GRAY);
         menuGroup.setVisible(false);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridheight = 1;
@@ -265,6 +280,8 @@ class Window extends JFrame
         characterList = new JList<>(DBConnect.getAllCharacter());
         characterId = allCharacterId.get(0);
         characterList.setFont(Resources.font15);
+        characterList.setSelectionBackground(Resources.GLASS_GREEN);
+        characterList.setSelectionForeground(Color.BLACK);
         characterList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e)
@@ -324,7 +341,7 @@ class Window extends JFrame
         leftPanel.add(scrollPane1);
 //------------------characterList------------------------
 //------------------saveButton------------------------
-        Button saveButton = new Button("Save");
+        JButton saveButton = new JButton("Save");
         saveButton.setFont(Resources.font15B);
         saveButton.addActionListener(new ActionListener() {
             @Override
@@ -337,7 +354,7 @@ class Window extends JFrame
         menuPanel.add(saveButton);
 //------------------saveButton------------------------
 //------------------deleteButton------------------------
-        Button deleteButton = new Button("Delete");
+        JButton deleteButton = new JButton("Delete");
         deleteButton.setFont(Resources.font15B);
         deleteButton.addActionListener(new ActionListener() {
             @Override
@@ -376,7 +393,7 @@ class Window extends JFrame
         menuPanel.add(deleteButton);
 //------------------deleteButton------------------------
 //------------------addButton------------------------
-        Button addButton = new Button("Add");
+        JButton addButton = new JButton("Add");
         addButton.setFont(Resources.font15B);
         addButton.addActionListener(new ActionListener() {
             @Override

@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/core/HandWeaponPanel.java" line="480" />
+    <bookmark url="file://$PROJECT_DIR$/src/core/HandWeaponPanel.java" line="507" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7ed9583-58bb-4e67-9be3-f3b8471310ea" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gmadb.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/gmadb.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/GURPSGMA_jar/GURPSGMA.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/GURPSGMA_jar/GURPSGMA.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/FloatDocumentFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/FloatDocumentFilter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/ArmorPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/ArmorPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/DBConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/DBConnect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/FloatDocumentFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/FloatDocumentFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/HandWeaponPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/HandWeaponPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/InventoryPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/InventoryPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/PerksPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/PerksPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/RangedWeaponPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/RangedWeaponPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/Resources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Resources.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/SkillsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/SkillsPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Window.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -27,8 +36,8 @@
       <file leaf-file-name="DBConnect.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/DBConnect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="12172">
-              <caret line="716" column="149" selection-start-line="716" selection-start-column="149" selection-end-line="716" selection-end-column="149" />
+            <state relative-caret-position="254">
+              <caret line="357" column="49" selection-start-line="357" selection-start-column="49" selection-end-line="357" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -36,7 +45,7 @@
       <file leaf-file-name="IntDocumentFilter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/IntDocumentFilter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-81">
+            <state relative-caret-position="17">
               <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
             </state>
           </provider>
@@ -45,8 +54,8 @@
       <file leaf-file-name="FloatDocumentFilter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/FloatDocumentFilter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="35" column="47" lean-forward="true" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
+            <state relative-caret-position="153">
+              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -54,8 +63,13 @@
       <file leaf-file-name="Window.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Window.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="457" column="21" lean-forward="true" selection-start-line="457" selection-start-column="21" selection-end-line="457" selection-end-column="21" />
+            <state relative-caret-position="404">
+              <caret line="343" column="49" lean-forward="true" selection-start-line="343" selection-start-column="49" selection-end-line="343" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2843#3246#0" expanded="true" />
+                <element signature="e#3245#3246#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,20 +77,26 @@
       <file leaf-file-name="PerksPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/PerksPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2788">
-              <caret line="627" column="116" selection-start-line="627" selection-start-column="116" selection-end-line="627" selection-end-column="116" />
+            <state relative-caret-position="301">
+              <caret line="630" column="49" selection-start-line="630" selection-start-column="20" selection-end-line="630" selection-end-column="49" />
               <folding>
-                <marker date="1527113625059" expanded="true" signature="21938:25889" ph="..." />
+                <element signature="imports" expanded="true" />
+                <element signature="e#9265#9266#0" expanded="true" />
+                <element signature="e#9309#9310#0" expanded="true" />
+                <element signature="e#11343#11344#0" expanded="true" />
+                <element signature="e#11387#11388#0" expanded="true" />
+                <element signature="e#13348#13349#0" expanded="true" />
+                <element signature="e#13392#13393#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InfoPanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/InfoPanel.java">
+      <file leaf-file-name="SkillsPanel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/SkillsPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3536">
-              <caret line="243" column="106" selection-start-line="243" selection-start-column="106" selection-end-line="243" selection-end-column="106" />
+            <state relative-caret-position="475">
+              <caret line="599" column="50" selection-start-line="599" selection-start-column="50" selection-end-line="599" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -84,12 +104,10 @@
       <file leaf-file-name="ArmorPanel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/core/ArmorPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="419" column="122" selection-start-line="419" selection-start-column="122" selection-end-line="419" selection-end-column="122" />
+            <state relative-caret-position="255">
+              <caret line="419" column="124" selection-start-line="419" selection-start-column="124" selection-end-line="419" selection-end-column="124" />
               <folding>
-                <element signature="e#2564#2565#0" expanded="true" />
-                <element signature="e#2610#2611#0" expanded="true" />
-                <marker date="1527171712556" expanded="false" signature="22597:25176" ph="..." />
+                <marker date="1527286181580" expanded="true" signature="22890:25469" ph="..." />
               </folding>
             </state>
           </provider>
@@ -98,8 +116,18 @@
       <file leaf-file-name="RangedWeaponPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/RangedWeaponPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8415">
-              <caret line="560" column="104" selection-start-line="560" selection-start-column="104" selection-end-line="560" selection-end-column="104" />
+            <state relative-caret-position="165">
+              <caret line="566" column="124" selection-start-line="566" selection-start-column="124" selection-end-line="566" selection-end-column="124" />
+              <folding>
+                <element signature="e#2606#2607#0" expanded="true" />
+                <element signature="e#2652#2653#0" expanded="true" />
+                <element signature="e#26507#26508#0" expanded="true" />
+                <element signature="e#26584#26585#0" expanded="true" />
+                <element signature="e#26891#26892#0" expanded="true" />
+                <element signature="e#26968#26969#0" expanded="true" />
+                <element signature="e#27272#27273#0" expanded="true" />
+                <element signature="e#27349#27350#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -107,8 +135,18 @@
       <file leaf-file-name="HandWeaponPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/HandWeaponPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6562">
-              <caret line="451" column="106" selection-start-line="451" selection-start-column="106" selection-end-line="451" selection-end-column="106" />
+            <state relative-caret-position="233">
+              <caret line="457" column="124" selection-start-line="457" selection-start-column="16" selection-end-line="457" selection-end-column="124" />
+              <folding>
+                <element signature="e#2598#2599#0" expanded="true" />
+                <element signature="e#2644#2645#0" expanded="true" />
+                <element signature="e#20405#20406#0" expanded="true" />
+                <element signature="e#20482#20483#0" expanded="true" />
+                <element signature="e#20789#20790#0" expanded="true" />
+                <element signature="e#20866#20867#0" expanded="true" />
+                <element signature="e#21170#21171#0" expanded="true" />
+                <element signature="e#21247#21248#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -133,6 +171,7 @@
       <find>hand</find>
       <find>&quot;Add new quirk&quot;</find>
       <find>Cost</find>
+      <find>JTextField</find>
     </findStrings>
     <replaceStrings>
       <replace>Armor</replace>
@@ -140,6 +179,7 @@
       <replace>HandWeapon</replace>
       <replace>Ranged</replace>
       <replace>ranged</replace>
+      <replace>HintTextField</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -148,19 +188,20 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/core/Resources.java" />
         <option value="$PROJECT_DIR$/src/core/BaseStatPanel.java" />
-        <option value="$PROJECT_DIR$/src/core/InventoryPanel.java" />
-        <option value="$PROJECT_DIR$/src/core/SkillsPanel.java" />
-        <option value="$PROJECT_DIR$/src/core/DBConnect.java" />
         <option value="$PROJECT_DIR$/src/core/NumDocumentFilter.java" />
         <option value="$PROJECT_DIR$/src/core/IntDocumentFilter.java" />
-        <option value="$PROJECT_DIR$/src/core/HandWeaponPanel.java" />
         <option value="$PROJECT_DIR$/src/core/InfoPanel.java" />
-        <option value="$PROJECT_DIR$/src/core/RangedWeaponPanel.java" />
-        <option value="$PROJECT_DIR$/src/core/PerksPanel.java" />
-        <option value="$PROJECT_DIR$/src/core/Window.java" />
         <option value="$PROJECT_DIR$/src/core/FloatDocumentFilter.java" />
+        <option value="$PROJECT_DIR$/src/core/InventoryPanel.java" />
+        <option value="$PROJECT_DIR$/src/core/Resources.java" />
+        <option value="$PROJECT_DIR$/src/core/Window.java" />
+        <option value="$PROJECT_DIR$/src/core/DBConnect.java" />
+        <option value="$PROJECT_DIR$/src/core/HintTextField.java" />
+        <option value="$PROJECT_DIR$/src/core/PerksPanel.java" />
+        <option value="$PROJECT_DIR$/src/core/SkillsPanel.java" />
+        <option value="$PROJECT_DIR$/src/core/HandWeaponPanel.java" />
+        <option value="$PROJECT_DIR$/src/core/RangedWeaponPanel.java" />
         <option value="$PROJECT_DIR$/src/core/ArmorPanel.java" />
       </list>
     </option>
@@ -181,8 +222,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -206,12 +245,131 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/gmadb.sqlite</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/artifacts/GURPSGMA_jar/GURPSGMA.jar</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/GURPSGMA/core/FloatDocumentFilter.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/GURPSGMA/core/InfoPanel$3.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/GURPSGMA/core/InfoPanel.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/core/FloatDocumentFilter.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/core/InfoPanel.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -287,7 +445,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="7" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -295,40 +453,60 @@
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.3297619" />
       <window_info anchor="right" id="Maven Projects" order="3" sideWeight="0.49855492" weight="0.32928804" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.4059524" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3297619" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.16904762" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13268608" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11326861" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" sideWeight="0.49855492" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.18690476" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.18690476" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info id="Designer" order="2" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="right" id="Coverage" order="4" sideWeight="0.5014451" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" sideWeight="0.49855492" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4059524" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.18690476" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.3297619" />
+      <window_info anchor="right" id="Maven Projects" order="3" sideWeight="0.49855492" weight="0.32928804" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13268608" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17619048" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.1553398" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17619048" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -362,37 +540,6 @@
     <entry file="file://$PROJECT_DIR$/src/core/Window.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9690">
-          <caret line="570" column="138" selection-start-line="570" selection-start-column="27" selection-end-line="570" selection-end-column="138" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Resources.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/PerksPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15062">
-          <caret line="886" column="31" selection-start-line="886" selection-start-column="31" selection-end-line="886" selection-end-column="31" />
-          <folding>
-            <marker date="1527113625059" expanded="true" signature="21938:25889" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/DBConnect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11203">
-          <caret line="659" column="28" selection-start-line="659" selection-start-column="28" selection-end-line="659" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Window.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9690">
           <caret line="570" column="138" lean-forward="true" selection-start-line="570" selection-start-column="27" selection-end-line="570" selection-end-column="138" />
         </state>
       </provider>
@@ -409,7 +556,13 @@
         <state relative-caret-position="15062">
           <caret line="886" column="31" selection-start-line="886" selection-start-column="31" selection-end-line="886" selection-end-column="31" />
           <folding>
-            <marker date="1527113625059" expanded="true" signature="21938:25889" ph="..." />
+            <element signature="imports" expanded="true" />
+            <element signature="e#9265#9266#0" expanded="true" />
+            <element signature="e#9309#9310#0" expanded="true" />
+            <element signature="e#11343#11344#0" expanded="true" />
+            <element signature="e#11387#11388#0" expanded="true" />
+            <element signature="e#13348#13349#0" expanded="true" />
+            <element signature="e#13392#13393#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -614,38 +767,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/InventoryPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="49" column="43" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Resources.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/BaseStatPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
           <caret line="661" selection-start-line="661" selection-end-line="661" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/SkillsPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="511" column="64" lean-forward="true" selection-start-line="511" selection-start-column="64" selection-end-line="511" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/DBConnect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12172">
-          <caret line="716" column="149" selection-start-line="716" selection-start-column="149" selection-end-line="716" selection-end-column="149" />
         </state>
       </provider>
     </entry>
@@ -667,27 +792,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/HandWeaponPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6562">
-          <caret line="451" column="106" selection-start-line="451" selection-start-column="106" selection-end-line="451" selection-end-column="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/InfoPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3536">
-          <caret line="243" column="106" selection-start-line="243" selection-start-column="106" selection-end-line="243" selection-end-column="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/RangedWeaponPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8415">
-          <caret line="560" column="104" selection-start-line="560" selection-start-column="104" selection-end-line="560" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/awt/event/WindowListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -695,45 +799,160 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Window.java">
+    <entry file="file://$PROJECT_DIR$/src/core/InfoPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="457" column="21" lean-forward="true" selection-start-line="457" selection-start-column="21" selection-end-line="457" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/PerksPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2788">
-          <caret line="627" column="116" selection-start-line="627" selection-start-column="116" selection-end-line="627" selection-end-column="116" />
-          <folding>
-            <marker date="1527113625059" expanded="true" signature="21938:25889" ph="..." />
-          </folding>
+        <state relative-caret-position="311">
+          <caret line="353" column="5" lean-forward="true" selection-start-line="344" selection-start-column="3" selection-end-line="353" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/IntDocumentFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-81">
+        <state relative-caret-position="17">
           <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/awt/Color.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-13">
+          <caret line="941" column="5" lean-forward="true" selection-start-line="941" selection-start-column="5" selection-end-line="941" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Resources.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="27" column="68" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="343" column="49" lean-forward="true" selection-start-line="343" selection-start-column="49" selection-end-line="343" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2843#3246#0" expanded="true" />
+            <element signature="e#3245#3246#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/DBConnect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="357" column="49" selection-start-line="357" selection-start-column="49" selection-end-line="357" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/javax/swing/JComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="4361" column="16" selection-start-line="4361" selection-start-column="16" selection-end-line="4361" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/HintTextField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="38" column="42" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#714#715#0" expanded="true" />
+            <element signature="e#771#772#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/javax/swing/JTextArea.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="138" column="11" selection-start-line="138" selection-start-column="11" selection-end-line="138" selection-end-column="11" />
+          <folding>
+            <element signature="e#4796#4797#0" expanded="true" />
+            <element signature="e#4834#4835#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/PerksPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="630" column="49" selection-start-line="630" selection-start-column="20" selection-end-line="630" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#9265#9266#0" expanded="true" />
+            <element signature="e#9309#9310#0" expanded="true" />
+            <element signature="e#11343#11344#0" expanded="true" />
+            <element signature="e#11387#11388#0" expanded="true" />
+            <element signature="e#13348#13349#0" expanded="true" />
+            <element signature="e#13392#13393#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/InventoryPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-442">
+          <caret line="148" column="22" selection-start-line="148" selection-start-column="22" selection-end-line="148" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/SkillsPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="599" column="50" selection-start-line="599" selection-start-column="50" selection-end-line="599" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/FloatDocumentFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="35" column="47" lean-forward="true" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
+        <state relative-caret-position="153">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/HandWeaponPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="457" column="124" selection-start-line="457" selection-start-column="16" selection-end-line="457" selection-end-column="124" />
+          <folding>
+            <element signature="e#2598#2599#0" expanded="true" />
+            <element signature="e#2644#2645#0" expanded="true" />
+            <element signature="e#20405#20406#0" expanded="true" />
+            <element signature="e#20482#20483#0" expanded="true" />
+            <element signature="e#20789#20790#0" expanded="true" />
+            <element signature="e#20866#20867#0" expanded="true" />
+            <element signature="e#21170#21171#0" expanded="true" />
+            <element signature="e#21247#21248#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/RangedWeaponPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="566" column="124" selection-start-line="566" selection-start-column="124" selection-end-line="566" selection-end-column="124" />
+          <folding>
+            <element signature="e#2606#2607#0" expanded="true" />
+            <element signature="e#2652#2653#0" expanded="true" />
+            <element signature="e#26507#26508#0" expanded="true" />
+            <element signature="e#26584#26585#0" expanded="true" />
+            <element signature="e#26891#26892#0" expanded="true" />
+            <element signature="e#26968#26969#0" expanded="true" />
+            <element signature="e#27272#27273#0" expanded="true" />
+            <element signature="e#27349#27350#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/ArmorPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="419" column="122" selection-start-line="419" selection-start-column="122" selection-end-line="419" selection-end-column="122" />
+        <state relative-caret-position="255">
+          <caret line="419" column="124" selection-start-line="419" selection-start-column="124" selection-end-line="419" selection-end-column="124" />
           <folding>
-            <element signature="e#2564#2565#0" expanded="true" />
-            <element signature="e#2610#2611#0" expanded="true" />
-            <marker date="1527171712556" expanded="false" signature="22597:25176" ph="..." />
+            <marker date="1527286181580" expanded="true" signature="22890:25469" ph="..." />
           </folding>
         </state>
       </provider>

@@ -38,7 +38,7 @@ public class FloatDocumentFilter extends DocumentFilter
                 added = string;
             else
                 added = string.replaceAll("\\D++", "");
-        else if (string.length() == 1 && offset == 0 && (string.equals("0") || string.equals(".")))
+        else if (string.length() == 1 && offset == 0 && (string.equals(".")))
             added = "";
         else if (hasMinus && string.length() == 1 && offset == 0 && string.equals("-"))
             added = "-";
