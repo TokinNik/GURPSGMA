@@ -111,20 +111,18 @@ public class RangedWeaponPanel extends JPanel
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                JDialog dialog = new JDialog();
+                dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                dialog.setModal(false);
+                dialog.setFont(Resources.font31);
+                dialog.setResizable(true);
+                dialog.setSize(700, 400);
+                dialog.setLocation(((screenSize.width / 2) - (dialog.getWidth() / 2)),
+                        ((screenSize.height / 2) - (dialog.getHeight() / 2)));
+                JTextArea textDescription = new JTextArea("Error");
                 if (tableRangedWeapon.getSelectedRowCount() != 0)
                 {
-                    JDialog dialog = new JDialog();
-                    dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-
                     dialog.setTitle(String.valueOf(tableRangedWeapon.getValueAt(tableRangedWeapon.getSelectedRow(), 0)));
-
-                    dialog.setModal(false);
-                    dialog.setFont(Resources.font31);
-                    dialog.setResizable(true);
-                    dialog.setSize(700, 400);
-                    dialog.setLocation(((screenSize.width / 2) - (dialog.getWidth() / 2)),
-                            ((screenSize.height / 2) - (dialog.getHeight() / 2)));
-                    JTextArea textDescription = new JTextArea("Error");
                     try
                     {
                         textDescription.setText(DBConnect.getRangedWeaponOnName(dialog.getTitle()));
@@ -132,14 +130,20 @@ public class RangedWeaponPanel extends JPanel
                     {
                         e1.printStackTrace();
                     }
-                    textDescription.setFont(Resources.font15);
-                    textDescription.setLineWrap(true);
-                    textDescription.setEditable(false);
-                    textDescription.setBackground(Color.lightGray);
-                    JScrollPane scrollDescription = new JScrollPane(textDescription);
-                    dialog.add(scrollDescription);
-                    dialog.setVisible(true);
                 }
+                else
+                {
+                    dialog.setTitle(String.valueOf("Ranged Weapon"));
+                    textDescription.setText("Всё, что наносит урон с помощью снарядов, а не при непостредственном контакте.\nЭто метательные ножи, луки, винтовки и т.д.");
+                }
+
+                textDescription.setFont(Resources.font15);
+                textDescription.setLineWrap(true);
+                textDescription.setEditable(false);
+                textDescription.setBackground(Color.lightGray);
+                JScrollPane scrollDescription = new JScrollPane(textDescription);
+                dialog.add(scrollDescription);
+                dialog.setVisible(true);
             }
         });
         c.gridx = 4;
@@ -231,7 +235,7 @@ public class RangedWeaponPanel extends JPanel
         c.ipady = 0;
         c.weightx = 0.0;
         c.weighty = 0.0;
-//------------------armorList-------------------------
+//------------------rangedWeaponList-------------------------
         String[][] rangedWeapon = new String[0][];
         try {
             rangedWeapon = DBConnect.getAllRangedWeapon();
@@ -242,15 +246,15 @@ public class RangedWeaponPanel extends JPanel
 
         for (String s: rangedWeapon[0])
             listModel.addElement(s);
-        JList<String> skillsList = new JList<>(listModel);
-        skillsList.setFont(Resources.font15);
-        skillsList.setSelectedIndex(0);
-        JScrollPane scrollPane = new JScrollPane(skillsList);
+        JList<String> rangedWeaponList = new JList<>(listModel);
+        rangedWeaponList.setFont(Resources.font15);
+        rangedWeaponList.setSelectedIndex(0);
+        JScrollPane scrollPane = new JScrollPane(rangedWeaponList);
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setMinimumSize(new Dimension(skillsList.getWidth(), dialogChoice.getHeight()));
+        scrollPane.setMinimumSize(new Dimension(rangedWeaponList.getWidth(), dialogChoice.getHeight()));
         gbl.setConstraints(scrollPane, c);
         dialogChoice.add(scrollPane);
-//------------------skillsList-------------------------
+//------------------rangedWeaponList-------------------------
 //------------------infoPanel-------------------------
         JPanel infoPanel = new JPanel(gbl);
         c.gridx = 2;
@@ -263,7 +267,7 @@ public class RangedWeaponPanel extends JPanel
 //------------------infoPanel-------------------------
 //------------------labelDamage-------------------------
         JLabel labelDamage = new JLabel();
-        labelDamage.setText("Damage: " + rangedWeapon[1][skillsList.getSelectedIndex()]);
+        labelDamage.setText("Damage: " + rangedWeapon[1][rangedWeaponList.getSelectedIndex()]);
         labelDamage.setFont(Resources.font15);
         labelDamage.setToolTipText("Урон оружия");
         c.gridwidth = 1;
@@ -277,7 +281,7 @@ public class RangedWeaponPanel extends JPanel
 //------------------labelDamage-------------------------
 //------------------labelType-------------------------
         JLabel labelType = new JLabel();
-        labelType.setText("Damage type: " + rangedWeapon[2][skillsList.getSelectedIndex()]);
+        labelType.setText("Damage type: " + rangedWeapon[2][rangedWeaponList.getSelectedIndex()]);
         labelType.setFont(Resources.font15);
         labelType.setToolTipText("Тип урона");
         c.gridx = 2;
@@ -289,7 +293,7 @@ public class RangedWeaponPanel extends JPanel
 //------------------labelType-------------------------
 //------------------labelSS-------------------------
         JLabel labelSS = new JLabel();
-        labelSS.setText("SS: " + rangedWeapon[3][skillsList.getSelectedIndex()]);
+        labelSS.setText("SS: " + rangedWeapon[3][rangedWeaponList.getSelectedIndex()]);
         labelSS.setFont(Resources.font15);
         labelSS.setToolTipText("Значение для выстрела навскидку");
         c.gridwidth = 1;
@@ -303,7 +307,7 @@ public class RangedWeaponPanel extends JPanel
 //------------------labelSS-------------------------
 //------------------labelAcc-------------------------
         JLabel labelAcc = new JLabel();
-        labelAcc.setText("Acc: " + rangedWeapon[4][skillsList.getSelectedIndex()]);
+        labelAcc.setText("Acc: " + rangedWeapon[4][rangedWeaponList.getSelectedIndex()]);
         labelAcc.setFont(Resources.font15);
         labelAcc.setToolTipText("Бонус за прицеливание");
         c.gridx = 2;
@@ -315,7 +319,7 @@ public class RangedWeaponPanel extends JPanel
 //------------------labelAcc-------------------------
 //------------------labelRange-------------------------
         JLabel labelRange = new JLabel();
-        labelRange.setText("Range: " + rangedWeapon[5][skillsList.getSelectedIndex()]);
+        labelRange.setText("Range: " + rangedWeapon[5][rangedWeaponList.getSelectedIndex()]);
         labelRange.setFont(Resources.font15);
         labelRange.setToolTipText("Эффективная дистанция стрельбы");
         c.gridx = 3;
@@ -327,7 +331,7 @@ public class RangedWeaponPanel extends JPanel
 //------------------labelRange-------------------------
 //------------------labelMaxRange-------------------------
         JLabel labelMaxRange = new JLabel();
-        labelMaxRange.setText("Max range: " + rangedWeapon[6][skillsList.getSelectedIndex()]);
+        labelMaxRange.setText("Max range: " + rangedWeapon[6][rangedWeaponList.getSelectedIndex()]);
         labelMaxRange.setFont(Resources.font15);
         labelMaxRange.setToolTipText("Максимальная дистанция стрельбы");
         c.gridx = 4;
@@ -339,7 +343,7 @@ public class RangedWeaponPanel extends JPanel
 //------------------labelMaxRange-------------------------
 //------------------labelRoF-------------------------
         JLabel labelRoF = new JLabel();
-        labelRoF.setText("Rof: " + rangedWeapon[7][skillsList.getSelectedIndex()]);
+        labelRoF.setText("Rof: " + rangedWeapon[7][rangedWeaponList.getSelectedIndex()]);
         labelRoF.setFont(Resources.font15);
         labelRoF.setToolTipText("Количество выстрелов в секунду");
         c.gridx = 1;
@@ -351,7 +355,7 @@ public class RangedWeaponPanel extends JPanel
 //------------------labelRoF-------------------------
 //------------------labelShots-------------------------
         JLabel labelShots = new JLabel();
-        labelShots.setText("Shots: " + rangedWeapon[8][skillsList.getSelectedIndex()]);
+        labelShots.setText("Shots: " + rangedWeapon[8][rangedWeaponList.getSelectedIndex()]);
         labelShots.setFont(Resources.font15);
         labelShots.setToolTipText("Количество патронов в одном магазине/обойме/ленте...");
         c.gridx = 2;
@@ -363,7 +367,7 @@ public class RangedWeaponPanel extends JPanel
 //------------------labelShots-------------------------
 // ------------------labelMinST-------------------------
         JLabel labelMinST = new JLabel();
-        labelMinST.setText("Min ST: " + rangedWeapon[9][skillsList.getSelectedIndex()]);
+        labelMinST.setText("Min ST: " + rangedWeapon[9][rangedWeaponList.getSelectedIndex()]);
         labelMinST.setFont(Resources.font15);
         labelMinST.setToolTipText("Минимальная сила для испольнования");
         c.gridwidth = 1;
@@ -377,7 +381,7 @@ public class RangedWeaponPanel extends JPanel
 //------------------labelMinST-------------------------
 //------------------labelRcl-------------------------
         JLabel labelRcl = new JLabel();
-        labelRcl.setText("Rcl: " + rangedWeapon[10][skillsList.getSelectedIndex()]);
+        labelRcl.setText("Rcl: " + rangedWeapon[10][rangedWeaponList.getSelectedIndex()]);
         labelRcl.setFont(Resources.font15);
         labelRcl.setToolTipText("Время перезарядки");
         c.gridx = 4;
@@ -389,7 +393,7 @@ public class RangedWeaponPanel extends JPanel
 //------------------labelType-------------------------
 //------------------labelWeight-------------------------
         JLabel labelWeight = new JLabel();
-        labelWeight.setText("Weight: " + rangedWeapon[12][skillsList.getSelectedIndex()]);
+        labelWeight.setText("Weight: " + rangedWeapon[12][rangedWeaponList.getSelectedIndex()]);
         labelWeight.setFont(Resources.font15);
         labelWeight.setToolTipText("Вес оружия");
         c.gridx = 1;
@@ -400,7 +404,7 @@ public class RangedWeaponPanel extends JPanel
 //------------------labelWeight-------------------------
 //------------------labelCost-------------------------
         JLabel labelCost = new JLabel();
-        labelCost.setText("Cost: " + ((rangedWeapon[11][skillsList.getSelectedIndex()])));
+        labelCost.setText("Cost: " + ((rangedWeapon[11][rangedWeaponList.getSelectedIndex()])));
         labelCost.setFont(Resources.font15);
         labelCost.setToolTipText("Средняя стоимость оружия");
         c.gridx = 2;
@@ -410,7 +414,7 @@ public class RangedWeaponPanel extends JPanel
 //------------------labelCost-------------------------
 //------------------textDescription-----------------------
         JTextArea textDescription = new JTextArea();
-        textDescription.setText(rangedWeapon[13][skillsList.getSelectedIndex()]);
+        textDescription.setText(rangedWeapon[13][rangedWeaponList.getSelectedIndex()]);
         textDescription.setFont(Resources.font11);
         textDescription.setLineWrap(true);
         textDescription.setEditable(false);
@@ -428,23 +432,23 @@ public class RangedWeaponPanel extends JPanel
 //------------------textDescription-----------------------
 //------------------advListListener-----------------------
         String[][] finalArmor = rangedWeapon;
-        skillsList.addListSelectionListener(new ListSelectionListener() {
+        rangedWeaponList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e)
             {
-                labelDamage.setText("Damage: " + finalArmor[1][skillsList.getSelectedIndex()]);
-                labelType.setText("Damage type: " + finalArmor[2][skillsList.getSelectedIndex()]);
-                labelSS.setText("SS: " + finalArmor[3][skillsList.getSelectedIndex()]);
-                labelAcc.setText("Acc: " + finalArmor[4][skillsList.getSelectedIndex()]);
-                labelRange.setText("Range: " + finalArmor[5][skillsList.getSelectedIndex()]);
-                labelMaxRange.setText("Max range: " + finalArmor[6][skillsList.getSelectedIndex()]);
-                labelRoF.setText("RoF: " + finalArmor[7][skillsList.getSelectedIndex()]);
-                labelShots.setText("Shots: " + finalArmor[8][skillsList.getSelectedIndex()]);
-                labelMinST.setText("Min ST: " + finalArmor[9][skillsList.getSelectedIndex()]);
-                labelRcl.setText("Rcl: " + finalArmor[10][skillsList.getSelectedIndex()]);
-                labelWeight.setText("Weight: " + finalArmor[12][skillsList.getSelectedIndex()]);
-                labelCost.setText("Cost: " + (finalArmor[11][skillsList.getSelectedIndex()]));
-                textDescription.setText(finalArmor[13][skillsList.getSelectedIndex()]);
+                labelDamage.setText("Damage: " + finalArmor[1][rangedWeaponList.getSelectedIndex()]);
+                labelType.setText("Damage type: " + finalArmor[2][rangedWeaponList.getSelectedIndex()]);
+                labelSS.setText("SS: " + finalArmor[3][rangedWeaponList.getSelectedIndex()]);
+                labelAcc.setText("Acc: " + finalArmor[4][rangedWeaponList.getSelectedIndex()]);
+                labelRange.setText("Range: " + finalArmor[5][rangedWeaponList.getSelectedIndex()]);
+                labelMaxRange.setText("Max range: " + finalArmor[6][rangedWeaponList.getSelectedIndex()]);
+                labelRoF.setText("RoF: " + finalArmor[7][rangedWeaponList.getSelectedIndex()]);
+                labelShots.setText("Shots: " + finalArmor[8][rangedWeaponList.getSelectedIndex()]);
+                labelMinST.setText("Min ST: " + finalArmor[9][rangedWeaponList.getSelectedIndex()]);
+                labelRcl.setText("Rcl: " + finalArmor[10][rangedWeaponList.getSelectedIndex()]);
+                labelWeight.setText("Weight: " + finalArmor[12][rangedWeaponList.getSelectedIndex()]);
+                labelCost.setText("Cost: " + (finalArmor[11][rangedWeaponList.getSelectedIndex()]));
+                textDescription.setText(finalArmor[13][rangedWeaponList.getSelectedIndex()]);
             }
         });
 //------------------advListListener-----------------------
@@ -460,7 +464,7 @@ public class RangedWeaponPanel extends JPanel
                 dtm = (DefaultTableModel) tableRangedWeapon.getModel();
                 for (int i = 0; i < dtm.getRowCount(); i++)
                 {
-                    if (dtm.getValueAt(i,0).equals(skillsList.getSelectedValue()))
+                    if (dtm.getValueAt(i,0).equals(rangedWeaponList.getSelectedValue()))
                     {
                         JDialog dialog = new JDialog(dialogChoice, "Error", true);
                         dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -493,7 +497,7 @@ public class RangedWeaponPanel extends JPanel
                 }
                 if (can)
                 {
-                    dtm.addRow( new Object[]{skillsList.getSelectedValue(),
+                    dtm.addRow( new Object[]{rangedWeaponList.getSelectedValue(),
                             labelDamage.getText().substring(8),
                             labelType.getText().substring(13),
                             Integer.parseInt(labelSS.getText().substring(4)),
@@ -541,6 +545,7 @@ public class RangedWeaponPanel extends JPanel
                 String cost = labelCost.getText();
                 String wt = labelWeight.getText();
                 textDescription.setEditable(true);
+                textDescription.setText("");
                 textDescription.setBackground(Color.WHITE);
                 buttonAdd.setVisible(false);
                 buttonAddNew.setVisible(false);
@@ -847,7 +852,7 @@ public class RangedWeaponPanel extends JPanel
                         c.gridheight = GridBagConstraints.RELATIVE;
                         try
                         {
-                            textDescription.setText(DBConnect.getRangedWeaponOnName(skillsList.getSelectedValue()));
+                            textDescription.setText(DBConnect.getRangedWeaponOnName(rangedWeaponList.getSelectedValue()));
                         } catch (SQLException e1)
                         {
                             e1.printStackTrace();
@@ -866,15 +871,38 @@ public class RangedWeaponPanel extends JPanel
                     @Override
                     public void actionPerformed(ActionEvent e)
                     {
-                        boolean can = true;
+                        boolean can = false;
                         try
                         {
                             String dmgTypeOut = (((damageType[0]) ? "реж," : "") +
                                     ((damageType[1]) ? "прон," : "") +
                                     ((damageType[2]) ? "дроб," : ""));
-                            dmgTypeOut = dmgTypeOut.substring(0,dmgTypeOut.length()-1);
 
-                            if (DBConnect.getRangedWeaponOnName(textName.getText()).equals("null"))
+                            if (textName.getText().isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите название оружия (Name) !", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (textDamage.getText().isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите урон оружия (Damage) !", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (dmgTypeOut.isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите тип урона оружия (Type) !", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (textSS.getText().isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите значение для выстрела навскидку (SS) !", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (textAcc.getText().isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите бонус за прицеливание оружия (Acc) !", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (textRange.getText().isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите эффективную дальность стрельбы оружия (Range) !", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (textMaxRange.getText().isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите максимальную дальность стрельбы оружия (Max Range) !", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (textRoF.getText().isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите скорострельность оружия (RoF) !", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (textShots.getText().isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите боезапас оружия (Shots) !", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (textRcl.getText().isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите время перезарядки оружия (Rcl) !", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (textWeight.getText().isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите вес оружия (Weight) !", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (DBConnect.getRangedWeaponOnName(textName.getText()).equals("null"))
+                            {
+                                dmgTypeOut = dmgTypeOut.substring(0,dmgTypeOut.length()-1);
                                 DBConnect.addNewRangedWeapon(textName.getText(),
                                         textDamage.getText(),
                                         dmgTypeOut,
@@ -884,14 +912,16 @@ public class RangedWeaponPanel extends JPanel
                                         textMaxRange.getText(),
                                         textRoF.getText(),
                                         textShots.getText(),
-                                        textMinST.getText(),
+                                        (textMinST.getText().isEmpty() ? "0" : textMinST.getText()),//
                                         textRcl.getText(),
-                                        textCost.getText(),
+                                        (textCost.getText().isEmpty() ? "0" : textCost.getText()),//
                                         textWeight.getText(),
-                                        textDescription.getText());
+                                        textDescription.getText());//
+                                can = true;
+                            }
                             else
                             {
-                                JOptionPane.showConfirmDialog(infoPanel, "Оружие с таким именем уже существует!", "Error", JOptionPane.DEFAULT_OPTION);
+                                JOptionPane.showConfirmDialog(infoPanel, "Оружие с таким именем уже существует!", "!", JOptionPane.DEFAULT_OPTION);
                                 can = false;
                             }
                         } catch (SQLException e1)

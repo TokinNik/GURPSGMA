@@ -107,12 +107,9 @@ public class InventoryPanel extends JPanel
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                if (tableInventory.getSelectedRowCount() != 0)
-                {
                     JDialog dialog = new JDialog();
                     dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
-                    dialog.setTitle(String.valueOf(tableInventory.getValueAt(tableInventory.getSelectedRow(), 0)));
 
                     dialog.setModal(false);
                     dialog.setFont(Resources.font31);
@@ -121,12 +118,22 @@ public class InventoryPanel extends JPanel
                     dialog.setLocation(((screenSize.width / 2) - (dialog.getWidth() / 2)),
                             ((screenSize.height / 2) - (dialog.getHeight() / 2)));
                     JTextArea textDescription = new JTextArea("Error");
-                    try
+
+                    if (tableInventory.getSelectedRowCount() != 0)
                     {
-                        textDescription.setText(DBConnect.getItemOnName(dialog.getTitle(), Window.characterId));
-                    } catch (SQLException e1)
+                        dialog.setTitle(String.valueOf(tableInventory.getValueAt(tableInventory.getSelectedRow(), 0)));
+                        try
+                        {
+                            textDescription.setText(DBConnect.getItemOnName(dialog.getTitle(), Window.characterId));
+                        } catch (SQLException e1)
+                        {
+                            e1.printStackTrace();
+                        }
+                    }
+                    else
                     {
-                        e1.printStackTrace();
+                        dialog.setTitle("Inventory");
+                        textDescription.setText("Это всё то, что имеет при себе персрнаж в кармане, сумке или другом месте.\nСюда записывается всё, кроме брони и оружия  ");
                     }
                     textDescription.setFont(Resources.font15);
                     textDescription.setLineWrap(true);
@@ -135,7 +142,6 @@ public class InventoryPanel extends JPanel
                     JScrollPane scrollDescription = new JScrollPane(textDescription);
                     dialog.add(scrollDescription);
                     dialog.setVisible(true);
-                }
             }
         });
         c.gridx = 4;

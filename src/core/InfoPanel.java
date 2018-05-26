@@ -10,6 +10,8 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
@@ -19,6 +21,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -301,24 +304,34 @@ class InfoPanel extends JPanel
         textRace.setText("race");
     }
 
-    void saveStats()
+    Boolean saveStats()
     {
-        String[] info = new String[8];
-        info[0] = textName.getText();
-        info[1] = textAge.getText();
-        info[2] = textInitialPoints.getText();
-        info[3] = labelRemainingPointsCount.getText();
-        info[4] = textDescription.getText();
-        info[5] = textHeight.getText();
-        info[6] = textWeight.getText();
-        info[7] = textRace.getText();
+        if (!textName.getText().isEmpty())
+        {
+            String[] info = new String[8];
+            info[0] = textName.getText();
+            info[1] = (textAge.getText().isEmpty() ? "0" : textAge.getText());
+            info[2] = (textInitialPoints.getText().isEmpty() ? "0" : textInitialPoints.getText());
+            info[3] = labelRemainingPointsCount.getText();
+            info[4] = textDescription.getText();
+            info[5] = (textHeight.getText().isEmpty() ? "0" : textHeight.getText());
+            info[6] = (textWeight.getText().isEmpty() ? "0" : textWeight.getText());
+            info[7] = textRace.getText();
 
-        try
+            try
+            {
+                DBConnect.saveInfo(info, Window.characterId);
+                return true;
+            } catch (SQLException e1)
+            {
+                e1.printStackTrace();
+                return false;
+            }
+        }
+        else
         {
-            DBConnect.saveInfo(info, Window.characterId);
-        } catch (SQLException e1)
-        {
-            e1.printStackTrace();
+            JOptionPane.showConfirmDialog(this, "Введите имя пресонажа!", "!" , JOptionPane.DEFAULT_OPTION);
+            return false;
         }
     }
 

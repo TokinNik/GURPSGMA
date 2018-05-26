@@ -10,6 +10,8 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -111,13 +113,8 @@ public class ArmorPanel extends JPanel
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                if (tableArmor.getSelectedRowCount() != 0)
-                {
                     JDialog dialog = new JDialog();
                     dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-
-                    dialog.setTitle(String.valueOf(tableArmor.getValueAt(tableArmor.getSelectedRow(), 0)));
-
                     dialog.setModal(false);
                     dialog.setFont(Resources.font31);
                     dialog.setResizable(true);
@@ -125,12 +122,21 @@ public class ArmorPanel extends JPanel
                     dialog.setLocation(((screenSize.width / 2) - (dialog.getWidth() / 2)),
                             ((screenSize.height / 2) - (dialog.getHeight() / 2)));
                     JTextArea textDescription = new JTextArea("Error");
-                    try
+                    if (tableArmor.getSelectedRowCount() != 0)
                     {
-                        textDescription.setText(DBConnect.getArmorOnName(dialog.getTitle()));
-                    } catch (SQLException e1)
+                        dialog.setTitle(String.valueOf(tableArmor.getValueAt(tableArmor.getSelectedRow(), 0)));
+                        try
+                        {
+                            textDescription.setText(DBConnect.getArmorOnName(dialog.getTitle()));
+                        } catch (SQLException e1)
+                        {
+                            e1.printStackTrace();
+                        }
+                    }
+                    else
                     {
-                        e1.printStackTrace();
+                        dialog.setTitle(String.valueOf("Armor"));
+                        textDescription.setText("Это доспех, его элемент или одежда, защищающая некоторые участки тела\nНапример: кольчуга, меховой жилет, стальные наручи, бронежилет...");
                     }
                     textDescription.setFont(Resources.font15);
                     textDescription.setLineWrap(true);
@@ -139,7 +145,6 @@ public class ArmorPanel extends JPanel
                     JScrollPane scrollDescription = new JScrollPane(textDescription);
                     dialog.add(scrollDescription);
                     dialog.setVisible(true);
-                }
             }
         });
         c.gridx = 4;
@@ -408,6 +413,7 @@ public class ArmorPanel extends JPanel
                 String wt = labelWeight.getText();
                 String zone = labelZones.getText();
                 textDescription.setEditable(true);
+                textDescription.setText("");
                 textDescription.setBackground(Color.WHITE);
                 buttonAdd.setVisible(false);
                 buttonAddNew.setVisible(false);

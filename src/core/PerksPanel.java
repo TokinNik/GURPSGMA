@@ -148,19 +148,8 @@ public class PerksPanel extends JPanel
             @Override
             public void actionPerformed(ActionEvent e)
             {
-
-                if ((tabbedPane.getSelectedIndex() == 0 && tableAdvantage.getRowCount() > 0 && tableAdvantage.getSelectedRowCount() != 0) ||
-                        (tabbedPane.getSelectedIndex() == 1 && tableDisadvantage.getRowCount() > 0 && tableDisadvantage.getSelectedRowCount() != 0) ||
-                        (tabbedPane.getSelectedIndex() == 2 && tableQuirk.getRowCount() > 0 && tableQuirk.getSelectedRowCount() != 0))
-                {
                     JDialog dialog = new JDialog();
                     dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-                    if (tabbedPane.getSelectedIndex() == 0)
-                        dialog.setTitle(String.valueOf(tableAdvantage.getValueAt(tableAdvantage.getSelectedRow(), 0)));
-                    else if (tabbedPane.getSelectedIndex() == 1)
-                        dialog.setTitle(String.valueOf(tableDisadvantage.getValueAt(tableDisadvantage.getSelectedRow(), 0)));
-                    else
-                        dialog.setTitle(String.valueOf(tableQuirk.getValueAt(tableQuirk.getSelectedRow(), 0)));
                     dialog.setModal(false);
                     dialog.setFont(Resources.font31);
                     dialog.setResizable(true);
@@ -168,18 +157,55 @@ public class PerksPanel extends JPanel
                     dialog.setLocation(((screenSize.width / 2) - (dialog.getWidth() / 2)),
                             ((screenSize.height / 2) - (dialog.getHeight() / 2)));
                     JTextArea textDescription = new JTextArea("Error");
-                    try
+
+                    if ((tabbedPane.getSelectedIndex() == 0 && tableAdvantage.getRowCount() > 0 && tableAdvantage.getSelectedRowCount() != 0) ||
+                            (tabbedPane.getSelectedIndex() == 1 && tableDisadvantage.getRowCount() > 0 && tableDisadvantage.getSelectedRowCount() != 0) ||
+                            (tabbedPane.getSelectedIndex() == 2 && tableQuirk.getRowCount() > 0 && tableQuirk.getSelectedRowCount() != 0))
                     {
                         if (tabbedPane.getSelectedIndex() == 0)
-                            textDescription.setText(DBConnect.getAdvantageOnName(dialog.getTitle()));
+                            dialog.setTitle(String.valueOf(tableAdvantage.getValueAt(tableAdvantage.getSelectedRow(), 0)));
                         else if (tabbedPane.getSelectedIndex() == 1)
-                            textDescription.setText(DBConnect.getDisadvantageOnName(dialog.getTitle()));
+                            dialog.setTitle(String.valueOf(tableDisadvantage.getValueAt(tableDisadvantage.getSelectedRow(), 0)));
                         else
-                            textDescription.setText(DBConnect.getQuirkOnName(dialog.getTitle()));
-                    } catch (SQLException e1)
-                    {
-                        e1.printStackTrace();
+                            dialog.setTitle(String.valueOf(tableQuirk.getValueAt(tableQuirk.getSelectedRow(), 0)));
+                        try
+                        {
+                            if (tabbedPane.getSelectedIndex() == 0)
+                                textDescription.setText(DBConnect.getAdvantageOnName(dialog.getTitle()));
+                            else if (tabbedPane.getSelectedIndex() == 1)
+                                textDescription.setText(DBConnect.getDisadvantageOnName(dialog.getTitle()));
+                            else
+                                textDescription.setText(DBConnect.getQuirkOnName(dialog.getTitle()));
+                        } catch (SQLException e1)
+                        {
+                            e1.printStackTrace();
+                        }
                     }
+                    else
+                    {
+                        if (tabbedPane.getSelectedIndex() == 0)
+                        {
+                            dialog.setTitle("Advantage");
+                            textDescription.setText("Это черты персонажа, являющиеся врожденными способностями. За редкими исключениями, персонаж может получить преимущества лишь при создании. Позднее получить или \"заслужить\" их нельзя. (Но обратите внимание, что магия или высокие технологии могут быть персонажу эквивалент такого преимущества наподобие Обостренный Слух (Acute Hearing)!) У каждого преимущества есть какая-то стоимость в очках персонажа. Персонаж может иметь столько преимуществ, за сколько сможет заплатить.");
+                        }
+                        else if (tabbedPane.getSelectedIndex() == 1)
+                        {
+                            dialog.setTitle("Disadvantage");
+                            textDescription.setText("Это проблемы, приобретенные до того, как ваш персонаж впервые вступит в игру. Как правило, персонажу можно дать недостатки только при создании.\n" +
+                                    "\n" +
+                                    "У каждого недостатка отрицательная цена в очках персонажа - чем хуже недостаток, тем больше стоимость. Таким образом, недостатки дают вам дополнительные очки персонажа, на которые можно улучшить своего героя в чем-то другом. Кроме того, неидеальность делает вашего персонажа более интересным и реалистичным и добавляет интереса в его отыгрывании.");
+                        }
+                        else
+                        {
+                            dialog.setTitle("Quirk");
+                            textDescription.setText("Квирк (причуда) - незначительная персональная черта, не являющаяся преимуществом или недостатком - это просто что-то уникальное. К примеру, такая заметная черта, как жадность - это недостаток, ну а если персонаж всегда требует оплаты в золоте - это причуда.\n" +
+                                    "\n" +
+                                    "Вы можете взять 5 причуд для своего персонажа, причем каждая причуда дает 1 дополнительное очко персонажа, таким образом вы получаете на 5 очков больше и можете потратить их на преимущества и умения. Эти очки не входят в установленный предел недостатков, допустимых в данной кампании.\n" +
+                                    "\n" +
+                                    "Единственный недостаток характерной черты в том, что вам придется ее отыграть. Если вы берете причуду \"нелюбовь высоты\", но спокойно лазаете по деревьям каждый раз, когда это нужно, мастер может наказать вас за плохой отыгрыш. Так, очков можно потерять больше, чем вы получили, выбирая причуду! Не выбирайте причуды, которые вы не хотите отыгрывать.");
+                        }
+                    }
+
                     textDescription.setFont(Resources.font15);
                     textDescription.setLineWrap(true);
                     textDescription.setEditable(false);
@@ -187,7 +213,6 @@ public class PerksPanel extends JPanel
                     JScrollPane scrollDescription = new JScrollPane(textDescription);
                     dialog.add(scrollDescription);
                     dialog.setVisible(true);
-                }
             }
         });
         c.gridx = 4;
@@ -730,6 +755,13 @@ public class PerksPanel extends JPanel
                             buttonPlus.setVisible(true);
                             buttonMinus.setVisible(true);
                             textDescription.setEditable(false);
+                            try
+                            {
+                                textDescription.setText(DBConnect.getSkillOnName(advList.getSelectedValue()));
+                            } catch (SQLException e1)
+                            {
+                                e1.printStackTrace();
+                            }
                             textDescription.setBackground(Color.LIGHT_GRAY);
                             buttonAdd.setVisible(true);
                             scrollPane.setVisible(true);
@@ -771,14 +803,25 @@ public class PerksPanel extends JPanel
                         @Override
                         public void actionPerformed(ActionEvent e)
                         {
-                            boolean can = true;
+                            boolean can = false;
                             try
                             {
                                 switch (mode)
                                 {
                                     case 0:
-                                        if (DBConnect.getAdvantageOnName(name.getText()).equals("null"))
+                                        if (name.getText().isEmpty())
+                                            JOptionPane.showConfirmDialog(infoPanel, "Введите название преимущества (Name) !", "!", JOptionPane.DEFAULT_OPTION);
+                                        else if (textCost.getText().isEmpty())
+                                            JOptionPane.showConfirmDialog(infoPanel, "Введите стоимость преимущества (Cost) !", "!", JOptionPane.DEFAULT_OPTION);
+                                        else if (textMLvl.getText().isEmpty())
+                                            JOptionPane.showConfirmDialog(infoPanel, "Введите максимальный уровень преимущества (Max level) !", "!", JOptionPane.DEFAULT_OPTION);
+                                        else if (textDescription.getText().isEmpty())
+                                            JOptionPane.showConfirmDialog(infoPanel, "Введите описание преимущества!", "!", JOptionPane.DEFAULT_OPTION);
+                                        else if (DBConnect.getAdvantageOnName(name.getText()).equals("null"))
+                                        {
                                             DBConnect.addNewAdvantage(name.getText(), Integer.parseInt(textCost.getText()), Integer.parseInt(textMLvl.getText()), textDescription.getText());
+                                            can = true;
+                                        }
                                         else
                                         {
                                             JOptionPane.showConfirmDialog(infoPanel, "Преимущество с таким именем уже существует!", "Error", JOptionPane.DEFAULT_OPTION);
@@ -786,8 +829,19 @@ public class PerksPanel extends JPanel
                                         }
                                         break;
                                     case 1:
-                                        if (DBConnect.getDisadvantageOnName(name.getText()).equals("null"))
+                                        if (name.getText().isEmpty())
+                                            JOptionPane.showConfirmDialog(infoPanel, "Введите название недостатка (Name) !", "!", JOptionPane.DEFAULT_OPTION);
+                                        else if (textCost.getText().isEmpty())
+                                            JOptionPane.showConfirmDialog(infoPanel, "Введите стоимость недостатка (Cost) !", "!", JOptionPane.DEFAULT_OPTION);
+                                        else if (textMLvl.getText().isEmpty())
+                                            JOptionPane.showConfirmDialog(infoPanel, "Введите максимальный уровень недостатка (Max level) !", "!", JOptionPane.DEFAULT_OPTION);
+                                        else if (textDescription.getText().isEmpty())
+                                            JOptionPane.showConfirmDialog(infoPanel, "Введите описание недостатка!", "!", JOptionPane.DEFAULT_OPTION);
+                                        else if (DBConnect.getDisadvantageOnName(name.getText()).equals("null"))
+                                        {
                                             DBConnect.addNewDisadvantage(name.getText(), Integer.parseInt(textCost.getText()), Integer.parseInt(textMLvl.getText()), textDescription.getText());
+                                            can = true;
+                                        }
                                         else
                                         {
                                             JOptionPane.showConfirmDialog(infoPanel, "Недостаток с таким именем уже существует!", "Error", JOptionPane.DEFAULT_OPTION);
@@ -795,8 +849,15 @@ public class PerksPanel extends JPanel
                                         }
                                         break;
                                     case 2:
-                                        if (DBConnect.getQuirkOnName(name.getText()).equals("null"))
+                                        if (name.getText().isEmpty())
+                                            JOptionPane.showConfirmDialog(infoPanel, "Введите название причуды (Name) !", "!", JOptionPane.DEFAULT_OPTION);
+                                        else if (textDescription.getText().isEmpty())
+                                            JOptionPane.showConfirmDialog(infoPanel, "Введите описание причуды!", "!", JOptionPane.DEFAULT_OPTION);
+                                        else if (DBConnect.getQuirkOnName(name.getText()).equals("null"))
+                                        {
                                             DBConnect.addNewQuirk(name.getText(), textDescription.getText());
+                                            can = true;
+                                        }
                                         else
                                         {
                                             JOptionPane.showConfirmDialog(infoPanel, "Причуда с таким именем уже существует!", "Error", JOptionPane.DEFAULT_OPTION);

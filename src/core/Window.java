@@ -609,23 +609,25 @@ class Window extends JFrame
 
     private void saveAll()
     {
-        basePanel.saveStats();
-        infoPanel.saveStats();
-        perksPanel.saveStats();
-        skillsPanel.saveStats();
-        armorPanel.saveStats();
-        inventoryPanel.saveStats();
-        handWeaponPanel.saveStats();
-        rangedWeaponPanel.saveStats();
-        try
+        if (infoPanel.saveStats())
         {
-            int id = characterId;
-            characterList.setListData(DBConnect.getAllCharacter());
-            characterId = id;
-            characterList.setSelectedIndex(allCharacterId.indexOf(characterId));
-        } catch (SQLException e1)
-        {
-            e1.printStackTrace();
+            basePanel.saveStats();
+            perksPanel.saveStats();
+            skillsPanel.saveStats();
+            armorPanel.saveStats();
+            inventoryPanel.saveStats();
+            handWeaponPanel.saveStats();
+            rangedWeaponPanel.saveStats();
+            try
+            {
+                int id = characterId;
+                characterList.setListData(DBConnect.getAllCharacter());
+                characterId = id;
+                characterList.setSelectedIndex(allCharacterId.indexOf(characterId));
+            } catch (SQLException e1)
+            {
+                e1.printStackTrace();
+            }
         }
     }
 

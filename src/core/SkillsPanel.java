@@ -110,12 +110,10 @@ public class SkillsPanel extends JPanel
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                if (tableSkills.getSelectedRowCount() != 0)
-                {
+
                     JDialog dialog = new JDialog();
                     dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
-                    dialog.setTitle(String.valueOf(tableSkills.getValueAt(tableSkills.getSelectedRow(), 0)));
 
                     dialog.setModal(false);
                     dialog.setFont(Resources.font31);
@@ -124,13 +122,25 @@ public class SkillsPanel extends JPanel
                     dialog.setLocation(((screenSize.width / 2) - (dialog.getWidth() / 2)),
                             ((screenSize.height / 2) - (dialog.getHeight() / 2)));
                     JTextArea textDescription = new JTextArea("Error");
-                    try
+                    if (tableSkills.getSelectedRowCount() != 0)
                     {
-                        textDescription.setText(DBConnect.getSkillOnName(dialog.getTitle()));
-                    } catch (SQLException e1)
-                    {
-                        e1.printStackTrace();
+                        dialog.setTitle(String.valueOf(tableSkills.getValueAt(tableSkills.getSelectedRow(), 0)));
+                        try
+                        {
+                            textDescription.setText(DBConnect.getSkillOnName(dialog.getTitle()));
+                        } catch (SQLException e1)
+                        {
+                            e1.printStackTrace();
+                        }
                     }
+                    else
+                    {
+                        dialog.setTitle("Skills");
+                        textDescription.setText("Навык – это определенный вид знаний. Дзюдо, ядерная физика, владение мечом, механика, смертельные заклинания и английский язык – все это навыки. Каждый навк отдельно и существует само по себе, но некоторые помогают изучить другие.\n" +
+                                "\n" +
+                                "Каждый ваш навык представлен числом. Например, “Короткий меч–17” означает, что ваш умение во владении коротким мечом равно 17. Чем выше число, тем лучше вы владеете навыком. Когда вы пытаетесь что-либо сделать, то вы (или мастер) бросаете 3 кубика и делаете проверку на успех против своего навыка, которое мастер модифицирует как считает нужным. Если число, которое вы выкинули, меньше или равно вашему (модифицированному) навку, то вам удалось выполнить действие! Но если вы выбрасываете 17 или 18 , то это автоматическая неудача.");
+                    }
+
                     textDescription.setFont(Resources.font15);
                     textDescription.setLineWrap(true);
                     textDescription.setEditable(false);
@@ -138,7 +148,7 @@ public class SkillsPanel extends JPanel
                     JScrollPane scrollDescription = new JScrollPane(textDescription);
                     dialog.add(scrollDescription);
                     dialog.setVisible(true);
-                }
+
             }
         });
         c.gridx = 4;
@@ -506,6 +516,7 @@ public class SkillsPanel extends JPanel
                 buttonPlus.setVisible(false);
                 buttonMinus.setVisible(false);
                 textDescription.setEditable(true);
+                textDescription.setText("");
                 textDescription.setBackground(Color.WHITE);
                 buttonAdd.setVisible(false);
                 buttonAddNew.setVisible(false);
@@ -644,11 +655,18 @@ public class SkillsPanel extends JPanel
                     @Override
                     public void actionPerformed(ActionEvent e)
                     {
-                        boolean can = true;
+                        boolean can = false;
                         try
                         {
-                            if (DBConnect.getSkillOnName(textName.getText()).equals("null"))
+                            if (textName.getText().isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите название навыка (Name) !", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (textDescription.getText().isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите описание навыка!", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (DBConnect.getSkillOnName(textName.getText()).equals("null"))
+                            {
                                 DBConnect.addNewSkill(textName.getText(), spinnerType.getValue().toString(), spinnerDifficulty.getValue().toString(), textRelativeLevel.getText(), textDescription.getText());
+                                can = true;
+                            }
                             else
                                 {
                                     JOptionPane.showConfirmDialog(infoPanel, "Навык с таким именем уже существует!", "Error", JOptionPane.DEFAULT_OPTION);

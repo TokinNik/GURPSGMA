@@ -724,8 +724,8 @@ public class DBConnect
                 + shots + ","
                 + minST + ","
                 + Rcl + ","
-                + cost + ",'"
-                + weight + ","
+                + cost + ","
+                + weight + ",'"
                 + description + "')");
     }
 
