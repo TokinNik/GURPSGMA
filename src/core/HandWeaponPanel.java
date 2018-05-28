@@ -219,15 +219,15 @@ public class HandWeaponPanel extends JPanel
 
         c.anchor = GridBagConstraints.WEST;
         c.fill   = GridBagConstraints.BOTH;
-        c.gridheight = GridBagConstraints.REMAINDER;
-        c.gridwidth  = 1;
+        c.gridheight = GridBagConstraints.RELATIVE;
+        c.gridwidth  = 3;
         c.gridx = 1;
         c.gridy = 1;
         c.insets = new Insets(10, 10, 10, 10);
-        c.ipadx = 150;
+        c.ipadx = 200;
         c.ipady = 0;
-        c.weightx = 0.0;
-        c.weighty = 0.0;
+        c.weightx = 0;
+        c.weighty = 1;
 //------------------handWeaponList-------------------------
         String[][] handWeapon = new String[0][];
         try {
@@ -250,11 +250,13 @@ public class HandWeaponPanel extends JPanel
 //------------------handWeaponList-------------------------
 //------------------infoPanel-------------------------
         JPanel infoPanel = new JPanel(gbl);
-        c.gridx = 2;
+        c.gridx = 4;
         c.gridy = 1;
         c.ipadx = 0;
         c.weightx = 1;
         c.weighty = 1;
+        c.gridheight = 2;
+        c.gridwidth  = GridBagConstraints.RELATIVE;
         gbl.setConstraints(infoPanel, c);
         dialogChoice.add(infoPanel);
 //------------------infoPanel-------------------------
@@ -366,7 +368,7 @@ public class HandWeaponPanel extends JPanel
         });
 //------------------advListListener-----------------------
 //------------------buttonAdd-----------------------
-        JButton buttonAdd = new JButton("Add");
+        JButton buttonAdd = new JButton("Добавить");
         buttonAdd.setFont(Resources.font15);
         buttonAdd.addActionListener(new ActionListener() {
             @Override
@@ -434,7 +436,8 @@ public class HandWeaponPanel extends JPanel
         infoPanel.add(buttonAdd);
 //------------------buttonAdd-----------------------
 //------------------buttonAddNew-----------------------
-        JButton buttonAddNew = new JButton("Add new hand weapon...");
+        JButton buttonAddNew = new JButton("+");
+        buttonAddNew.setToolTipText("Создать новое оружие");
         buttonAddNew.setFont(Resources.font15);
         buttonAddNew.addActionListener(new ActionListener() {
             @Override
@@ -717,10 +720,14 @@ public class HandWeaponPanel extends JPanel
                 infoPanel.add(add);
             }
         });
-        c.gridx = 2;
-        c.gridy = 5;
+        c.gridx = 1;
+        c.gridy = 2;
+        c.gridwidth  = 1;
+        c.gridheight = 1;
+        c.weightx = 0.0;
+        c.weighty = 0.0;
         gbl.setConstraints(buttonAddNew, c);
-        infoPanel.add(buttonAddNew);
+        dialogChoice.add(buttonAddNew);
 //------------------buttonAddNew-----------------------
         dialogChoice.setVisible(true);
     }

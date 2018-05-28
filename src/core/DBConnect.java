@@ -754,6 +754,33 @@ public class DBConnect
         statmt.executeUpdate("DELETE FROM Inventory WHERE character_id=" + characterId);
         System.out.println("Персонаж " + characterId + " удалён");
     }
+
+    static void deleteArmorOnName(String armorName) throws SQLException
+    {
+        resSet = statmt.executeQuery("SELECT armor_id FROM Armor WHERE armor_name='" + armorName + "'");
+        int id = resSet.getInt(1);
+        statmt.executeUpdate("DELETE FROM Character_armor WHERE armor_id=" + id);
+        statmt.executeUpdate("DELETE FROM Armor  WHERE armor_id=" + id);
+
+        System.out.println("Броня " + armorName + " удалён");
+    }
+
+
 //==============================DELETE=====================================
+//==============================UPDATE=====================================
+    static void updateArmor (String oldName, String name, String DR, String zones, String cost, String weight, String description) throws SQLException
+    {
+        resSet = statmt.executeQuery("SELECT armor_id FROM Armor WHERE armor_name='" + oldName + "'");
+        statmt.executeUpdate("UPDATE Armor SET " +
+                        "armor_name='" + name +
+                        "',DR=" + DR +
+                        ",zones='" + zones +
+                        "',cost=" + cost +
+                        ",weight=" + weight +
+                        ",description='" + description +
+                        "' WHERE armor_id=" +resSet.getInt(1));
+        System.out.println("Броня " + oldName + " обновлена");
+    }
+//==============================UPDATE=====================================
 
 }

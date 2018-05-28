@@ -226,15 +226,15 @@ public class RangedWeaponPanel extends JPanel
 
         c.anchor = GridBagConstraints.WEST;
         c.fill   = GridBagConstraints.BOTH;
-        c.gridheight = GridBagConstraints.REMAINDER;
-        c.gridwidth  = 1;
+        c.gridheight = GridBagConstraints.RELATIVE;
+        c.gridwidth  = 3;
         c.gridx = 1;
         c.gridy = 1;
         c.insets = new Insets(10, 10, 10, 10);
-        c.ipadx = 150;
+        c.ipadx = 200;
         c.ipady = 0;
-        c.weightx = 0.0;
-        c.weighty = 0.0;
+        c.weightx = 0;
+        c.weighty = 1;
 //------------------rangedWeaponList-------------------------
         String[][] rangedWeapon = new String[0][];
         try {
@@ -257,11 +257,13 @@ public class RangedWeaponPanel extends JPanel
 //------------------rangedWeaponList-------------------------
 //------------------infoPanel-------------------------
         JPanel infoPanel = new JPanel(gbl);
-        c.gridx = 2;
+        c.gridx = 4;
         c.gridy = 1;
         c.ipadx = 0;
         c.weightx = 1;
         c.weighty = 1;
+        c.gridheight = 2;
+        c.gridwidth  = GridBagConstraints.RELATIVE;
         gbl.setConstraints(infoPanel, c);
         dialogChoice.add(infoPanel);
 //------------------infoPanel-------------------------
@@ -453,7 +455,7 @@ public class RangedWeaponPanel extends JPanel
         });
 //------------------advListListener-----------------------
 //------------------buttonAdd-----------------------
-        JButton buttonAdd = new JButton("Add");
+        JButton buttonAdd = new JButton("Добавить");
         buttonAdd.setFont(Resources.font15);
         buttonAdd.addActionListener(new ActionListener() {
             @Override
@@ -526,7 +528,8 @@ public class RangedWeaponPanel extends JPanel
         infoPanel.add(buttonAdd);
 //------------------buttonAdd-----------------------
 //------------------buttonAddNew-----------------------
-        JButton buttonAddNew = new JButton("Add new ranged weapon...");
+        JButton buttonAddNew = new JButton("+");
+        buttonAddNew.setToolTipText("Создать новое оружие");
         buttonAddNew.setFont(Resources.font15);
         buttonAddNew.addActionListener(new ActionListener() {
             @Override
@@ -943,10 +946,14 @@ public class RangedWeaponPanel extends JPanel
                 infoPanel.add(add);
             }
         });
-        c.gridx = 2;
-        c.gridy = 6;
+        c.gridx = 1;
+        c.gridy = 2;
+        c.gridwidth  = 1;
+        c.gridheight = 1;
+        c.weightx = 0.0;
+        c.weighty = 0.0;
         gbl.setConstraints(buttonAddNew, c);
-        infoPanel.add(buttonAddNew);
+        dialogChoice.add(buttonAddNew);
 //------------------buttonAddNew-----------------------
         dialogChoice.setVisible(true);
     }

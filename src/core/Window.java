@@ -575,14 +575,6 @@ class Window extends JFrame
             dtm.addRow(aCharacterSkill);
     }
 
-    private void installArmor (Object[][] characterArmor)
-    {
-        DefaultTableModel dtm = (DefaultTableModel) armorPanel.getTableArmor().getModel();
-        dtm.setRowCount(0);
-        for (Object[] aCharacterArmor : characterArmor)
-            dtm.addRow(aCharacterArmor);
-    }
-
     private void installInventory (Object[][] characterArmor)
     {
         DefaultTableModel dtm = (DefaultTableModel) inventoryPanel.getTableInventory().getModel();
@@ -640,7 +632,7 @@ class Window extends JFrame
             installInfo(DBConnect.getCharacterInfo(characterId));
             installPerks(DBConnect.getCharacterAdvantage(characterId), DBConnect.getCharacterDisadvantage(characterId), DBConnect.getCharacterQuirk(characterId));
             installSkills(DBConnect.getCharacterSkills(characterId));
-            installArmor(DBConnect.getCharacterArmor(characterId));
+            armorPanel.installArmor(DBConnect.getCharacterArmor(characterId));
             installInventory(DBConnect.getCharacterInventory(characterId));
             installHandWeapon(DBConnect.getCharacterHandWeapon(characterId));
             installRangedWeaponPanel(DBConnect.getCharacterRangedWeapon(characterId));

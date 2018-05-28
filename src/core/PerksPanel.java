@@ -468,15 +468,15 @@ public class PerksPanel extends JPanel
 
         c.anchor = GridBagConstraints.WEST;
         c.fill   = GridBagConstraints.BOTH;
-        c.gridheight = GridBagConstraints.REMAINDER;
-        c.gridwidth  = 1;
+        c.gridheight = GridBagConstraints.RELATIVE;
+        c.gridwidth  = 3;
         c.gridx = 1;
         c.gridy = 1;
         c.insets = new Insets(10, 10, 10, 10);
-        c.ipadx = 150;
+        c.ipadx = 200;
         c.ipady = 0;
-        c.weightx = 0.0;
-        c.weighty = 0.0;
+        c.weightx = 0;
+        c.weighty = 1;
 //------------------advList-------------------------
         String[][] adv = new String[0][];
         try {
@@ -508,11 +508,13 @@ public class PerksPanel extends JPanel
 //------------------advList-------------------------
 //------------------infoPanel-------------------------
         JPanel infoPanel = new JPanel(gbl);
-        c.gridx = 2;
+        c.gridx = 4;
         c.gridy = 1;
         c.ipadx = 0;
         c.weightx = 1;
         c.weighty = 1;
+        c.gridheight = 2;
+        c.gridwidth  = GridBagConstraints.RELATIVE;
         gbl.setConstraints(infoPanel, c);
         dialogChoice.add(infoPanel);
 //------------------infoPanel-------------------------
@@ -535,7 +537,7 @@ public class PerksPanel extends JPanel
         JButton buttonMinus = new JButton("-");
         JButton buttonAddNew = new JButton("Add new ...");
         JTextArea textDescription = new JTextArea();
-        JButton buttonAdd = new JButton("Add");
+        JButton buttonAdd = new JButton("Добавить");
         JScrollPane scrollDescription = new JScrollPane(textDescription);
 //------------------labelMaxLevel-------------------------
         if (mode != 2)
@@ -629,16 +631,17 @@ public class PerksPanel extends JPanel
 //------------------buttonMinusListener-----------------
 //------------------buttonAddNew-----------------
         buttonAddNew.setFont(Resources.font15);
+        buttonAddNew.setText("+");
         switch (mode)
         {
             case 0:
-                buttonAddNew.setText("Add new advantage...");
+                buttonAddNew.setToolTipText("Создать новое преимущество");
                 break;
             case 1:
-                buttonAddNew.setText("Add new disadvantage...");
+                buttonAddNew.setToolTipText("Создать новый недостаток");
                 break;
             case 2:
-                buttonAddNew.setText("Add new quirk...");
+                buttonAddNew.setToolTipText("Создать новую причуду");
                 break;
         }
         buttonAddNew.addActionListener(new ActionListener() {
@@ -884,10 +887,15 @@ public class PerksPanel extends JPanel
                     infoPanel.add(add);
                 }
             });
-            c.gridx = 2;
-            c.gridy = 3;
+            c.gridx = 1;
+            c.gridy = 2;
+            c.gridwidth  = 1;
+            c.gridheight = 1;
+            c.weightx = 0.0;
+            c.weighty = 0.0;
             gbl.setConstraints(buttonAddNew, c);
-            infoPanel.add(buttonAddNew);
+            dialogChoice.add(buttonAddNew);
+//------------------buttonAddNew-----------------------
 //------------------textDescription-----------------------
         if (mode < 2)
             textDescription.setText(adv[3][0]);

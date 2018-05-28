@@ -218,15 +218,15 @@ public class ArmorPanel extends JPanel
 
         c.anchor = GridBagConstraints.WEST;
         c.fill   = GridBagConstraints.BOTH;
-        c.gridheight = GridBagConstraints.REMAINDER;
-        c.gridwidth  = 1;
+        c.gridheight = GridBagConstraints.RELATIVE;
+        c.gridwidth  = 3;
         c.gridx = 1;
         c.gridy = 1;
         c.insets = new Insets(10, 10, 10, 10);
-        c.ipadx = 150;
+        c.ipadx = 200;
         c.ipady = 0;
-        c.weightx = 0.0;
-        c.weighty = 0.0;
+        c.weightx = 0;
+        c.weighty = 1;
 //------------------armorList-------------------------
         String[][] armor = new String[0][];
         try {
@@ -238,28 +238,30 @@ public class ArmorPanel extends JPanel
 
         for (String s: armor[0])
             listModel.addElement(s);
-        JList<String> skillsList = new JList<>(listModel);
-        skillsList.setFont(Resources.font15);
-        skillsList.setSelectedIndex(0);
-        JScrollPane scrollPane = new JScrollPane(skillsList);
+        JList<String> armorList = new JList<>(listModel);
+        armorList.setFont(Resources.font15);
+        armorList.setSelectedIndex(0);
+        JScrollPane scrollPane = new JScrollPane(armorList);
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setMinimumSize(new Dimension(skillsList.getWidth(), dialogChoice.getHeight()));
+        scrollPane.setMinimumSize(new Dimension(armorList.getWidth(), dialogChoice.getHeight()));
         gbl.setConstraints(scrollPane, c);
         dialogChoice.add(scrollPane);
-//------------------skillsList-------------------------
+//------------------armorList-------------------------
 //------------------infoPanel-------------------------
         JPanel infoPanel = new JPanel(gbl);
-        c.gridx = 2;
+        c.gridx = 4;
         c.gridy = 1;
         c.ipadx = 0;
         c.weightx = 1;
         c.weighty = 1;
+        c.gridheight = 2;
+        c.gridwidth  = GridBagConstraints.RELATIVE;
         gbl.setConstraints(infoPanel, c);
         dialogChoice.add(infoPanel);
 //------------------infoPanel-------------------------
 //------------------labelZones-------------------------
         JLabel labelZones = new JLabel();
-        labelZones.setText("Zones: " + armor[1][skillsList.getSelectedIndex()]);
+        labelZones.setText("Zones: " + armor[1][armorList.getSelectedIndex()]);
         labelZones.setFont(Resources.font15);
         labelZones.setToolTipText("Участки тела, которые прикрывает броня");
         c.gridwidth = 1;
@@ -273,7 +275,7 @@ public class ArmorPanel extends JPanel
 //------------------labelZones-------------------------
 //------------------labelDR-------------------------
         JLabel labelDR = new JLabel();
-        labelDR.setText("DR: " + armor[2][skillsList.getSelectedIndex()]);
+        labelDR.setText("DR: " + armor[2][armorList.getSelectedIndex()]);
         labelDR.setFont(Resources.font15);
         labelDR.setToolTipText("Сопротивление урону");
         c.gridx = 2;
@@ -285,7 +287,7 @@ public class ArmorPanel extends JPanel
 //------------------labelDR-------------------------
 //------------------labelWeight-------------------------
         JLabel labelWeight = new JLabel();
-        labelWeight.setText("Weight: " + armor[3][skillsList.getSelectedIndex()]);
+        labelWeight.setText("Weight: " + armor[3][armorList.getSelectedIndex()]);
         labelWeight.setFont(Resources.font15);
         labelWeight.setToolTipText("Вес борни");
         c.gridx = 1;
@@ -296,7 +298,7 @@ public class ArmorPanel extends JPanel
 //------------------labelWeight-------------------------
 //------------------labelCost-------------------------
         JLabel labelCost = new JLabel();
-        labelCost.setText("Cost: " + ((armor[4][skillsList.getSelectedIndex()])));
+        labelCost.setText("Cost: " + ((armor[4][armorList.getSelectedIndex()])));
         labelCost.setFont(Resources.font15);
         labelCost.setToolTipText("Средняя стоимость брони");
         c.gridx = 2;
@@ -307,7 +309,7 @@ public class ArmorPanel extends JPanel
 //------------------textDescription-----------------------
         String[][] finalArmor = armor;
         JTextArea textDescription = new JTextArea();
-        textDescription.setText(finalArmor[5][skillsList.getSelectedIndex()]);
+        textDescription.setText(finalArmor[5][armorList.getSelectedIndex()]);
         textDescription.setFont(Resources.font11);
         textDescription.setLineWrap(true);
         textDescription.setEditable(false);
@@ -324,20 +326,20 @@ public class ArmorPanel extends JPanel
         infoPanel.add(scrollDescription);
 //------------------textDescription-----------------------
 //------------------advListListener-----------------------
-        skillsList.addListSelectionListener(new ListSelectionListener() {
+        armorList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e)
             {
-                labelZones.setText("Zones: " + finalArmor[1][skillsList.getSelectedIndex()]);
-                labelDR.setText("DR: " + finalArmor[2][skillsList.getSelectedIndex()]);
-                labelWeight.setText("Weight: " + finalArmor[3][skillsList.getSelectedIndex()]);
-                labelCost.setText("Cost: " + (finalArmor[4][skillsList.getSelectedIndex()]));
-                textDescription.setText(finalArmor[5][skillsList.getSelectedIndex()]);
+                labelZones.setText("Zones: " + finalArmor[1][armorList.getSelectedIndex()]);
+                labelDR.setText("DR: " + finalArmor[2][armorList.getSelectedIndex()]);
+                labelWeight.setText("Weight: " + finalArmor[3][armorList.getSelectedIndex()]);
+                labelCost.setText("Cost: " + (finalArmor[4][armorList.getSelectedIndex()]));
+                textDescription.setText(finalArmor[5][armorList.getSelectedIndex()]);
             }
         });
 //------------------advListListener-----------------------
 //------------------buttonAdd-----------------------
-        JButton buttonAdd = new JButton("Add");
+        JButton buttonAdd = new JButton("Добавить");
         buttonAdd.setFont(Resources.font15);
         buttonAdd.addActionListener(new ActionListener() {
             @Override
@@ -348,7 +350,7 @@ public class ArmorPanel extends JPanel
                 dtm = (DefaultTableModel) tableArmor.getModel();
                 for (int i = 0; i < dtm.getRowCount(); i++)
                 {
-                    if (dtm.getValueAt(i,0).equals(skillsList.getSelectedValue()))
+                    if (dtm.getValueAt(i,0).equals(armorList.getSelectedValue()))
                     {
                         JDialog dialog = new JDialog(dialogChoice, "Error", true);
                         dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -381,7 +383,7 @@ public class ArmorPanel extends JPanel
                 }
                 if (can)
                 {
-                    dtm.addRow( new Object[]{skillsList.getSelectedValue(),
+                    dtm.addRow( new Object[]{armorList.getSelectedValue(),
                             labelZones.getText().substring(7),
                             labelDR.getText().substring(4),
                             Integer.parseInt(labelWeight.getText().substring(8)),
@@ -402,8 +404,11 @@ public class ArmorPanel extends JPanel
         infoPanel.add(buttonAdd);
 //------------------buttonAdd-----------------------
 //------------------buttonAddNew-----------------------
-        JButton buttonAddNew = new JButton("Add new armor...");
+        JButton buttonAddNew = new JButton("+");
+        JButton buttonDelete = new JButton("-");
+        JButton buttonEdit = new JButton("○");
         buttonAddNew.setFont(Resources.font15);
+        buttonAddNew.setToolTipText("Создать новую броню");
         buttonAddNew.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e)
@@ -417,6 +422,8 @@ public class ArmorPanel extends JPanel
                 textDescription.setBackground(Color.WHITE);
                 buttonAdd.setVisible(false);
                 buttonAddNew.setVisible(false);
+                buttonDelete.setVisible(false);
+                buttonEdit.setVisible(false);
                 scrollPane.setVisible(false);
                 JTextField textCost = new JTextField();
                 ((AbstractDocument) textCost.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
@@ -626,6 +633,8 @@ public class ArmorPanel extends JPanel
                         textDescription.setBackground(Color.LIGHT_GRAY);
                         buttonAdd.setVisible(true);
                         buttonAddNew.setVisible(true);
+                        buttonDelete.setVisible(true);
+                        buttonEdit.setVisible(true);
                         scrollPane.setVisible(true);
                         infoPanel.remove(textCost);
                         infoPanel.remove(menuBarZones);
@@ -658,7 +667,7 @@ public class ArmorPanel extends JPanel
                         c.gridheight = GridBagConstraints.RELATIVE;
                         try
                         {
-                            textDescription.setText(DBConnect.getArmorOnName(skillsList.getSelectedValue()));
+                            textDescription.setText(DBConnect.getArmorOnName(armorList.getSelectedValue()));
                         } catch (SQLException e1)
                         {
                             e1.printStackTrace();
@@ -692,15 +701,26 @@ public class ArmorPanel extends JPanel
                                     ((zones[9]) ? "12," : "") +
                                     ((zones[10]) ? "13,14," : "") +
                                     ((zones[11]) ? "17,18," : "")));
-                            zonesOut = zonesOut.substring(0,zonesOut.length()-1);
-
-                            if (DBConnect.getArmorOnName(textName.getText()).equals("null"))
+                            if (textName.getText().isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите название брони (Name) !", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (textDR.getText().isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите сопротивление брони! (DR)", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (zonesOut.isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите зоны, которые защищает броня! (Zones)", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (textWeight.getText().isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите вес брони! (Weigth)", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (DBConnect.getArmorOnName(textName.getText()).equals("null"))
+                            {
+                                zonesOut = zonesOut.substring(0,zonesOut.length()-1);
                                 DBConnect.addNewArmor(textName.getText(),
                                         textDR.getText(),
                                         zonesOut,
-                                        textCost.getText(),
+                                        textCost.getText(),//
                                         textWeight.getText(),
-                                        textDescription.getText());
+                                        textDescription.getText());//
+                                can = true;
+
+                            }
                             else
                             {
                                 JOptionPane.showConfirmDialog(infoPanel, "Броня с таким именем уже существует!", "Error", JOptionPane.DEFAULT_OPTION);
@@ -725,11 +745,438 @@ public class ArmorPanel extends JPanel
                 infoPanel.add(add);
             }
         });
-        c.gridx = 2;
-        c.gridy = 4;
+        c.gridx = 1;
+        c.gridy = 2;
+        c.weightx = 0.0;
+        c.weighty = 0.0;
+        c.gridwidth = 1;
+        c.gridheight = 1;
         gbl.setConstraints(buttonAddNew, c);
-        infoPanel.add(buttonAddNew);
+        dialogChoice.add(buttonAddNew);
 //------------------buttonAddNew-----------------------
+//------------------buttonDelete-----------------------
+        buttonDelete.setFont(Resources.font15);
+        buttonDelete.setToolTipText("Удалить выбранную броню");
+        buttonDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!armorList.isSelectionEmpty())
+                {
+                    if (JOptionPane.showConfirmDialog(dialogChoice, "Вы уверены, что хотите безвозвратно удалить данные о " + armorList.getSelectedValue() + "?", "!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+                    {
+                        try
+                        {
+                            DBConnect.deleteArmorOnName(armorList.getSelectedValue());
+                            dialogChoice.dispose();
+                            createDialog();
+                        }catch (SQLException e1)
+                        {
+                            e1.printStackTrace();
+                        }
+                    }
+
+                }
+            }
+        });
+        c.gridx = 2;
+        c.gridy = 2;
+        c.weightx = 0.0;
+        c.weighty = 0.0;
+        c.gridwidth = 1;
+        c.gridheight = 1;
+        gbl.setConstraints(buttonDelete, c);
+        dialogChoice.add(buttonDelete);
+//------------------buttonDelete-----------------------
+//------------------buttonEdit-----------------------
+        buttonEdit.setFont(Resources.font15);
+        buttonEdit.setToolTipText("Редактировать выбранную броню");
+        buttonEdit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                String zone = labelZones.getText();
+                String dr = labelDR.getText();
+                String cost = labelCost.getText();
+                String wt = labelWeight.getText();
+                String oldName = armorList.getSelectedValue();
+                textDescription.setEditable(true);
+                textDescription.setBackground(Color.WHITE);
+                buttonAdd.setVisible(false);
+                buttonAddNew.setVisible(false);
+                buttonDelete.setVisible(false);
+                buttonEdit.setVisible(false);
+                scrollPane.setVisible(false);
+                JTextField textCost = new JTextField(labelCost.getText().substring(6));
+                ((AbstractDocument) textCost.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
+                JTextField textDR = new JTextField(labelDR.getText().substring(4));
+                ((AbstractDocument) textDR.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
+                JTextField textWeight = new JTextField(labelWeight.getText().substring(8));
+                ((AbstractDocument) textWeight.getDocument()).setDocumentFilter(new FloatDocumentFilter(textWeight, false));
+                JMenuBar menuBarZones = new JMenuBar();
+                menuBarZones.setFont(Resources.font15);
+                JMenu menuZones = new JMenu("Zones");
+                menuZones.setSelected(true);
+                Boolean [] zones = new Boolean[]{false,false,false,false,false,false,false,false,false,false,false,false};
+                JRadioButtonMenuItem rb3 = new JRadioButtonMenuItem("3 (Глаза)",false);
+                rb3.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        zones[0] = rb3.isArmed();
+                    }
+                });
+                menuZones.add(rb3);
+                JRadioButtonMenuItem rb4 = new JRadioButtonMenuItem("4 (Лицо)",false);
+                rb4.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        zones[1] = rb4.isArmed();
+                    }
+                });
+                menuZones.add(rb4);
+                JRadioButtonMenuItem rb5 = new JRadioButtonMenuItem("5 (Череп)",false);
+                rb5.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        zones[2] = rb5.isArmed();
+                    }
+                });
+                menuZones.add(rb5);
+                JRadioButtonMenuItem rb6 = new JRadioButtonMenuItem("6 (Левая (или ближняя) рука)",false);
+                rb6.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        zones[3] = rb6.isArmed();
+                    }
+                });
+                menuZones.add(rb6);
+                JRadioButtonMenuItem rb7 = new JRadioButtonMenuItem("7 (Кисти рук)",false);
+                rb7.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        zones[4] = rb7.isArmed();
+                    }
+                });
+                menuZones.add(rb7);
+                JRadioButtonMenuItem rb8 = new JRadioButtonMenuItem("8 (Правая (или дальняя) рука)",false);
+                rb8.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        zones[5] = rb8.isArmed();
+                    }
+                });
+                menuZones.add(rb8);
+                JRadioButtonMenuItem rb9 = new JRadioButtonMenuItem("9 (Грудь)",false);
+                rb9.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        zones[6] = rb9.isArmed();
+                    }
+                });
+                menuZones.add(rb9);
+                JRadioButtonMenuItem rb10 = new JRadioButtonMenuItem("10 (Торс)",false);
+                rb10.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        zones[7] = rb10.isArmed();
+                    }
+                });
+                menuZones.add(rb10);
+                JRadioButtonMenuItem rb11 = new JRadioButtonMenuItem("11 (Пах)",false);
+                rb11.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        zones[8] = rb11.isArmed();
+                    }
+                });
+                menuZones.add(rb11);
+                JRadioButtonMenuItem rb12 = new JRadioButtonMenuItem("12 (Правая (или дальняя) нога)",false);
+                rb12.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        zones[9] = rb12.isArmed();
+                    }
+                });
+                menuZones.add(rb12);
+                JRadioButtonMenuItem rb1314 = new JRadioButtonMenuItem("13,14 (Левая (или ближняя) нога)",false);
+                rb1314.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        zones[10] = rb1314.isArmed();
+                    }
+                });
+                menuZones.add(rb1314);
+                JRadioButtonMenuItem rb1718 = new JRadioButtonMenuItem("17,18 (Сердце или жизненно важные органы)",false);
+                rb1718.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        zones[11] = rb1718.isArmed();
+                    }
+                });
+                menuZones.add(rb1718);
+                menuBarZones.add(menuZones);
+
+                String oldZones = labelZones.getText().substring(7);
+                while (!oldZones.isEmpty())
+                {
+                    if (oldZones.length() > 1 && oldZones.substring(0,2).contains(","))
+                    {
+                        switch (oldZones.substring(0,1))
+                        {
+                            case "4": rb4.setSelected(true); zones[0] = true; break;
+                            case "5": rb5.setSelected(true); zones[1] = true; break;
+                            case "6": rb6.setSelected(true); zones[2] = true; break;
+                            case "7": rb7.setSelected(true); zones[3] = true; break;
+                            case "3": rb3.setSelected(true); zones[4] = true; break;
+                            case "8": rb8.setSelected(true); zones[5] = true; break;
+                            case "9": rb9.setSelected(true); zones[6] = true; break;
+                            default: break;
+                        }
+                        oldZones = oldZones.substring(2);
+                    }
+                    else  if (oldZones.length() > 2 && oldZones.substring(0,3).contains(","))
+                    {
+                        switch (oldZones.substring(0,2))
+                        {
+                            case "10": rb10.setSelected(true); zones[7] = true; break;
+                            case "11": rb11.setSelected(true); zones[8] = true; break;
+                            case "12": rb12.setSelected(true); zones[9] = true; break;
+                            case "13": rb1314.setSelected(true); zones[10] = true; break;
+                            case "17": rb1718.setSelected(true); zones[11] = true; break;
+                            default: break;
+                        }
+                        oldZones = oldZones.substring(3);
+                    }
+                    else
+                        oldZones = oldZones.substring(1);
+                }
+
+                c.gridwidth  = 1;
+                c.gridheight = 1;
+                c.gridx = 1;
+                c.gridy = 2;
+                c.weightx = 1;
+                c.weighty = 0;
+                labelZones.setText("Zones:");
+                gbl.setConstraints(labelZones, c);
+
+                c.weightx = 0;
+                c.gridx = 2;
+                menuBarZones.setFont(Resources.font15);
+                gbl.setConstraints(menuBarZones, c);
+                infoPanel.add(menuBarZones);
+
+                c.weightx = 1;
+                c.gridx = 3;
+                labelDR.setText("DR:");
+                gbl.setConstraints(labelDR, c);
+
+                c.weightx = 0;
+                c.gridx = 4;
+                textDR.setFont(Resources.font15);
+                gbl.setConstraints(textDR, c);
+                infoPanel.add(textDR);
+
+                c.gridx = 1;
+                c.gridy = 3;
+                labelCost.setText("Cost:");
+                gbl.setConstraints(labelCost, c);
+
+                c.weightx = 0;
+                c.gridx = 2;
+                textCost.setFont(Resources.font15);
+                gbl.setConstraints(textCost, c);
+                infoPanel.add(textCost);
+
+                c.gridx = 3;
+                labelWeight.setText("Weight:");
+                gbl.setConstraints(labelWeight, c);
+
+                c.weightx = 1;
+                c.gridx = 4;
+                textWeight.setFont(Resources.font15);
+                gbl.setConstraints(textWeight, c);
+                infoPanel.add(textWeight);
+
+                c.gridx = 1;
+                c.gridy = 4;
+                c.weighty = 1;
+                c.gridwidth = GridBagConstraints.REMAINDER;
+                c.gridheight = GridBagConstraints.RELATIVE;
+                gbl.setConstraints(scrollDescription, c);
+
+                JLabel labelName = new JLabel("Name");
+                labelName.setFont(Resources.font15);
+                labelName.setToolTipText("Название брони");
+                c.gridx = 1;
+                c.gridy = 1;
+                c.weighty = 0;
+                c.gridwidth = 1;
+                c.gridheight = 1;
+                gbl.setConstraints(labelName, c);
+                infoPanel.add(labelName);
+
+                JTextField textName = new JTextField(oldName);
+                textName.setFont(Resources.font15);
+                c.gridx = 2;
+                c.gridwidth = 2;
+                gbl.setConstraints(textName, c);
+                infoPanel.add(textName);
+
+                JButton add = new JButton();
+                add.setText("OK");
+
+                JButton cancel = new JButton("Cancel");
+                cancel.setFont(Resources.font15);
+                cancel.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        infoPanel.remove(textName);
+                        infoPanel.remove(labelName);
+                        infoPanel.remove(cancel);
+                        infoPanel.remove(add);
+                        textDescription.setEditable(false);
+                        textDescription.setBackground(Color.LIGHT_GRAY);
+                        buttonAdd.setVisible(true);
+                        buttonAddNew.setVisible(true);
+                        buttonDelete.setVisible(true);
+                        buttonEdit.setVisible(true);
+                        scrollPane.setVisible(true);
+                        infoPanel.remove(textCost);
+                        infoPanel.remove(menuBarZones);
+                        infoPanel.remove(textDR);
+                        infoPanel.remove(textWeight);
+                        labelCost.setVisible(true);
+                        c.gridwidth = 1;
+                        c.gridheight = 1;
+                        c.gridx = 1;
+                        c.gridy = 1;
+                        c.weightx = 0.0;
+                        c.weighty = 0.0;
+                        labelZones.setText(zone);
+                        gbl.setConstraints(labelZones, c);
+                        c.gridx = 2;
+                        labelDR.setText(dr);
+                        gbl.setConstraints(labelDR, c);
+                        c.gridx = 1;
+                        c.gridy = 2;
+                        labelCost.setText(cost);
+                        gbl.setConstraints(labelCost, c);
+                        c.gridx = 2;
+                        labelWeight.setText(wt);
+                        gbl.setConstraints(labelWeight, c);
+                        c.gridx = 1;
+                        c.gridy = 3;
+                        c.weightx = 1;
+                        c.weighty = 1;
+                        c.gridwidth = GridBagConstraints.REMAINDER;
+                        c.gridheight = GridBagConstraints.RELATIVE;
+                        try
+                        {
+                            textDescription.setText(DBConnect.getArmorOnName(armorList.getSelectedValue()));
+                        } catch (SQLException e1)
+                        {
+                            e1.printStackTrace();
+                        }
+                        gbl.setConstraints(scrollDescription, c);
+                    }
+                });
+                c.gridwidth = 1;
+                c.gridx = 3;
+                c.gridy = 5;
+                gbl.setConstraints(cancel, c);
+                infoPanel.add(cancel);
+
+                add.setFont(Resources.font15);
+                add.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        boolean can = false;
+                        try
+                        {
+                            String zonesOut = ((((zones[0]) ? "3," : "") +
+                                    ((zones[1]) ? "4," : "") +
+                                    ((zones[2]) ? "5," : "") +
+                                    ((zones[3]) ? "6," : "") +
+                                    ((zones[4]) ? "7," : "") +
+                                    ((zones[5]) ? "8," : "") +
+                                    ((zones[6]) ? "9," : "") +
+                                    ((zones[7]) ? "10," : "") +
+                                    ((zones[8]) ? "11," : "") +
+                                    ((zones[9]) ? "12," : "") +
+                                    ((zones[10]) ? "13,14," : "") +
+                                    ((zones[11]) ? "17,18," : "")));
+                            if (textName.getText().isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите название брони (Name) !", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (textDR.getText().isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите сопротивление брони! (DR)", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (zonesOut.isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите зоны, которые защищает броня! (Zones)", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (textWeight.getText().isEmpty())
+                                JOptionPane.showConfirmDialog(infoPanel, "Введите вес брони! (Weight)", "!", JOptionPane.DEFAULT_OPTION);
+                            else if (textName.getText().equals(oldName) || DBConnect.getArmorOnName(textName.getText()).equals("null"))
+                            {
+                                zonesOut = zonesOut.substring(0,zonesOut.length()-1);
+                                DBConnect.updateArmor(armorList.getSelectedValue(),
+                                        textName.getText(),
+                                        textDR.getText(),
+                                        zonesOut,
+                                        textCost.getText(),//
+                                        textWeight.getText(),
+                                        textDescription.getText());//
+                                can = true;
+
+                            }
+                            else
+                            {
+                                JOptionPane.showConfirmDialog(infoPanel, "Броня с таким именем уже существует!", "!", JOptionPane.DEFAULT_OPTION);
+                                can = false;
+                            }
+                        } catch (SQLException e1)
+                        {
+                            e1.printStackTrace();
+                        }
+                        if (can)
+                        {
+                            dialogChoice.dispose();
+                            try
+                            {
+                                installArmor(DBConnect.getCharacterArmor(Window.characterId));
+                            } catch (SQLException e1)
+                            {
+                                e1.printStackTrace();
+                            }
+                            createDialog();
+                        }
+
+                    }
+                });
+                c.gridwidth = 2;
+                c.gridx = 1;
+                c.gridy = 5;
+                gbl.setConstraints(add, c);
+                infoPanel.add(add);
+            }
+        });
+        c.gridx = 3;
+        c.gridy = 2;
+        c.weightx = 0.0;
+        c.weighty = 0.0;
+        c.gridwidth = 1;
+        c.gridheight = 1;
+        gbl.setConstraints(buttonEdit, c);
+        dialogChoice.add(buttonEdit);
+//------------------buttonEdit-----------------------
         dialogChoice.setVisible(true);
     }
 
@@ -756,6 +1203,14 @@ public class ArmorPanel extends JPanel
             e.printStackTrace();
         }
 
+    }
+
+    void installArmor (Object[][] characterArmor)
+    {
+        DefaultTableModel dtm = (DefaultTableModel) tableArmor.getModel();
+        dtm.setRowCount(0);
+        for (Object[] aCharacterArmor : characterArmor)
+            dtm.addRow(aCharacterArmor);
     }
 
     @Override
