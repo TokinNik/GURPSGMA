@@ -755,19 +755,84 @@ public class DBConnect
         System.out.println("Персонаж " + characterId + " удалён");
     }
 
-    static void deleteArmorOnName(String armorName) throws SQLException
+    static void deleteAdvantageOnName(String name) throws SQLException
     {
-        resSet = statmt.executeQuery("SELECT armor_id FROM Armor WHERE armor_name='" + armorName + "'");
+        resSet = statmt.executeQuery("SELECT advantage_id FROM Advantage WHERE advantage_name='" + name + "'");
+        int id = resSet.getInt(1);
+        statmt.executeUpdate("DELETE FROM Character_advantages WHERE advantage_id=" + id);
+        statmt.executeUpdate("DELETE FROM Advantage WHERE advantage_id=" + id);
+
+        System.out.println("Преимущество " + name + " удалено");
+    }
+
+    static void deleteDisadvantageOnName(String name) throws SQLException
+    {
+        resSet = statmt.executeQuery("SELECT disadvantage_id FROM Disadvantage WHERE disadvantage_name='" + name + "'");
+        int id = resSet.getInt(1);
+        statmt.executeUpdate("DELETE FROM Character_disadvantages WHERE disadvantage_id=" + id);
+        statmt.executeUpdate("DELETE FROM Disadvantage WHERE disadvantage_id=" + id);
+
+        System.out.println("Недостаток " + name + " удалён");
+    }
+
+    static void deleteQuirkOnName(String name) throws SQLException
+    {
+        resSet = statmt.executeQuery("SELECT quirk_id FROM Quirk WHERE quirk_name='" + name + "'");
+        int id = resSet.getInt(1);
+        statmt.executeUpdate("DELETE FROM Character_quirks WHERE quirk_id=" + id);
+        statmt.executeUpdate("DELETE FROM Quirk WHERE quirk_id=" + id);
+
+        System.out.println("Причуда " + name + " удалена");
+    }
+
+    static void deleteArmorOnName(String name) throws SQLException
+    {
+        resSet = statmt.executeQuery("SELECT armor_id FROM Armor WHERE armor_name='" + name + "'");
         int id = resSet.getInt(1);
         statmt.executeUpdate("DELETE FROM Character_armor WHERE armor_id=" + id);
         statmt.executeUpdate("DELETE FROM Armor  WHERE armor_id=" + id);
 
-        System.out.println("Броня " + armorName + " удалён");
+        System.out.println("Броня " + name + " удалена");
     }
 
 
 //==============================DELETE=====================================
 //==============================UPDATE=====================================
+    static void updateAdvantage(String oldName, String name, int cost, int maxLevel, String description) throws SQLException
+    {
+        resSet = statmt.executeQuery("SELECT advantage_id FROM Advantage WHERE advantage_name='" + oldName + "'");
+        statmt.executeUpdate("UPDATE Advantage SET " +
+                "advantage_name='" + name +
+                "',cost=" + cost +
+                ",max_level=" + maxLevel +
+                ",description='" + description +
+                "' WHERE advantage_id=" +resSet.getInt(1));
+        System.out.println("Преимущество " + oldName + " обновлено");
+    }
+
+    static void updateDisadvantage(String oldName, String name, int cost, int maxLevel, String description) throws SQLException
+    {
+        resSet = statmt.executeQuery("SELECT disadvantage_id FROM Disadvantage WHERE disadvantage_name='" + oldName + "'");
+        statmt.executeUpdate("UPDATE Disadvantage SET " +
+                "disadvantage_name='" + name +
+                "',cost=" + cost +
+                ",max_level=" + maxLevel +
+                ",description='" + description +
+                "' WHERE disadvantage_id=" +resSet.getInt(1));
+        System.out.println("Недостаток " + oldName + " обновлён");
+    }
+
+    static void updateQuirk(String oldName, String name,String description) throws SQLException
+    {
+        resSet = statmt.executeQuery("SELECT quirk_id FROM Quirk WHERE quirk_name='" + oldName + "'");
+        statmt.executeUpdate("UPDATE Quirk SET " +
+                "quirk_name='" + name +
+                "',description='" + description +
+                "' WHERE quirk_id=" +resSet.getInt(1));
+        System.out.println("Причуда " + oldName + " обновлена");
+    }
+
+
     static void updateArmor (String oldName, String name, String DR, String zones, String cost, String weight, String description) throws SQLException
     {
         resSet = statmt.executeQuery("SELECT armor_id FROM Armor WHERE armor_name='" + oldName + "'");
@@ -781,6 +846,7 @@ public class DBConnect
                         "' WHERE armor_id=" +resSet.getInt(1));
         System.out.println("Броня " + oldName + " обновлена");
     }
+
 //==============================UPDATE=====================================
 
 }

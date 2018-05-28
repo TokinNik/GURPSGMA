@@ -548,24 +548,7 @@ class Window extends JFrame
         (infoPanel.getTextRace()).setText(characterInfo[7]);
     }
 
-    private void installPerks (Object[][] characterAdvantage, Object[][] characterDisadvantage, Object[][] characterQuirk)
-    {
-        DefaultTableModel dtm = (DefaultTableModel) perksPanel.getTableAdvantage().getModel();
-        dtm.setRowCount(0);
-        for (Object[] aCharacterAdvantage : characterAdvantage)
-            dtm.addRow(aCharacterAdvantage);
 
-        dtm = (DefaultTableModel) perksPanel.getTableDisadvantage().getModel();
-        dtm.setRowCount(0);
-        for (Object[] aCharacterDisadvantage : characterDisadvantage)
-            dtm.addRow(aCharacterDisadvantage);
-
-        dtm = (DefaultTableModel) perksPanel.getTableQuirk().getModel();
-        dtm.setRowCount(0);
-        for (Object[] aCharacterQuirk : characterQuirk)
-            dtm.addRow(aCharacterQuirk);
-
-    }
 
     private void installSkills (Object[][] characterSkills)
     {
@@ -630,7 +613,7 @@ class Window extends JFrame
             characterId = (characterList.isSelectionEmpty()) ? allCharacterId.get(0) : allCharacterId.get(characterList.getSelectedIndex());
             installStats(DBConnect.getCharacterStats(characterId));
             installInfo(DBConnect.getCharacterInfo(characterId));
-            installPerks(DBConnect.getCharacterAdvantage(characterId), DBConnect.getCharacterDisadvantage(characterId), DBConnect.getCharacterQuirk(characterId));
+            perksPanel.installPerks(DBConnect.getCharacterAdvantage(characterId), DBConnect.getCharacterDisadvantage(characterId), DBConnect.getCharacterQuirk(characterId));
             installSkills(DBConnect.getCharacterSkills(characterId));
             armorPanel.installArmor(DBConnect.getCharacterArmor(characterId));
             installInventory(DBConnect.getCharacterInventory(characterId));

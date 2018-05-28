@@ -774,28 +774,29 @@ public class ArmorPanel extends JPanel
                                 JOptionPane.showConfirmDialog(infoPanel, "Введите зоны, которые защищает броня! (Zones)", "!", JOptionPane.DEFAULT_OPTION);
                             else if (textWeight.getText().isEmpty())
                                 JOptionPane.showConfirmDialog(infoPanel, "Введите вес брони! (Weight)", "!", JOptionPane.DEFAULT_OPTION);
-                            else if (textName.getText().equals(oldName) || DBConnect.getArmorOnName(textName.getText()).equals("null"))
+                            else if (textName.getText().equals(oldName) && mode == 1)
                             {
                                 zonesOut = zonesOut.substring(0, zonesOut.length() - 1);
-
-                                if (mode == 1)
-                                    DBConnect.updateArmor(armorList.getSelectedValue(),
-                                            textName.getText(),
-                                            textDR.getText(),
-                                            zonesOut,
-                                            textCost.getText(),//
-                                            textWeight.getText(),
-                                            textDescription.getText());//
-                                else
-                                    DBConnect.addNewArmor(textName.getText(),
-                                            textDR.getText(),
-                                            zonesOut,
-                                            textCost.getText(),//
-                                            textWeight.getText(),
-                                            textDescription.getText());//
+                                DBConnect.updateArmor(oldName,
+                                        textName.getText(),
+                                        textDR.getText(),
+                                        zonesOut,
+                                        textCost.getText(),//
+                                        textWeight.getText(),
+                                        textDescription.getText());//
                                 can = true;
-
-                            } else
+                            }
+                            else if (DBConnect.getArmorOnName(textName.getText()).equals("null") && mode == 0)
+                            {
+                                DBConnect.addNewArmor(textName.getText(),
+                                        textDR.getText(),
+                                        zonesOut,
+                                        textCost.getText(),//
+                                        textWeight.getText(),
+                                        textDescription.getText());//
+                                can = true;
+                            }
+                             else
                             {
                                 JOptionPane.showConfirmDialog(infoPanel, "Броня с таким именем уже существует!", "!", JOptionPane.DEFAULT_OPTION);
                                 can = false;
@@ -852,6 +853,7 @@ public class ArmorPanel extends JPanel
                         try
                         {
                             DBConnect.deleteArmorOnName(armorList.getSelectedValue());
+                            installArmor(DBConnect.getCharacterArmor(Window.characterId));
                             dialogChoice.dispose();
                             createDialog();
                         }catch (SQLException e1)

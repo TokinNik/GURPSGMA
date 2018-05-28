@@ -535,7 +535,9 @@ public class PerksPanel extends JPanel
         JLabel labelCurrentLevel = new JLabel();
         JButton buttonPlus = new JButton("+");
         JButton buttonMinus = new JButton("-");
-        JButton buttonAddNew = new JButton("Add new ...");
+        JButton buttonAddNew = new JButton("+");
+        JButton buttonDelete = new JButton("-");
+        JButton buttonEdit = new JButton("○");
         JTextArea textDescription = new JTextArea();
         JButton buttonAdd = new JButton("Добавить");
         JScrollPane scrollDescription = new JScrollPane(textDescription);
@@ -575,17 +577,6 @@ public class PerksPanel extends JPanel
             infoPanel.add(buttonMinus);
 //------------------buttonMinus-------------------------
 //------------------labelCurrentLevel-------------------------
-            if (!adv[2][0].equals("100"))
-            {
-                buttonPlus.setVisible(false);
-                buttonMinus.setVisible(false);
-            } else
-            {
-                buttonPlus.setVisible(true);
-                buttonMinus.setVisible(true);
-            }
-
-
             labelCurrentLevel.setText("Current level: 1");
             labelCurrentLevel.setFont(Resources.font15);
             labelCurrentLevel.setToolTipText("Выбраный уровень преимущества");
@@ -607,7 +598,7 @@ public class PerksPanel extends JPanel
                     {
                         labelCurrentLevel.setText("Current level: " + String.valueOf(num + 1));
                         labelCost.setText("Cost: " + String.valueOf((num + 1) * Integer.parseInt(finalAdv1[1][advList.getSelectedIndex()])));
-                    } else if (num <= Integer.parseInt(labelMaxLevel.getText().substring(11)))
+                    } else if (num < Integer.parseInt(labelMaxLevel.getText().substring(11)))
                     {
                         labelCurrentLevel.setText("Current level: " + String.valueOf(num + 1));
                         labelCost.setText("Cost: " + String.valueOf((num + 1) * Integer.parseInt(finalAdv1[1][advList.getSelectedIndex()])));
@@ -644,24 +635,29 @@ public class PerksPanel extends JPanel
                 buttonAddNew.setToolTipText("Создать новую причуду");
                 break;
         }
-        buttonAddNew.addActionListener(new ActionListener() {
+        ActionListener listener = new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
+                    boolean edit = e.getSource().equals(buttonEdit);
                     String cost = labelCost.getText();
+                    String oldName = advList.getSelectedValue();
                     buttonPlus.setVisible(false);
                     buttonMinus.setVisible(false);
                     textDescription.setEditable(true);
                     textDescription.setBackground(Color.WHITE);
-                    textDescription.setText("");
+                    if(!edit)
+                        textDescription.setText("");
                     buttonAdd.setVisible(false);
                     buttonAddNew.setVisible(false);
+                    buttonDelete.setVisible(false);
+                    buttonEdit.setVisible(false);
                     scrollPane.setVisible(false);
-                    JTextField textCost = new JTextField();
+                    JTextField textCost = new JTextField(edit ? cost.substring(6) : "");
                     textCost.setFont(Resources.font15);
                     ((AbstractDocument) textCost.getDocument()).setDocumentFilter(new IntDocumentFilter(mode == 1));
                     JLabel labelMLvl = new JLabel("Max level");
-                    JTextField textMLvl = new JTextField();
+                    JTextField textMLvl = new JTextField((edit)? (labelMaxLevel.getText().isEmpty()) ? "0" : labelMaxLevel.getText().substring(11) : "");
                     textMLvl.setFont(Resources.font15);
                     ((AbstractDocument) textMLvl.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
                     if (mode != 2)
@@ -677,6 +673,7 @@ public class PerksPanel extends JPanel
                         c.weighty = 0.0;
                         gbl.setConstraints(labelCost, c);
                         c.gridx = 2;
+                        c.weightx = 0.3;
                         labelCost.setText("Cost: ");
                         gbl.setConstraints(textCost, c);
                         infoPanel.add(textCost);
@@ -686,9 +683,11 @@ public class PerksPanel extends JPanel
                         else
                             labelMLvl.setToolTipText("Максимальный уровень недостатка");
                         c.gridx = 3;
+                        c.weightx = 1;
                         gbl.setConstraints(labelMLvl, c);
                         infoPanel.add(labelMLvl);
                         c.gridx = 4;
+                        c.weightx = 0.7;
                         gbl.setConstraints(textMLvl, c);
                         infoPanel.add(textMLvl);
                         c.gridx = 1;
@@ -725,26 +724,31 @@ public class PerksPanel extends JPanel
                     gbl.setConstraints(label, c);
                     infoPanel.add(label);
 
-                    JTextField name = new JTextField();
+                    JTextField name = new JTextField(edit ? advList.getSelectedValue() : "");
                     name.setFont(Resources.font15);
                     c.gridx = 2;
-                    c.gridwidth = 2;
+                    c.gridwidth = 3;
                     gbl.setConstraints(name, c);
                     infoPanel.add(name);
 
                     JButton add = new JButton();
-                    switch (mode)
+                    if (!edit)
                     {
-                        case 0:
-                            add.setText("Add new advantage");
-                            break;
-                        case 1:
-                            add.setText("Add new disadvantage");
-                            break;
-                        case 2:
-                            add.setText("Add new quirk");
-                            break;
+                        switch (mode)
+                        {
+                            case 0:
+                                add.setText("Add new advantage");
+                                break;
+                            case 1:
+                                add.setText("Add new disadvantage");
+                                break;
+                            case 2:
+                                add.setText("Add new quirk");
+                                break;
+                        }
                     }
+                    else
+                        add.setText("Update");
 
                     JButton cancel = new JButton("Cancel");
                     cancel.setFont(Resources.font15);
@@ -767,6 +771,8 @@ public class PerksPanel extends JPanel
                             }
                             textDescription.setBackground(Color.LIGHT_GRAY);
                             buttonAdd.setVisible(true);
+                            buttonDelete.setVisible(true);
+                            buttonEdit.setVisible(true);
                             scrollPane.setVisible(true);
                             buttonAddNew.setVisible(true);
                             if (mode != 2)
@@ -820,9 +826,14 @@ public class PerksPanel extends JPanel
                                             JOptionPane.showConfirmDialog(infoPanel, "Введите максимальный уровень преимущества (Max level) !", "!", JOptionPane.DEFAULT_OPTION);
                                         else if (textDescription.getText().isEmpty())
                                             JOptionPane.showConfirmDialog(infoPanel, "Введите описание преимущества!", "!", JOptionPane.DEFAULT_OPTION);
-                                        else if (DBConnect.getAdvantageOnName(name.getText()).equals("null"))
+                                        else if (DBConnect.getAdvantageOnName(name.getText()).equals("null") && !edit)
                                         {
                                             DBConnect.addNewAdvantage(name.getText(), Integer.parseInt(textCost.getText()), Integer.parseInt(textMLvl.getText()), textDescription.getText());
+                                            can = true;
+                                        }
+                                        else if (name.getText().equals(oldName) && edit)
+                                        {
+                                            DBConnect.updateAdvantage(oldName, name.getText(), Integer.parseInt(textCost.getText()), Integer.parseInt(textMLvl.getText()), textDescription.getText());
                                             can = true;
                                         }
                                         else
@@ -840,9 +851,14 @@ public class PerksPanel extends JPanel
                                             JOptionPane.showConfirmDialog(infoPanel, "Введите максимальный уровень недостатка (Max level) !", "!", JOptionPane.DEFAULT_OPTION);
                                         else if (textDescription.getText().isEmpty())
                                             JOptionPane.showConfirmDialog(infoPanel, "Введите описание недостатка!", "!", JOptionPane.DEFAULT_OPTION);
-                                        else if (DBConnect.getDisadvantageOnName(name.getText()).equals("null"))
+                                        else if (DBConnect.getDisadvantageOnName(name.getText()).equals("null") && !edit)
                                         {
                                             DBConnect.addNewDisadvantage(name.getText(), Integer.parseInt(textCost.getText()), Integer.parseInt(textMLvl.getText()), textDescription.getText());
+                                            can = true;
+                                        }
+                                        else if (name.getText().equals(oldName) && edit)
+                                        {
+                                            DBConnect.updateDisadvantage(oldName, name.getText(), Integer.parseInt(textCost.getText()), Integer.parseInt(textMLvl.getText()), textDescription.getText());
                                             can = true;
                                         }
                                         else
@@ -854,11 +870,16 @@ public class PerksPanel extends JPanel
                                     case 2:
                                         if (name.getText().isEmpty())
                                             JOptionPane.showConfirmDialog(infoPanel, "Введите название причуды (Name) !", "!", JOptionPane.DEFAULT_OPTION);
-                                        else if (textDescription.getText().isEmpty())
+                                        else if (textDescription.getText().isEmpty() && !edit)
                                             JOptionPane.showConfirmDialog(infoPanel, "Введите описание причуды!", "!", JOptionPane.DEFAULT_OPTION);
                                         else if (DBConnect.getQuirkOnName(name.getText()).equals("null"))
                                         {
                                             DBConnect.addNewQuirk(name.getText(), textDescription.getText());
+                                            can = true;
+                                        }
+                                        else if (name.getText().equals(oldName) && edit)
+                                        {
+                                            DBConnect.updateQuirk(oldName, name.getText(), textDescription.getText());
                                             can = true;
                                         }
                                         else
@@ -875,6 +896,26 @@ public class PerksPanel extends JPanel
                             if (can)
                             {
                                 dialogChoice.dispose();
+                                if (edit)
+                                    try
+                                    {
+                                        switch (mode)
+                                        {
+                                            case 0:
+                                                installAdvantage(DBConnect.getCharacterAdvantage(Window.characterId));
+                                                break;
+                                            case 1:
+                                                installDisadvantage(DBConnect.getCharacterDisadvantage(Window.characterId));
+                                                break;
+                                            case 2:
+                                                installQuirk(DBConnect.getCharacterQuirk(Window.characterId));
+                                                break;
+                                            default: break;
+                                        }
+                                    } catch (SQLException e1)
+                                    {
+                                        e1.printStackTrace();
+                                    }
                                 createDialog(mode);
                             }
 
@@ -886,7 +927,8 @@ public class PerksPanel extends JPanel
                     gbl.setConstraints(add, c);
                     infoPanel.add(add);
                 }
-            });
+            };
+        buttonAddNew.addActionListener(listener);
             c.gridx = 1;
             c.gridy = 2;
             c.gridwidth  = 1;
@@ -896,6 +938,91 @@ public class PerksPanel extends JPanel
             gbl.setConstraints(buttonAddNew, c);
             dialogChoice.add(buttonAddNew);
 //------------------buttonAddNew-----------------------
+//------------------buttonDelete-----------------------
+        buttonDelete.setFont(Resources.font15);
+        switch (mode)
+        {
+            case 0:
+                buttonDelete.setToolTipText("Удалить выбранное преимущество");
+                break;
+            case 1:
+                buttonDelete.setToolTipText("Удалить выбранный недостаток");
+                break;
+            case 2:
+                buttonDelete.setToolTipText("Удалить выбранную причуду");
+                break;
+            default: break;
+        }
+        buttonDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!advList.isSelectionEmpty())
+                {
+                    if (JOptionPane.showConfirmDialog(dialogChoice, "Вы уверены, что хотите безвозвратно удалить данные о " + advList.getSelectedValue() + "?", "!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+                    {
+                        try
+                        {
+                            switch (mode)
+                            {
+                                case 0:
+                                    DBConnect.deleteAdvantageOnName(advList.getSelectedValue());
+                                    installAdvantage(DBConnect.getCharacterAdvantage(Window.characterId));
+                                    break;
+                                case 1:
+                                    DBConnect.deleteDisadvantageOnName(advList.getSelectedValue());
+                                    installDisadvantage(DBConnect.getCharacterDisadvantage(Window.characterId));
+                                    break;
+                                case 2:
+                                    DBConnect.deleteQuirkOnName(advList.getSelectedValue());
+                                    installQuirk(DBConnect.getCharacterQuirk(Window.characterId));
+                                    break;
+                                default: break;
+                            }
+                            dialogChoice.dispose();
+                            createDialog(mode);
+                        }catch (SQLException e1)
+                        {
+                            e1.printStackTrace();
+                        }
+                    }
+
+                }
+            }
+        });
+        c.gridx = 2;
+        c.gridy = 2;
+        c.weightx = 0.0;
+        c.weighty = 0.0;
+        c.gridwidth = 1;
+        c.gridheight = 1;
+        gbl.setConstraints(buttonDelete, c);
+        dialogChoice.add(buttonDelete);
+//------------------buttonDelete-----------------------
+//------------------buttonEdit-----------------------
+        buttonEdit.setFont(Resources.font15);
+        switch (mode)
+        {
+            case 0:
+                buttonEdit.setToolTipText("Редактировать выбранное преимущество");
+                break;
+            case 1:
+                buttonEdit.setToolTipText("Редактировать выбранный недостаток");
+                break;
+            case 2:
+                buttonEdit.setToolTipText("Редактировать выбранную причуду");
+                break;
+            default: break;
+        }
+        buttonEdit.addActionListener(listener);
+        c.gridx = 3;
+        c.gridy = 2;
+        c.weightx = 0.0;
+        c.weighty = 0.0;
+        c.gridwidth = 1;
+        c.gridheight = 1;
+        gbl.setConstraints(buttonEdit, c);
+        dialogChoice.add(buttonEdit);
+//------------------buttonEdit-----------------------
 //------------------textDescription-----------------------
         if (mode < 2)
             textDescription.setText(adv[3][0]);
@@ -930,13 +1057,9 @@ public class PerksPanel extends JPanel
                         if (!finalAdv[2][index].equals("100"))
                         {
                             labelMaxLevel.setText("Max level: " + finalAdv[2][index]);
-                            buttonPlus.setVisible(false);
-                            buttonMinus.setVisible(false);
                         } else
                         {
                             labelMaxLevel.setText("");
-                            buttonPlus.setVisible(true);
-                            buttonMinus.setVisible(true);
                         }
                         labelCurrentLevel.setText("Current level: 1");
                         textDescription.setText(finalAdv[3][index]);
@@ -1035,6 +1158,37 @@ public class PerksPanel extends JPanel
         infoPanel.add(buttonAdd);
 //------------------buttonAdd-----------------------
         dialogChoice.setVisible(true);
+    }
+
+    void installPerks (Object[][] characterAdvantage, Object[][] characterDisadvantage, Object[][] characterQuirk)
+    {
+        installAdvantage(characterAdvantage);
+        installDisadvantage(characterDisadvantage);
+        installQuirk(characterQuirk);
+    }
+
+    private void installAdvantage (Object[][] characterAdvantage)
+    {
+        DefaultTableModel dtm = (DefaultTableModel) tableAdvantage.getModel();
+        dtm.setRowCount(0);
+        for (Object[] aCharacterAdvantage : characterAdvantage)
+            dtm.addRow(aCharacterAdvantage);
+    }
+
+    private void installDisadvantage (Object[][] characterDisadvantage)
+    {
+        DefaultTableModel dtm = (DefaultTableModel) tableDisadvantage.getModel();
+        dtm.setRowCount(0);
+        for (Object[] aCharacterDisadvantage : characterDisadvantage)
+            dtm.addRow(aCharacterDisadvantage);
+    }
+
+    private void installQuirk (Object[][] characterQuirk)
+    {
+        DefaultTableModel dtm = (DefaultTableModel) tableQuirk.getModel();
+        dtm.setRowCount(0);
+        for (Object[] aCharacterQuirk : characterQuirk)
+            dtm.addRow(aCharacterQuirk);
     }
 
     @Override
