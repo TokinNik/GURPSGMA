@@ -1,14 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/core/HandWeaponPanel.java" line="514" />
+    <bookmark url="file://$PROJECT_DIR$/src/core/HandWeaponPanel.java" line="546" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7ed9583-58bb-4e67-9be3-f3b8471310ea" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gmadb.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/gmadb.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/ArmorPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/DBConnect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/DBConnect.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/HandWeaponPanel$7$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/HandWeaponPanel$7$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/HandWeaponPanel$7$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/HandWeaponPanel$7$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/HandWeaponPanel$7$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/HandWeaponPanel$7$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/HandWeaponPanel$7$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/HandWeaponPanel$7$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/HandWeaponPanel$7$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/HandWeaponPanel$7$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/HandWeaponPanel$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/HandWeaponPanel$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/HandWeaponPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/HandWeaponPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/PerksPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/RangedWeaponPanel$7$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/RangedWeaponPanel$7$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/RangedWeaponPanel$7$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/RangedWeaponPanel$7$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/RangedWeaponPanel$7$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/RangedWeaponPanel$7$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/RangedWeaponPanel$7$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/RangedWeaponPanel$7$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/RangedWeaponPanel$7$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/RangedWeaponPanel$7$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/RangedWeaponPanel$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/RangedWeaponPanel$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/RangedWeaponPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/RangedWeaponPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$9$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$9$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$9$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$9$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/SkillsPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GURPSGMA/core/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GURPSGMA/core/Window.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/ArmorPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/ArmorPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/DBConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/DBConnect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/HandWeaponPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/HandWeaponPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/PerksPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/PerksPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/RangedWeaponPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/RangedWeaponPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/SkillsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/SkillsPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Window.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -24,13 +65,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DBConnect.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DBConnect.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/DBConnect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="829" column="18" selection-start-line="829" selection-start-column="18" selection-end-line="829" selection-end-column="18" />
+            <state relative-caret-position="119">
+              <caret line="368" column="18" selection-start-line="368" selection-start-column="18" selection-end-line="368" selection-end-column="18" />
               <folding>
-                <marker date="1527550817488" expanded="true" signature="18839:25710" ph="..." />
+                <marker date="1528005829292" expanded="true" signature="18839:25710" ph="..." />
               </folding>
             </state>
           </provider>
@@ -39,12 +80,10 @@
       <file leaf-file-name="Window.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Window.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="604" column="13" lean-forward="true" selection-start-line="604" selection-start-column="13" selection-end-line="604" selection-end-column="13" />
+            <state relative-caret-position="9622">
+              <caret line="596" selection-start-line="596" selection-end-line="596" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2871#3272#0" expanded="true" />
-                <element signature="e#3271#3272#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -53,12 +92,10 @@
       <file leaf-file-name="PerksPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/PerksPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="578" column="62" selection-start-line="578" selection-start-column="62" selection-end-line="578" selection-end-column="62" />
+            <state relative-caret-position="1309">
+              <caret line="884" column="94" selection-start-line="884" selection-start-column="94" selection-end-line="884" selection-end-column="94" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="class#29821:43269" />
-                <element signature="class#49010:51949" />
               </folding>
             </state>
           </provider>
@@ -67,39 +104,13 @@
       <file leaf-file-name="ArmorPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/ArmorPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="817" column="33" lean-forward="true" selection-start-line="810" selection-start-column="27" selection-end-line="817" selection-end-column="33" />
+            <state relative-caret-position="187">
+              <caret line="775" column="144" selection-start-line="775" selection-start-column="37" selection-end-line="775" selection-end-column="144" />
               <folding>
                 <element signature="e#2635#2636#0" expanded="true" />
                 <element signature="e#2681#2682#0" expanded="true" />
-                <element signature="class#14061:16652" />
-                <element signature="e#19497#19498#0" expanded="true" />
-                <element signature="e#19585#19586#0" expanded="true" />
-                <element signature="e#19932#19933#0" expanded="true" />
-                <element signature="e#20020#20021#0" expanded="true" />
-                <element signature="e#20368#20369#0" expanded="true" />
-                <element signature="e#20456#20457#0" expanded="true" />
-                <element signature="e#20851#20852#0" expanded="true" />
-                <element signature="e#20939#20940#0" expanded="true" />
-                <element signature="e#21319#21320#0" expanded="true" />
-                <element signature="e#21407#21408#0" expanded="true" />
-                <element signature="e#21803#21804#0" expanded="true" />
-                <element signature="e#21891#21892#0" expanded="true" />
-                <element signature="e#22267#22268#0" expanded="true" />
-                <element signature="e#22355#22356#0" expanded="true" />
-                <element signature="e#22240#22241#0" expanded="true" />
-                <element signature="e#22321#22322#0" expanded="true" />
-                <element signature="e#22671#22672#0" expanded="true" />
-                <element signature="e#22752#22753#0" expanded="true" />
-                <element signature="e#23124#23125#0" expanded="true" />
-                <element signature="e#23205#23206#0" expanded="true" />
-                <element signature="e#23583#23584#0" expanded="true" />
-                <element signature="e#23667#23668#0" expanded="true" />
-                <element signature="e#24056#24057#0" expanded="true" />
-                <element signature="e#24140#24141#0" expanded="true" />
-                <element signature="class#32362:35308" />
-                <element signature="e#40993#40994#0" expanded="true" />
-                <element signature="e#41026#41027#0" expanded="true" />
+                <element signature="e#41265#41266#0" expanded="true" />
+                <element signature="e#41298#41299#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,24 +119,28 @@
       <file leaf-file-name="SkillsPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/SkillsPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="667" column="32" lean-forward="true" selection-start-line="663" selection-start-column="28" selection-end-line="667" selection-end-column="32" />
+            <state relative-caret-position="561">
+              <caret line="704" column="29" selection-start-line="704" selection-start-column="29" selection-end-line="704" selection-end-column="29" />
               <folding>
-                <element signature="class#20507:23189" />
-                <element signature="class#27253:29699" />
+                <element signature="method#remathSkillsCost#0;class#SkillsPanel#0" />
+                <element signature="method#mathSkillCost#0;class#SkillsPanel#0" />
+                <element signature="method#mathPoints#0;class#SkillsPanel#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RangedWeaponPanel.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RangedWeaponPanel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/core/RangedWeaponPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="457" column="50" selection-start-line="457" selection-start-column="40" selection-end-line="457" selection-end-column="50" />
+            <state relative-caret-position="340">
+              <caret line="616" column="72" selection-start-line="616" selection-start-column="72" selection-end-line="616" selection-end-column="72" />
               <folding>
-                <element signature="class#20071:23331" />
-                <element signature="class#23825:43316" />
+                <element signature="e#2606#2607#0" expanded="true" />
+                <element signature="e#2652#2653#0" expanded="true" />
+                <element signature="method#actionPerformed#0;class#35982:40250" />
+                <element signature="e#51280#51281#0" expanded="true" />
+                <element signature="e#51320#51321#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -134,11 +149,13 @@
       <file leaf-file-name="HandWeaponPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/HandWeaponPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="370" column="50" selection-start-line="370" selection-start-column="40" selection-end-line="370" selection-end-column="50" />
+            <state relative-caret-position="243">
+              <caret line="506" column="85" selection-start-line="506" selection-start-column="85" selection-end-line="506" selection-end-column="85" />
               <folding>
-                <element signature="class#15668:18467" />
-                <element signature="class#18959:31823" />
+                <element signature="e#2598#2599#0" expanded="true" />
+                <element signature="e#2644#2645#0" expanded="true" />
+                <element signature="e#38997#38998#0" expanded="true" />
+                <element signature="e#39035#39036#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -169,6 +186,8 @@
       <find>&quot;Add&quot;</find>
       <find>&quot;Добавить&quot;</find>
       <find>UPDATE</find>
+      <find>== 1</find>
+      <find>== 1</find>
     </findStrings>
     <replaceStrings>
       <replace>Armor</replace>
@@ -194,13 +213,13 @@
         <option value="$PROJECT_DIR$/src/core/Resources.java" />
         <option value="$PROJECT_DIR$/src/core/InfoPanel.java" />
         <option value="$PROJECT_DIR$/src/core/InventoryPanel.java" />
-        <option value="$PROJECT_DIR$/src/core/SkillsPanel.java" />
-        <option value="$PROJECT_DIR$/src/core/RangedWeaponPanel.java" />
-        <option value="$PROJECT_DIR$/src/core/HandWeaponPanel.java" />
-        <option value="$PROJECT_DIR$/src/core/Window.java" />
-        <option value="$PROJECT_DIR$/src/core/ArmorPanel.java" />
-        <option value="$PROJECT_DIR$/src/core/PerksPanel.java" />
         <option value="$PROJECT_DIR$/src/core/DBConnect.java" />
+        <option value="$PROJECT_DIR$/src/core/Window.java" />
+        <option value="$PROJECT_DIR$/src/core/PerksPanel.java" />
+        <option value="$PROJECT_DIR$/src/core/ArmorPanel.java" />
+        <option value="$PROJECT_DIR$/src/core/SkillsPanel.java" />
+        <option value="$PROJECT_DIR$/src/core/HandWeaponPanel.java" />
+        <option value="$PROJECT_DIR$/src/core/RangedWeaponPanel.java" />
       </list>
     </option>
   </component>
@@ -220,8 +239,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -244,7 +263,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -347,12 +366,11 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" sideWeight="0.49855492" weight="0.32928804" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.37261903" />
-      <window_info anchor="right" id="Coverage" order="4" sideWeight="0.5014451" side_tool="true" weight="0.25" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17142858" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10194175" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.106796116" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" sideWeight="0.49855492" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -360,6 +378,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.18690476" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="4" sideWeight="0.5014451" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -697,43 +716,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/RangedWeaponPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="457" column="50" selection-start-line="457" selection-start-column="40" selection-end-line="457" selection-end-column="50" />
-          <folding>
-            <element signature="class#20071:23331" />
-            <element signature="class#23825:43316" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/HandWeaponPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="370" column="50" selection-start-line="370" selection-start-column="40" selection-end-line="370" selection-end-column="50" />
-          <folding>
-            <element signature="class#15668:18467" />
-            <element signature="class#18959:31823" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/javax/swing/JList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
           <caret line="2338" column="13" selection-start-line="2338" selection-start-column="13" selection-end-line="2338" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/SkillsPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="667" column="32" lean-forward="true" selection-start-line="663" selection-start-column="28" selection-end-line="667" selection-end-column="32" />
-          <folding>
-            <element signature="class#20507:23189" />
-            <element signature="class#27253:29699" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -748,82 +734,87 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="490">
           <caret line="65" column="18" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="18" />
-          <folding>
-            <element signature="e#1329#1330#0" expanded="true" />
-            <element signature="e#1358#1359#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/Window.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="604" column="13" lean-forward="true" selection-start-line="604" selection-start-column="13" selection-end-line="604" selection-end-column="13" />
+        <state relative-caret-position="9622">
+          <caret line="596" selection-start-line="596" selection-end-line="596" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2871#3272#0" expanded="true" />
-            <element signature="e#3271#3272#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/ArmorPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="817" column="33" lean-forward="true" selection-start-line="810" selection-start-column="27" selection-end-line="817" selection-end-column="33" />
-          <folding>
-            <element signature="e#2635#2636#0" expanded="true" />
-            <element signature="e#2681#2682#0" expanded="true" />
-            <element signature="class#14061:16652" />
-            <element signature="e#19497#19498#0" expanded="true" />
-            <element signature="e#19585#19586#0" expanded="true" />
-            <element signature="e#19932#19933#0" expanded="true" />
-            <element signature="e#20020#20021#0" expanded="true" />
-            <element signature="e#20368#20369#0" expanded="true" />
-            <element signature="e#20456#20457#0" expanded="true" />
-            <element signature="e#20851#20852#0" expanded="true" />
-            <element signature="e#20939#20940#0" expanded="true" />
-            <element signature="e#21319#21320#0" expanded="true" />
-            <element signature="e#21407#21408#0" expanded="true" />
-            <element signature="e#21803#21804#0" expanded="true" />
-            <element signature="e#21891#21892#0" expanded="true" />
-            <element signature="e#22267#22268#0" expanded="true" />
-            <element signature="e#22355#22356#0" expanded="true" />
-            <element signature="e#22240#22241#0" expanded="true" />
-            <element signature="e#22321#22322#0" expanded="true" />
-            <element signature="e#22671#22672#0" expanded="true" />
-            <element signature="e#22752#22753#0" expanded="true" />
-            <element signature="e#23124#23125#0" expanded="true" />
-            <element signature="e#23205#23206#0" expanded="true" />
-            <element signature="e#23583#23584#0" expanded="true" />
-            <element signature="e#23667#23668#0" expanded="true" />
-            <element signature="e#24056#24057#0" expanded="true" />
-            <element signature="e#24140#24141#0" expanded="true" />
-            <element signature="class#32362:35308" />
-            <element signature="e#40993#40994#0" expanded="true" />
-            <element signature="e#41026#41027#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/PerksPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="578" column="62" selection-start-line="578" selection-start-column="62" selection-end-line="578" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#29821:43269" />
-            <element signature="class#49010:51949" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/DBConnect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="829" column="18" selection-start-line="829" selection-start-column="18" selection-end-line="829" selection-end-column="18" />
+        <state relative-caret-position="119">
+          <caret line="368" column="18" selection-start-line="368" selection-start-column="18" selection-end-line="368" selection-end-column="18" />
           <folding>
-            <marker date="1527550817488" expanded="true" signature="18839:25710" ph="..." />
+            <marker date="1528005829292" expanded="true" signature="18839:25710" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/PerksPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1309">
+          <caret line="884" column="94" selection-start-line="884" selection-start-column="94" selection-end-line="884" selection-end-column="94" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/ArmorPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="775" column="144" selection-start-line="775" selection-start-column="37" selection-end-line="775" selection-end-column="144" />
+          <folding>
+            <element signature="e#2635#2636#0" expanded="true" />
+            <element signature="e#2681#2682#0" expanded="true" />
+            <element signature="e#41265#41266#0" expanded="true" />
+            <element signature="e#41298#41299#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/SkillsPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="704" column="29" selection-start-line="704" selection-start-column="29" selection-end-line="704" selection-end-column="29" />
+          <folding>
+            <element signature="method#remathSkillsCost#0;class#SkillsPanel#0" />
+            <element signature="method#mathSkillCost#0;class#SkillsPanel#0" />
+            <element signature="method#mathPoints#0;class#SkillsPanel#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/HandWeaponPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="506" column="85" selection-start-line="506" selection-start-column="85" selection-end-line="506" selection-end-column="85" />
+          <folding>
+            <element signature="e#2598#2599#0" expanded="true" />
+            <element signature="e#2644#2645#0" expanded="true" />
+            <element signature="e#38997#38998#0" expanded="true" />
+            <element signature="e#39035#39036#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/RangedWeaponPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="616" column="72" selection-start-line="616" selection-start-column="72" selection-end-line="616" selection-end-column="72" />
+          <folding>
+            <element signature="e#2606#2607#0" expanded="true" />
+            <element signature="e#2652#2653#0" expanded="true" />
+            <element signature="method#actionPerformed#0;class#35982:40250" />
+            <element signature="e#51280#51281#0" expanded="true" />
+            <element signature="e#51320#51321#0" expanded="true" />
           </folding>
         </state>
       </provider>

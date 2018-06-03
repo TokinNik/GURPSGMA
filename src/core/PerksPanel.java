@@ -537,7 +537,7 @@ public class PerksPanel extends JPanel
         JButton buttonMinus = new JButton("-");
         JButton buttonAddNew = new JButton("+");
         JButton buttonDelete = new JButton("-");
-        JButton buttonEdit = new JButton("○");
+        JButton buttonEdit = new JButton("☐");
         JTextArea textDescription = new JTextArea();
         JButton buttonAdd = new JButton("Добавить");
         JScrollPane scrollDescription = new JScrollPane(textDescription);
@@ -826,15 +826,18 @@ public class PerksPanel extends JPanel
                                             JOptionPane.showConfirmDialog(infoPanel, "Введите максимальный уровень преимущества (Max level) !", "!", JOptionPane.DEFAULT_OPTION);
                                         else if (textDescription.getText().isEmpty())
                                             JOptionPane.showConfirmDialog(infoPanel, "Введите описание преимущества!", "!", JOptionPane.DEFAULT_OPTION);
-                                        else if (DBConnect.getAdvantageOnName(name.getText()).equals("null") && !edit)
+                                        else if (DBConnect.getAdvantageOnName(name.getText()).equals("null") || (name.getText().equals(oldName) && edit))
                                         {
-                                            DBConnect.addNewAdvantage(name.getText(), Integer.parseInt(textCost.getText()), Integer.parseInt(textMLvl.getText()), textDescription.getText());
-                                            can = true;
-                                        }
-                                        else if (name.getText().equals(oldName) && edit)
-                                        {
-                                            DBConnect.updateAdvantage(oldName, name.getText(), Integer.parseInt(textCost.getText()), Integer.parseInt(textMLvl.getText()), textDescription.getText());
-                                            can = true;
+                                            if (edit)
+                                            {
+                                                DBConnect.updateAdvantage(oldName, name.getText(), Integer.parseInt(textCost.getText()), Integer.parseInt(textMLvl.getText()), textDescription.getText());
+                                                can = true;
+                                            }
+                                            else
+                                            {
+                                                DBConnect.addNewAdvantage(name.getText(), Integer.parseInt(textCost.getText()), Integer.parseInt(textMLvl.getText()), textDescription.getText());
+                                                can = true;
+                                            }
                                         }
                                         else
                                         {
@@ -851,15 +854,18 @@ public class PerksPanel extends JPanel
                                             JOptionPane.showConfirmDialog(infoPanel, "Введите максимальный уровень недостатка (Max level) !", "!", JOptionPane.DEFAULT_OPTION);
                                         else if (textDescription.getText().isEmpty())
                                             JOptionPane.showConfirmDialog(infoPanel, "Введите описание недостатка!", "!", JOptionPane.DEFAULT_OPTION);
-                                        else if (DBConnect.getDisadvantageOnName(name.getText()).equals("null") && !edit)
+                                        else if (DBConnect.getDisadvantageOnName(name.getText()).equals("null") || (name.getText().equals(oldName) && edit))
                                         {
-                                            DBConnect.addNewDisadvantage(name.getText(), Integer.parseInt(textCost.getText()), Integer.parseInt(textMLvl.getText()), textDescription.getText());
-                                            can = true;
-                                        }
-                                        else if (name.getText().equals(oldName) && edit)
-                                        {
-                                            DBConnect.updateDisadvantage(oldName, name.getText(), Integer.parseInt(textCost.getText()), Integer.parseInt(textMLvl.getText()), textDescription.getText());
-                                            can = true;
+                                            if (edit)
+                                            {
+                                                DBConnect.updateDisadvantage(oldName, name.getText(), Integer.parseInt(textCost.getText()), Integer.parseInt(textMLvl.getText()), textDescription.getText());
+                                                can = true;
+                                            }
+                                            else
+                                            {
+                                                DBConnect.addNewDisadvantage(name.getText(), Integer.parseInt(textCost.getText()), Integer.parseInt(textMLvl.getText()), textDescription.getText());
+                                                can = true;
+                                            }
                                         }
                                         else
                                         {
@@ -872,15 +878,18 @@ public class PerksPanel extends JPanel
                                             JOptionPane.showConfirmDialog(infoPanel, "Введите название причуды (Name) !", "!", JOptionPane.DEFAULT_OPTION);
                                         else if (textDescription.getText().isEmpty() && !edit)
                                             JOptionPane.showConfirmDialog(infoPanel, "Введите описание причуды!", "!", JOptionPane.DEFAULT_OPTION);
-                                        else if (DBConnect.getQuirkOnName(name.getText()).equals("null"))
+                                        else if (DBConnect.getQuirkOnName(name.getText()).equals("null") || (name.getText().equals(oldName) && edit))
                                         {
-                                            DBConnect.addNewQuirk(name.getText(), textDescription.getText());
-                                            can = true;
-                                        }
-                                        else if (name.getText().equals(oldName) && edit)
-                                        {
-                                            DBConnect.updateQuirk(oldName, name.getText(), textDescription.getText());
-                                            can = true;
+                                            if (edit)
+                                            {
+                                                DBConnect.updateQuirk(oldName, name.getText(), textDescription.getText());
+                                                can = true;
+                                            }
+                                            else
+                                            {
+                                                DBConnect.addNewQuirk(name.getText(), textDescription.getText());
+                                                can = true;
+                                            }
                                         }
                                         else
                                         {

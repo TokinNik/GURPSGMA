@@ -549,37 +549,12 @@ class Window extends JFrame
     }
 
 
-
-    private void installSkills (Object[][] characterSkills)
-    {
-        DefaultTableModel dtm = (DefaultTableModel) skillsPanel.getTableSkills().getModel();
-        dtm.setRowCount(0);
-        for (Object[] aCharacterSkill : characterSkills)
-            dtm.addRow(aCharacterSkill);
-    }
-
     private void installInventory (Object[][] characterArmor)
     {
         DefaultTableModel dtm = (DefaultTableModel) inventoryPanel.getTableInventory().getModel();
         dtm.setRowCount(0);
         for (Object[] aCharacterInventory : characterArmor)
             dtm.addRow(aCharacterInventory);
-    }
-
-    private void installHandWeapon (Object[][] characterArmor)
-    {
-        DefaultTableModel dtm = (DefaultTableModel) handWeaponPanel.getTableHandWeapon().getModel();
-        dtm.setRowCount(0);
-        for (Object[] aCharacterHandWeapon : characterArmor)
-            dtm.addRow(aCharacterHandWeapon);
-    }
-
-    private void installRangedWeaponPanel (Object[][] characterArmor)
-    {
-        DefaultTableModel dtm = (DefaultTableModel) rangedWeaponPanel.getTableRangedWeapon().getModel();
-        dtm.setRowCount(0);
-        for (Object[] aCharacterRangedWeapon : characterArmor)
-            dtm.addRow(aCharacterRangedWeapon);
     }
 
     private void saveAll()
@@ -614,11 +589,11 @@ class Window extends JFrame
             installStats(DBConnect.getCharacterStats(characterId));
             installInfo(DBConnect.getCharacterInfo(characterId));
             perksPanel.installPerks(DBConnect.getCharacterAdvantage(characterId), DBConnect.getCharacterDisadvantage(characterId), DBConnect.getCharacterQuirk(characterId));
-            installSkills(DBConnect.getCharacterSkills(characterId));
+            skillsPanel.installSkills(DBConnect.getCharacterSkills(characterId));
             armorPanel.installArmor(DBConnect.getCharacterArmor(characterId));
             installInventory(DBConnect.getCharacterInventory(characterId));
-            installHandWeapon(DBConnect.getCharacterHandWeapon(characterId));
-            installRangedWeaponPanel(DBConnect.getCharacterRangedWeapon(characterId));
+            handWeaponPanel.installHandWeapon(DBConnect.getCharacterHandWeapon(characterId));
+            rangedWeaponPanel.installRangedWeaponPanel(DBConnect.getCharacterRangedWeapon(characterId));
 
         } catch (SQLException e1)
         {

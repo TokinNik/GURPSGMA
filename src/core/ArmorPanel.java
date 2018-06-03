@@ -405,12 +405,12 @@ public class ArmorPanel extends JPanel
 //------------------buttonAddNew-----------------------
         JButton buttonAddNew = new JButton("+");
         JButton buttonDelete = new JButton("-");
-        JButton buttonEdit = new JButton("○");
+        JButton buttonEdit = new JButton("☐");
         ActionListener listener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                int mode = e.getSource().equals(buttonEdit) ? 1 : 0;
+                boolean edit = e.getSource().equals(buttonEdit);
                 String zone = labelZones.getText();
                 String dr = labelDR.getText();
                 String cost = labelCost.getText();
@@ -418,18 +418,17 @@ public class ArmorPanel extends JPanel
                 String oldName = armorList.getSelectedValue();
                 textDescription.setEditable(true);
                 textDescription.setBackground(Color.WHITE);
-                if (mode == 0)
-                    textDescription.setText("");
+                if (!edit) textDescription.setText("");
                 buttonAdd.setVisible(false);
                 buttonAddNew.setVisible(false);
                 buttonDelete.setVisible(false);
                 buttonEdit.setVisible(false);
                 scrollPane.setVisible(false);
-                JTextField textCost = new JTextField(mode ==  1 ? labelCost.getText().substring(6) : "");
+                JTextField textCost = new JTextField(edit ? labelCost.getText().substring(6) : "");
                 ((AbstractDocument) textCost.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
-                JTextField textDR = new JTextField(mode ==  1 ? labelDR.getText().substring(4) : "");
+                JTextField textDR = new JTextField(edit ? labelDR.getText().substring(4) : "");
                 ((AbstractDocument) textDR.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
-                JTextField textWeight = new JTextField(mode ==  1 ? labelWeight.getText().substring(8) : "");
+                JTextField textWeight = new JTextField(edit ? labelWeight.getText().substring(8) : "");
                 ((AbstractDocument) textWeight.getDocument()).setDocumentFilter(new FloatDocumentFilter(textWeight, false));
                 JMenuBar menuBarZones = new JMenuBar();
                 menuBarZones.setFont(Resources.font15);
@@ -534,7 +533,7 @@ public class ArmorPanel extends JPanel
                 menuZones.add(rb1718);
                 menuBarZones.add(menuZones);
 
-                if (mode == 1)
+                if (edit)
                 {
                     String oldZones = labelZones.getText().substring(7);
                     while (!oldZones.isEmpty())
@@ -543,24 +542,24 @@ public class ArmorPanel extends JPanel
                         {
                             switch (oldZones.substring(0, 1))
                             {
+                                case "3":
+                                    rb3.setSelected(true);
+                                    zones[0] = true;
+                                    break;
                                 case "4":
                                     rb4.setSelected(true);
-                                    zones[0] = true;
+                                    zones[1] = true;
                                     break;
                                 case "5":
                                     rb5.setSelected(true);
-                                    zones[1] = true;
+                                    zones[2] = true;
                                     break;
                                 case "6":
                                     rb6.setSelected(true);
-                                    zones[2] = true;
+                                    zones[3] = true;
                                     break;
                                 case "7":
                                     rb7.setSelected(true);
-                                    zones[3] = true;
-                                    break;
-                                case "3":
-                                    rb3.setSelected(true);
                                     zones[4] = true;
                                     break;
                                 case "8":
@@ -673,7 +672,7 @@ public class ArmorPanel extends JPanel
                 gbl.setConstraints(labelName, c);
                 infoPanel.add(labelName);
 
-                JTextField textName = new JTextField(mode ==  1 ? oldName : "");
+                JTextField textName = new JTextField(edit ? oldName : "");
                 textName.setFont(Resources.font15);
                 c.gridx = 2;
                 c.gridwidth = 2;
@@ -681,10 +680,10 @@ public class ArmorPanel extends JPanel
                 infoPanel.add(textName);
 
                 JButton add = new JButton();
-                if (mode == 1)
-                    add.setText("OK");
+                if (edit)
+                    add.setText("Update");
                 else
-                    add.setText("Add");
+                    add.setText("Add new armor");
 
                 JButton cancel = new JButton("Cancel");
                 cancel.setFont(Resources.font15);
@@ -774,27 +773,31 @@ public class ArmorPanel extends JPanel
                                 JOptionPane.showConfirmDialog(infoPanel, "Введите зоны, которые защищает броня! (Zones)", "!", JOptionPane.DEFAULT_OPTION);
                             else if (textWeight.getText().isEmpty())
                                 JOptionPane.showConfirmDialog(infoPanel, "Введите вес брони! (Weight)", "!", JOptionPane.DEFAULT_OPTION);
-                            else if (textName.getText().equals(oldName) && mode == 1)
+                            else if (DBConnect.getArmorOnName(textName.getText()).equals("null") || (textName.getText().equals(oldName) && edit))
                             {
-                                zonesOut = zonesOut.substring(0, zonesOut.length() - 1);
-                                DBConnect.updateArmor(oldName,
-                                        textName.getText(),
-                                        textDR.getText(),
-                                        zonesOut,
-                                        textCost.getText(),//
-                                        textWeight.getText(),
-                                        textDescription.getText());//
-                                can = true;
-                            }
-                            else if (DBConnect.getArmorOnName(textName.getText()).equals("null") && mode == 0)
-                            {
-                                DBConnect.addNewArmor(textName.getText(),
-                                        textDR.getText(),
-                                        zonesOut,
-                                        textCost.getText(),//
-                                        textWeight.getText(),
-                                        textDescription.getText());//
-                                can = true;
+                                if (!edit)
+                                {
+                                    zonesOut = zonesOut.substring(0, zonesOut.length() - 1);
+                                    DBConnect.addNewArmor(textName.getText(),
+                                            textDR.getText(),
+                                            zonesOut,
+                                            (textCost.getText().isEmpty() ? "0" : textCost.getText()),//
+                                            textWeight.getText(),
+                                            textDescription.getText());//
+                                    can = true;
+                                }
+                                else
+                                {
+                                    zonesOut = zonesOut.substring(0, zonesOut.length() - 1);
+                                    DBConnect.updateArmor(oldName,
+                                            textName.getText(),
+                                            textDR.getText(),
+                                            zonesOut,
+                                            (textCost.getText().isEmpty() ? "0" : textCost.getText()),//
+                                            textWeight.getText(),
+                                            textDescription.getText());//
+                                    can = true;
+                                }
                             }
                              else
                             {
@@ -808,7 +811,7 @@ public class ArmorPanel extends JPanel
                         if (can)
                         {
                             dialogChoice.dispose();
-                            if (mode == 1)
+                            if (edit)
                                 try
                                 {
                                     installArmor(DBConnect.getCharacterArmor(Window.characterId));

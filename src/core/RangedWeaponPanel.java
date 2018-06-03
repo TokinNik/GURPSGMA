@@ -528,13 +528,16 @@ public class RangedWeaponPanel extends JPanel
         infoPanel.add(buttonAdd);
 //------------------buttonAdd-----------------------
 //------------------buttonAddNew-----------------------
+        JButton buttonDelete = new JButton("-");
+        JButton buttonEdit = new JButton("☐");
         JButton buttonAddNew = new JButton("+");
         buttonAddNew.setToolTipText("Создать новое оружие");
         buttonAddNew.setFont(Resources.font15);
-        buttonAddNew.addActionListener(new ActionListener() {
+        ActionListener listener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                boolean edit = e.getSource().equals(buttonEdit);
                 String dmg = labelDamage.getText();
                 String type = labelType.getText();
                 String ss = labelSS.getText();
@@ -547,33 +550,37 @@ public class RangedWeaponPanel extends JPanel
                 String rcl = labelRcl.getText();
                 String cost = labelCost.getText();
                 String wt = labelWeight.getText();
+                String oldName = rangedWeaponList.getSelectedValue();
                 textDescription.setEditable(true);
-                textDescription.setText("");
+                if (!edit)
+                    textDescription.setText("");
                 textDescription.setBackground(Color.WHITE);
                 buttonAdd.setVisible(false);
                 buttonAddNew.setVisible(false);
+                buttonDelete.setVisible(false);
+                buttonEdit.setVisible(false);
                 scrollPane.setVisible(false);
-                JTextField textCost = new JTextField();
+                JTextField textCost = new JTextField(edit ? labelCost.getText().substring(6) : "");
                 ((AbstractDocument) textCost.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
-                JTextField textMinST = new JTextField();
+                JTextField textMinST = new JTextField(edit ? labelMinST.getText().substring(7) : "");
                 ((AbstractDocument) textMinST.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
-                JTextField textSS = new JTextField();
+                JTextField textSS = new JTextField(edit ? labelSS.getText().substring(4) : "");
                 ((AbstractDocument) textSS.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
-                JTextField textAcc = new JTextField();
+                JTextField textAcc = new JTextField(edit ? labelAcc.getText().substring(5) : "");
                 ((AbstractDocument) textAcc.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
-                JTextField textRoF = new JTextField();
+                JTextField textRoF = new JTextField(edit ? labelRoF.getText().substring(6) : "");
                 ((AbstractDocument) textRoF.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
-                JTextField textShots = new JTextField();
+                JTextField textShots = new JTextField(edit ? labelShots.getText().substring(7) : "");
                 ((AbstractDocument) textShots.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
-                JTextField textRange = new JTextField();
+                JTextField textRange = new JTextField(edit ? labelRange.getText().substring(7) : "");
                 ((AbstractDocument) textRange.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
-                JTextField textMaxRange = new JTextField();
+                JTextField textMaxRange = new JTextField(edit ? labelMaxRange.getText().substring(11) : "");
                 ((AbstractDocument) textMaxRange.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
-                JTextField textRcl = new JTextField();
+                JTextField textRcl = new JTextField(edit ? labelRcl.getText().substring(5) : "");
                 ((AbstractDocument) textRcl.getDocument()).setDocumentFilter(new IntDocumentFilter(false));
-                JTextField textWeight = new JTextField();
+                JTextField textWeight = new JTextField(edit ? labelWeight.getText().substring(8) : "");
                 ((AbstractDocument) textWeight.getDocument()).setDocumentFilter(new FloatDocumentFilter(textWeight, false));
-                JTextField textDamage = new JTextField();
+                JTextField textDamage = new JTextField(edit ? labelDamage.getText().substring(8) : "");
                 JMenuBar menuBarDamageType = new JMenuBar();
                 menuBarDamageType.setFont(Resources.font15);
                 Boolean [] damageType = new Boolean[]{false,false,false};
@@ -604,6 +611,31 @@ public class RangedWeaponPanel extends JPanel
                 });
                 menuDamageType.add(rb3);
                 menuBarDamageType.add(menuDamageType);
+
+                if (edit)
+                {
+                    String[] oldZones = labelType.getText().substring(13).split(",");
+                    for (String s: oldZones)
+                    {
+                        switch (s)
+                        {
+                            case "реж":
+                                rb1.setSelected(true);
+                                damageType[0] = true;
+                                break;
+                            case "прон":
+                                rb2.setSelected(true);
+                                damageType[1] = true;
+                                break;
+                            case "дроб":
+                                rb3.setSelected(true);
+                                damageType[2] = true;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
 
                 c.gridwidth  = 1;
                 c.gridheight = 1;
@@ -755,7 +787,7 @@ public class RangedWeaponPanel extends JPanel
 
                 JLabel labelName = new JLabel("Name");
                 labelName.setFont(Resources.font15);
-                labelName.setToolTipText("Название брони");
+                labelName.setToolTipText("Название оружия");
                 c.gridx = 1;
                 c.gridy = 1;
                 c.weighty = 0;
@@ -764,7 +796,7 @@ public class RangedWeaponPanel extends JPanel
                 gbl.setConstraints(labelName, c);
                 infoPanel.add(labelName);
 
-                JTextField textName = new JTextField();
+                JTextField textName = new JTextField(edit ? oldName : "");
                 textName.setFont(Resources.font15);
                 c.gridx = 2;
                 c.gridwidth = 2;
@@ -772,7 +804,10 @@ public class RangedWeaponPanel extends JPanel
                 infoPanel.add(textName);
 
                 JButton add = new JButton();
-                add.setText("Add new ranged weapon");
+                if (edit)
+                    add.setText("Update");
+                else
+                    add.setText("Add new ranged weapon");
 
                 JButton cancel = new JButton("Cancel");
                 cancel.setFont(Resources.font15);
@@ -801,6 +836,8 @@ public class RangedWeaponPanel extends JPanel
                         textDescription.setBackground(Color.LIGHT_GRAY);
                         buttonAdd.setVisible(true);
                         buttonAddNew.setVisible(true);
+                        buttonDelete.setVisible(true);
+                        buttonEdit.setVisible(true);
                         scrollPane.setVisible(true);
                         labelCost.setVisible(true);
                         c.gridwidth = 1;
@@ -903,24 +940,47 @@ public class RangedWeaponPanel extends JPanel
                                 JOptionPane.showConfirmDialog(infoPanel, "Введите время перезарядки оружия (Rcl) !", "!", JOptionPane.DEFAULT_OPTION);
                             else if (textWeight.getText().isEmpty())
                                 JOptionPane.showConfirmDialog(infoPanel, "Введите вес оружия (Weight) !", "!", JOptionPane.DEFAULT_OPTION);
-                            else if (DBConnect.getRangedWeaponOnName(textName.getText()).equals("null"))
+                            else if (DBConnect.getArmorOnName(textName.getText()).equals("null") || (textName.getText().equals(oldName) && edit))
                             {
-                                dmgTypeOut = dmgTypeOut.substring(0,dmgTypeOut.length()-1);
-                                DBConnect.addNewRangedWeapon(textName.getText(),
-                                        textDamage.getText(),
-                                        dmgTypeOut,
-                                        textSS.getText(),
-                                        textAcc.getText(),
-                                        textRange.getText(),
-                                        textMaxRange.getText(),
-                                        textRoF.getText(),
-                                        textShots.getText(),
-                                        (textMinST.getText().isEmpty() ? "0" : textMinST.getText()),//
-                                        textRcl.getText(),
-                                        (textCost.getText().isEmpty() ? "0" : textCost.getText()),//
-                                        textWeight.getText(),
-                                        textDescription.getText());//
-                                can = true;
+                                if (!edit)
+                                {
+                                    dmgTypeOut = dmgTypeOut.substring(0, dmgTypeOut.length() - 1);
+                                    DBConnect.addNewRangedWeapon(textName.getText(),
+                                            textDamage.getText(),
+                                            dmgTypeOut,
+                                            textSS.getText(),
+                                            textAcc.getText(),
+                                            textRange.getText(),
+                                            textMaxRange.getText(),
+                                            textRoF.getText(),
+                                            textShots.getText(),
+                                            (textMinST.getText().isEmpty() ? "0" : textMinST.getText()),//
+                                            textRcl.getText(),
+                                            (textCost.getText().isEmpty() ? "0" : textCost.getText()),//
+                                            textWeight.getText(),
+                                            textDescription.getText());//
+                                    can = true;
+                                }
+                                else
+                                {
+                                    dmgTypeOut = dmgTypeOut.substring(0, dmgTypeOut.length() - 1);
+                                    DBConnect.updateRangedWeapon(oldName,
+                                            textName.getText(),
+                                            textDamage.getText(),
+                                            dmgTypeOut,
+                                            textSS.getText(),
+                                            textAcc.getText(),
+                                            textRange.getText(),
+                                            textMaxRange.getText(),
+                                            textRoF.getText(),
+                                            textShots.getText(),
+                                            (textMinST.getText().isEmpty() ? "0" : textMinST.getText()),//
+                                            textRcl.getText(),
+                                            (textCost.getText().isEmpty() ? "0" : textCost.getText()),//
+                                            textWeight.getText(),
+                                            textDescription.getText());//
+                                    can = true;
+                                }
                             }
                             else
                             {
@@ -934,6 +994,14 @@ public class RangedWeaponPanel extends JPanel
                         if (can)
                         {
                             dialogChoice.dispose();
+                            if (edit)
+                                try
+                                {
+                                    installRangedWeaponPanel(DBConnect.getCharacterRangedWeapon(Window.characterId));
+                                } catch (SQLException e1)
+                                {
+                                    e1.printStackTrace();
+                                }
                             createDialog();
                         }
 
@@ -945,7 +1013,8 @@ public class RangedWeaponPanel extends JPanel
                 gbl.setConstraints(add, c);
                 infoPanel.add(add);
             }
-        });
+        };
+        buttonAddNew.addActionListener(listener);
         c.gridx = 1;
         c.gridy = 2;
         c.gridwidth  = 1;
@@ -955,6 +1024,53 @@ public class RangedWeaponPanel extends JPanel
         gbl.setConstraints(buttonAddNew, c);
         dialogChoice.add(buttonAddNew);
 //------------------buttonAddNew-----------------------
+//------------------buttonDelete-----------------------
+        buttonDelete.setFont(Resources.font15);
+        buttonDelete.setToolTipText("Удалить выбранное оружие");
+        buttonDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!rangedWeaponList.isSelectionEmpty())
+                {
+                    if (JOptionPane.showConfirmDialog(dialogChoice, "Вы уверены, что хотите безвозвратно удалить данные о " + rangedWeaponList.getSelectedValue() + "?", "!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+                    {
+                        try
+                        {
+                            DBConnect.deleteRangedWeaponOnName(rangedWeaponList.getSelectedValue());
+                            installRangedWeaponPanel(DBConnect.getCharacterRangedWeapon(Window.characterId));
+                            dialogChoice.dispose();
+                            createDialog();
+                        }catch (SQLException e1)
+                        {
+                            e1.printStackTrace();
+                        }
+                    }
+
+                }
+            }
+        });
+        c.gridx = 2;
+        c.gridy = 2;
+        c.weightx = 0.0;
+        c.weighty = 0.0;
+        c.gridwidth = 1;
+        c.gridheight = 1;
+        gbl.setConstraints(buttonDelete, c);
+        dialogChoice.add(buttonDelete);
+//------------------buttonDelete-----------------------
+//------------------buttonEdit-----------------------
+        buttonEdit.setFont(Resources.font15);
+        buttonEdit.setToolTipText("Редактировать выбранное оружие");
+        buttonEdit.addActionListener(listener);
+        c.gridx = 3;
+        c.gridy = 2;
+        c.weightx = 0.0;
+        c.weighty = 0.0;
+        c.gridwidth = 1;
+        c.gridheight = 1;
+        gbl.setConstraints(buttonEdit, c);
+        dialogChoice.add(buttonEdit);
+//------------------buttonEdit-----------------------
         dialogChoice.setVisible(true);
     }
 
@@ -963,6 +1079,14 @@ public class RangedWeaponPanel extends JPanel
     {
         DefaultTableModel dtm = (DefaultTableModel) tableRangedWeapon.getModel();
         dtm.setRowCount(0);
+    }
+
+    void installRangedWeaponPanel (Object[][] characterArmor)
+    {
+        DefaultTableModel dtm = (DefaultTableModel) tableRangedWeapon.getModel();
+        dtm.setRowCount(0);
+        for (Object[] aCharacterRangedWeapon : characterArmor)
+            dtm.addRow(aCharacterRangedWeapon);
     }
 
     void saveStats()

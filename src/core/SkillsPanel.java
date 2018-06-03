@@ -506,27 +506,38 @@ public class SkillsPanel extends JPanel
         infoPanel.add(buttonAdd);
 //------------------buttonAdd-----------------------
 //------------------buttonAddNew-----------------------
+        JButton buttonDelete = new JButton("-");
+        JButton buttonEdit = new JButton("☐");
         JButton buttonAddNew = new JButton("+");
         buttonAddNew.setToolTipText("Создать новый навык");
         buttonAddNew.setFont(Resources.font15);
-        buttonAddNew.addActionListener(new ActionListener() {
+        ActionListener listener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                boolean edit = e.getSource().equals(buttonEdit);
                 String diff = labelDifficulty.getText();
                 String type = labelType.getText();
                 String relLvl = labelRelativeLevel.getText();
+                String oldName = skillsList.getSelectedValue();
                 buttonPlus.setVisible(false);
                 buttonMinus.setVisible(false);
                 textDescription.setEditable(true);
-                textDescription.setText("");
+                if (!edit)
+                    textDescription.setText("");
                 textDescription.setBackground(Color.WHITE);
                 buttonAdd.setVisible(false);
                 buttonAddNew.setVisible(false);
+                buttonDelete.setVisible(false);
+                buttonEdit.setVisible(false);
                 scrollPane.setVisible(false);
                 JSpinner spinnerDifficulty = new JSpinner(new SpinnerListModel(new Object[]{"Easy", "Middle", "Hard", "Very Hard"}));
+                spinnerDifficulty.setFont(Resources.font15);
+                spinnerDifficulty.setValue(edit ? labelDifficulty.getText().substring(12) : "Easy");
                 JSpinner spinnerType = new JSpinner(new SpinnerListModel(new Object[]{"ST", "DX", "IQ", "HT"}));
-                JTextField textRelativeLevel = new JTextField();
+                spinnerType.setFont(Resources.font15);
+                spinnerType.setValue(edit ? labelType.getText().substring(6) : "ST");
+                JTextField textRelativeLevel = new JTextField(edit ? labelRelativeLevel.getText().substring(16) : "");
                 labelCurrentLevel.setVisible(false);
                 labelCost.setVisible(false);
 
@@ -585,7 +596,7 @@ public class SkillsPanel extends JPanel
                 gbl.setConstraints(labelName, c);
                 infoPanel.add(labelName);
 
-                JTextField textName = new JTextField();
+                JTextField textName = new JTextField(edit ? oldName : "");
                 textName.setFont(Resources.font15);
                 c.gridx = 2;
                 c.gridwidth = 2;
@@ -593,7 +604,10 @@ public class SkillsPanel extends JPanel
                 infoPanel.add(textName);
 
                 JButton add = new JButton();
-                add.setText("Add new skill");
+                if (edit)
+                    add.setText("Update");
+                else
+                    add.setText("Add new skill");
 
                 JButton cancel = new JButton("Cancel");
                 cancel.setFont(Resources.font15);
@@ -611,6 +625,8 @@ public class SkillsPanel extends JPanel
                         textDescription.setBackground(Color.LIGHT_GRAY);
                         buttonAdd.setVisible(true);
                         buttonAddNew.setVisible(true);
+                        buttonDelete.setVisible(true);
+                        buttonEdit.setVisible(true);
                         scrollPane.setVisible(true);
                         infoPanel.remove(spinnerDifficulty);
                         infoPanel.remove(textRelativeLevel);
@@ -665,16 +681,33 @@ public class SkillsPanel extends JPanel
                                 JOptionPane.showConfirmDialog(infoPanel, "Введите название навыка (Name) !", "!", JOptionPane.DEFAULT_OPTION);
                             else if (textDescription.getText().isEmpty())
                                 JOptionPane.showConfirmDialog(infoPanel, "Введите описание навыка!", "!", JOptionPane.DEFAULT_OPTION);
-                            else if (DBConnect.getSkillOnName(textName.getText()).equals("null"))
+                            else if (DBConnect.getArmorOnName(textName.getText()).equals("null") || (textName.getText().equals(oldName) && edit))
                             {
-                                DBConnect.addNewSkill(textName.getText(), spinnerType.getValue().toString(), spinnerDifficulty.getValue().toString(), textRelativeLevel.getText(), textDescription.getText());
-                                can = true;
-                            }
-                            else
+                                if (!edit)
                                 {
-                                    JOptionPane.showConfirmDialog(infoPanel, "Навык с таким именем уже существует!", "Error", JOptionPane.DEFAULT_OPTION);
-                                    can = false;
+                                    DBConnect.addNewSkill(textName.getText(),
+                                            spinnerType.getValue().toString(),
+                                            spinnerDifficulty.getValue().toString(),
+                                            textRelativeLevel.getText(),//
+                                            textDescription.getText());
+                                    can = true;
                                 }
+                                else
+                                {
+                                    DBConnect.updateSkill(oldName,
+                                            textName.getText(),
+                                            spinnerType.getValue().toString(),
+                                            spinnerDifficulty.getValue().toString(),
+                                            textRelativeLevel.getText(),//
+                                            textDescription.getText());
+                                    can = true;
+                                }
+                            }
+                                else
+                            {
+                                JOptionPane.showConfirmDialog(infoPanel, "Навык с таким именем уже существует!", "!", JOptionPane.DEFAULT_OPTION);
+                                can = false;
+                            }
                         } catch (SQLException e1)
                         {
                             e1.printStackTrace();
@@ -682,6 +715,14 @@ public class SkillsPanel extends JPanel
                         if (can)
                         {
                             dialogChoice.dispose();
+                            if (edit)
+                                try
+                                {
+                                    installSkills(DBConnect.getCharacterSkills(Window.characterId));
+                                } catch (SQLException e1)
+                                {
+                                    e1.printStackTrace();
+                                }
                             createDialog();
                         }
 
@@ -693,7 +734,8 @@ public class SkillsPanel extends JPanel
                 gbl.setConstraints(add, c);
                 infoPanel.add(add);
             }
-        });
+        };
+        buttonAddNew.addActionListener(listener);
         c.gridx = 1;
         c.gridy = 2;
         c.gridwidth  = 1;
@@ -703,6 +745,53 @@ public class SkillsPanel extends JPanel
         gbl.setConstraints(buttonAddNew, c);
         dialogChoice.add(buttonAddNew);
 //------------------buttonAddNew-----------------------
+//------------------buttonDelete-----------------------
+        buttonDelete.setFont(Resources.font15);
+        buttonDelete.setToolTipText("Удалить выбранный навык");
+        buttonDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!skillsList.isSelectionEmpty())
+                {
+                    if (JOptionPane.showConfirmDialog(dialogChoice, "Вы уверены, что хотите безвозвратно удалить данные о " + skillsList.getSelectedValue() + "?", "!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+                    {
+                        try
+                        {
+                            DBConnect.deleteSkillOnName(skillsList.getSelectedValue());
+                            installSkills(DBConnect.getCharacterSkills(Window.characterId));
+                            dialogChoice.dispose();
+                            createDialog();
+                        }catch (SQLException e1)
+                        {
+                            e1.printStackTrace();
+                        }
+                    }
+
+                }
+            }
+        });
+        c.gridx = 2;
+        c.gridy = 2;
+        c.weightx = 0.0;
+        c.weighty = 0.0;
+        c.gridwidth = 1;
+        c.gridheight = 1;
+        gbl.setConstraints(buttonDelete, c);
+        dialogChoice.add(buttonDelete);
+//------------------buttonDelete-----------------------
+//------------------buttonEdit-----------------------
+        buttonEdit.setFont(Resources.font15);
+        buttonEdit.setToolTipText("Редактировать выбранный навык");
+        buttonEdit.addActionListener(listener);
+        c.gridx = 3;
+        c.gridy = 2;
+        c.weightx = 0.0;
+        c.weighty = 0.0;
+        c.gridwidth = 1;
+        c.gridheight = 1;
+        gbl.setConstraints(buttonEdit, c);
+        dialogChoice.add(buttonEdit);
+//------------------buttonEdit-----------------------
         dialogChoice.setVisible(true);
     }
 
@@ -815,6 +904,14 @@ public class SkillsPanel extends JPanel
     {
         DefaultTableModel dtm = (DefaultTableModel) tableSkills.getModel();
         dtm.setRowCount(0);
+    }
+
+    void installSkills (Object[][] characterSkills)
+    {
+        DefaultTableModel dtm = (DefaultTableModel) tableSkills.getModel();
+        dtm.setRowCount(0);
+        for (Object[] aCharacterSkill : characterSkills)
+            dtm.addRow(aCharacterSkill);
     }
 
     void saveStats()

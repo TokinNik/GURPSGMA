@@ -795,6 +795,36 @@ public class DBConnect
         System.out.println("Броня " + name + " удалена");
     }
 
+    static void deleteSkillOnName(String name) throws SQLException
+    {
+        resSet = statmt.executeQuery("SELECT skill_id FROM Skill WHERE skill_name='" + name + "'");
+        int id = resSet.getInt(1);
+        statmt.executeUpdate("DELETE FROM Character_skills WHERE skill_id=" + id);
+        statmt.executeUpdate("DELETE FROM Skill WHERE skill_id=" + id);
+
+        System.out.println("Навык " + name + " удалён");
+    }
+
+    static void deleteHandWeaponOnName(String name) throws SQLException
+    {
+        resSet = statmt.executeQuery("SELECT hand_weapon_id FROM Hand_weapon WHERE hand_weapon_name='" + name + "'");
+        int id = resSet.getInt(1);
+        statmt.executeUpdate("DELETE FROM Character_hand_weapon WHERE hand_weapon_id=" + id);
+        statmt.executeUpdate("DELETE FROM Hand_weapon WHERE hand_weapon_id=" + id);
+
+        System.out.println("Оружие ближнего боя " + name + " удалено");
+    }
+
+    static void deleteRangedWeaponOnName(String name) throws SQLException
+    {
+        resSet = statmt.executeQuery("SELECT ranged_weapon_id FROM Ranged_weapon WHERE ranged_weapon_name='" + name + "'");
+        int id = resSet.getInt(1);
+        statmt.executeUpdate("DELETE FROM Character_ranged_weapon WHERE ranged_weapon_id=" + id);
+        statmt.executeUpdate("DELETE FROM Ranged_weapon WHERE ranged_weapon_id=" + id);
+
+        System.out.println("Оружие дальнего боя " + name + " удалено");
+    }
+
 
 //==============================DELETE=====================================
 //==============================UPDATE=====================================
@@ -845,6 +875,57 @@ public class DBConnect
                         ",description='" + description +
                         "' WHERE armor_id=" +resSet.getInt(1));
         System.out.println("Броня " + oldName + " обновлена");
+    }
+
+    static void updateSkill (String oldName, String name, String type, String difficulty, String relativeLevel, String description) throws SQLException
+    {
+        resSet = statmt.executeQuery("SELECT skill_id FROM Skill WHERE skill_name='" + oldName + "'");
+        statmt.executeUpdate("UPDATE Skill SET " +
+                "skill_name='" + name +
+                "',type='" + type +
+                "',difficulty='" + difficulty +
+                "',relative_level='" + relativeLevel +
+                "',description='" + description +
+                "' WHERE skill_id=" +resSet.getInt(1));
+        System.out.println("Навык " + oldName + " обновлён");
+    }
+
+    static void updateHandWeapon (String oldName, String name, String damage, String damageType, String minST, String KD, String weight, String cost, String description) throws SQLException
+    {
+        resSet = statmt.executeQuery("SELECT hand_weapon_id FROM Hand_weapon WHERE hand_weapon_name='" + oldName + "'");
+        statmt.executeUpdate("UPDATE Hand_weapon SET " +
+                "hand_weapon_name='" + name +
+                "',damage='" + damage +
+                "',damage_type='" + damageType +
+                "',min_ST=" + minST +
+                ",KD=" + KD +
+                ",weight=" + weight +
+                ",cost=" + cost +
+                ",description='" + description +
+                "' WHERE hand_weapon_id=" +resSet.getInt(1));
+        System.out.println("Оружие ближнего боя " + oldName + " обновлено");
+    }
+
+    static void updateRangedWeapon (String oldName, String name, String damage, String damageType, String SS, String Acc, String range, String maxRange, String RoF, String shots, String minST, String Rcl, String weight, String cost, String description) throws SQLException
+    {
+        resSet = statmt.executeQuery("SELECT ranged_weapon_id FROM Ranged_weapon WHERE ranged_weapon_name='" + oldName + "'");
+        statmt.executeUpdate("UPDATE Ranged_weapon SET " +
+                "ranged_weapon_name='" + name +
+                "',damage='" + damage +
+                "',damage_type='" + damageType +
+                "',SS=" + SS +
+                ",Acc=" + Acc +
+                ",range=" + range +
+                ",max_range=" + maxRange +
+                ",Rof=" + RoF +
+                ",shots=" + shots +
+                ",min_ST=" + minST +
+                ",Rcl=" + Rcl +
+                ",weight=" + weight +
+                ",cost=" + cost +
+                ",description='" + description +
+                "' WHERE ranged_weapon_id=" +resSet.getInt(1));
+        System.out.println("Оружие дальнего боя " + oldName + " обновлено");
     }
 
 //==============================UPDATE=====================================
